@@ -1,0 +1,24 @@
+
+<md-toolbar color="primary">
+    <span>Welcome to {{title}}!</span>
+    <span class="nav-spacer"></span>
+    <md-icon
+      (click)="getMeFavs()" 
+      class="nav-icon">favorite</md-icon>
+    <md-icon 
+      (click)="deleteSomething()"
+      class="nav-icon">delete</md-icon>
+</md-toolbar>
+
+<section class="page-tabs">
+  <md-tab-group>
+    <md-tab label="Tab 1">
+        <h1>
+            Content 1
+        </h1>
+    </md-tab>
+    <md-tab label="Tab 2">
+        <h1>Content 2</h1>
+    </md-tab>
+  </md-tab-group>
+</section>

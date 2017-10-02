@@ -1,0 +1,75 @@
+//DOES NOT WORK!!!
+//@import '~@angular/material/theming';
+//@include mat-core();
+//there is a bug in cdk-overlay mixin (line 29)
+//so I copied theming locally and fixed bug
+//in addition I choose to extract functions
+//from mat-core and call these separatelly
+
+@import './theming';
+
+//---------------------------------------
+//CUSTOM TYPOGRAFY - originally in mat-core()
+//---------------------------------------
+//default material fonts 'Roboto, "Helvetica Neue", sans-serif'
+
+$app-fonts: mat-typography-config(
+    $font-family:   '"Open Sans", sans-serif',
+    $display-4:     mat-typography-level(112px, 112px, 300),
+    $display-3:     mat-typography-level(56px, 56px, 400),
+    $display-2:     mat-typography-level(45px, 48px, 400),
+    $display-1:     mat-typography-level(34px, 40px, 400),
+    $headline:      mat-typography-level(24px, 32px, 400),
+    $title:         mat-typography-level(20px, 32px, 500),
+    $subheading-2:  mat-typography-level(16px, 28px, 400),
+    $subheading-1:  mat-typography-level(15px, 24px, 400),
+    $body-2:        mat-typography-level(14px, 24px, 500),
+    $body-1:        mat-typography-level(14px, 20px, 400),
+    $caption:       mat-typography-level(12px, 20px, 400),
+    $button:        mat-typography-level(14px, 14px, 500),
+    $input:         mat-typography-level(16px, 1.125, 400)
+);
+
+//shell we include this?!?
+@include angular-material-typography($app-fonts);
+
+//-------------------------------------------
+// CORE MATERIAL COMPONENT STYLES
+//-------------------------------------------
+//DOES NOT WORK!!!
+//@include mat-core();
+//there is a bug in cdk-overlay mixin (line 29)
+//so we include functions
+//from mat-core separatelly!!!
+
+@include mat-ripple();
+@include mat-option();
+@include mat-optgroup();
+@include cdk-a11y();
+@include cdk-overlay();
+
+// Provides external CSS classes for each elevation value. Each CSS class is formatted as
+// `mat-elevation-z$zValue` where `$zValue` corresponds to the z-space to which the element is
+// elevated  
+@for $zValue from 0 through 24 {
+    .mat-elevation-z#{$zValue} {
+        @include mat-elevation($zValue);
+    }
+}
+
+//-------------------------------------------
+//THEME COLORS
+//-------------------------------------------
+$app-primary: mat-palette($mat-blue,800);
+$app-accent:  mat-palette($mat-orange, A200, A100, A400);
+$app-warn:    mat-palette($mat-red);
+
+// Create the LIGHT theme object (a Sass map containing all of the palettes).
+$app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
+//Optional there is DARK theme mixin
+//$app-theme: mat-dark-theme($app-primary, $app-accent, $app-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($app-theme);

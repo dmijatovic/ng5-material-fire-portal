@@ -1,0 +1,27 @@
+/* You can add global styles to this file, and also import other style files */
+
+//Fonts
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Open+Sans:300,400,600,700');
+
+//normalize
+@import "~normalize.css/normalize.css";
+
+body,html{
+    display:flex;
+    width:100%;
+    min-height:100%;
+}
+
+body{
+    font-family: 'Open Sans', sans-serif;
+    //font-family: 'Open Sans Condensed', sans-serif;
+    font-weight:400; 
+}
+
+.small-text{
+    font-family: 'Open Sans', sans-serif;
+    //font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: 400;
+    font-size: 0.7em;
+}
