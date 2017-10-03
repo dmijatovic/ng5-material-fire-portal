@@ -8,5 +8,8 @@ if (environment.production) {
   enableProdMode();
 }
 
+//import hammer js lib for touch devices
+import 'hammerjs';
+
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.log(err));
