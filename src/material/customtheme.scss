@@ -1,12 +1,17 @@
 //DOES NOT WORK!!!
 //@import '~@angular/material/theming';
 //@include mat-core();
-//there is a bug in cdk-overlay mixin (line 29)
+//there was a bug in cdk-overlay mixin (line 29)
+//of beta11 version
 //so I copied theming locally and fixed bug
 //in addition I choose to extract functions
 //from mat-core and call these separatelly
+//@import './theming';
 
-@import './theming';
+//from beta12 we can use default version
+//again - it works, however local
+//remains as backup jsut in case ... :-)
+@import '~@angular/material/theming';
 
 //---------------------------------------
 //CUSTOM TYPOGRAFY - originally in mat-core()

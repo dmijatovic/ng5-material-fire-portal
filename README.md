@@ -5,7 +5,7 @@ This is starter project for ng4 with material (custom theme) and ngrx store (red
 
 ## Branches
 
-- ng4material: starter branch ng4 with custom material theme. use this as stater. note that material is still in beta (beta 11 in this case). There is bug in this version of angular/material so I needed to extract scss file and change few lines of code. This adapted version is in material folder. 
+- ng4mat: starter branch ng4 with custom material theme. use this as stater. note that material is still in beta (beta 12 in this case). There was a bug in beta 11 version of angular/material, so I extracted scss file and changed few lines of theming code. The adapted material theming version is in material folder. 
 - ng4rxmd: starter ng4 with custom material and ngrx store. use it as starter for ngrx project 
 
 ## Development server
