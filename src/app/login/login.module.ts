@@ -3,41 +3,39 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms'
 
 /**
  * Custom material module used to add all material components used
  * from here the components are avaliable to every component
  * in the application
  */
-import { AppMateralModule } from '../material/material.module'; 
+import { AppMateralModule } from '../../material/material.module'; 
 
-import { LoginModule } from './login/login.module';
 //local app
-import { AppComponent } from './app.component';
-//import { LoginComponent } from './login/login.component';
-import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login.component';
 
 
 //-----------------------------------
 //ROUTES
 //-----------------------------------
 const routes:Routes=[{
-  path:'',
-  component: HomeComponent
+  path:'login',
+  component: LoginComponent
 }]
 
 
 @NgModule({
   declarations: [
-    AppComponent,HomeComponent
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    AppMateralModule,LoginModule,
-    RouterModule.forRoot(routes)
+    AppMateralModule, FormsModule,
+    RouterModule.forChild(routes)
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  exports: [LoginComponent]
 })
-export class AppModule { }
+export class LoginModule { }

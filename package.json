@@ -1,12 +1,12 @@
 {
-  "name": "ng4mat",
+  "name": "ng4fire",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "dev":"ng serve -ec=true -sm=true",
-    "build": "ng build -ec=true",
+    "start": "npm run dev",
+    "dev": "ng serve -ec=true -sm=true -env=dev",
+    "build": "ng build -ec=true -env=prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -24,7 +24,9 @@
     "@angular/platform-browser": "^4.2.4",
     "@angular/platform-browser-dynamic": "^4.2.4",
     "@angular/router": "^4.2.4",
+    "angularfire2": "^5.0.0-rc.2",
     "core-js": "^2.4.1",
+    "firebase": "^4.5.0",
     "hammerjs": "^2.0.8",
     "normalize.css": "^7.0.0",
     "rxjs": "^5.4.2",

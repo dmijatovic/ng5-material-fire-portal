@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "project": {
-    "name": "ng4rx"
+    "name": "ng4fire"
   },
   "apps": [
     {
@@ -53,6 +53,7 @@
   "defaults": {
     "styleExt": "scss",
     "component": {
+      
     }
   }
 }
