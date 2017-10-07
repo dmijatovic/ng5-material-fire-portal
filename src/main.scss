@@ -7,6 +7,7 @@
 //normalize
 @import "~normalize.css/normalize.css";
 
+
 body,html{
     display:flex;
     width:100%;
@@ -19,9 +20,6 @@ body{
     font-weight:400; 
 }
 
-.small-text{
-    font-family: 'Open Sans', sans-serif;
-    //font-family: 'Open Sans Condensed', sans-serif;
-    font-weight: 400;
-    font-size: 0.7em;
-}
+
+//import custom theme
+@import "./material/customtheme";

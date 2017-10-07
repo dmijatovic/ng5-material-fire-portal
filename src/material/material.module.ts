@@ -4,15 +4,15 @@ import {NgModule} from '@angular/core';
 //material modules components used in this project
 //should go here
 import {
-    MatToolbarModule, MdIconModule, MdTabsModule
+    MatToolbarModule, MatIconModule, MatTabsModule
 } from '@angular/material';
 
 @NgModule({
     imports: [
-        MatToolbarModule, MdIconModule, MdTabsModule
+        MatToolbarModule, MatIconModule, MatTabsModule
     ],
     exports: [
-        MatToolbarModule, MdIconModule, MdTabsModule
+        MatToolbarModule, MatIconModule, MatTabsModule
     ],
 })
 export class AppMateralModule { }

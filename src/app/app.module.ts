@@ -4,8 +4,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-//CUSTOM material module
-import { AppMateralModule } from './material.module'; 
+/**
+ * Custom material module used to add all material components used
+ * from here the components are avaliable to every component
+ * in the application
+ */
+import { AppMateralModule } from '../material/material.module'; 
 
 //local app
 import { AppComponent } from './app.component';

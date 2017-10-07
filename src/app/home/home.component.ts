@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { MdToolbar, MdToolbarRow, MdIcon } from '@angular/material';
+import { MatToolbar, MatToolbarRow, MatIcon } from '@angular/material';
+
 
 @Component({
   selector: 'app-home',
