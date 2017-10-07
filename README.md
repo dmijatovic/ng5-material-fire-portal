@@ -1,16 +1,19 @@
-# Ng4rx
+# Ng4mat
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.2.
-This is starter project for ng4 with material (custom theme) and ngrx store (redux store pattern implemented using rx)
+This is starter project for ng4 with material (custom theme) and second branch is test of redux store
 
 ## Branches
 
 - ng4mat: starter branch ng4 with custom material theme. use this as stater. note that material is still in beta (beta 12 in this case). There was a bug in beta 11 version of angular/material, so I extracted scss file and changed few lines of theming code. The adapted material theming version is in material folder. 
 - ng4rxmd: starter ng4 with custom material and ngrx store. use it as starter for ngrx project 
 
-## Development server
+## Development
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- Run `npm run dev` for a dev server and sourcemaps. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- To add new material component, you need to 'inject' references in two places 
+    - add material component reference in your angualr component
+    - add meterial module reference into material module (material/material.module.ts)
 
 ## Code scaffolding
 
@@ -32,5 +35,3 @@ Before running the tests make sure you are serving the app via `ng serve`.
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-
-## B
