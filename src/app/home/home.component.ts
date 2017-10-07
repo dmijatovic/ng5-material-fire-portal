@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { MatToolbar, MatToolbarRow, MatIcon } from '@angular/material';
 
+import { LoginSvc } from '../../login/login.svc';
+
 
 @Component({
   selector: 'app-home',
@@ -10,7 +12,9 @@ import { MatToolbar, MatToolbarRow, MatIcon } from '@angular/material';
 })
 export class HomeComponent implements OnInit {
   title="Angular 4 material starter"
-  constructor() { }
+  constructor(
+    private login: LoginSvc
+  ) { }
 
   ngOnInit() {
   }
@@ -21,6 +25,8 @@ export class HomeComponent implements OnInit {
 
   deleteSomething(){
     console.log("Wel there is nothing to delete here");    
+    //can we log out?!?
+    this.login.logOut();
   }
 
 
