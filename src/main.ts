@@ -1,7 +1,10 @@
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-import { AppModule } from './app/app.module';
+//import { AppModule } from './app/app.module';
+import { MainModule } from './main.module';
+
+//import environment variables
 import { environment } from './environments/environment';
 
 if (environment.production) {
@@ -11,5 +14,5 @@ if (environment.production) {
 //import hammer js lib for touch devices
 import 'hammerjs';
 
-platformBrowserDynamic().bootstrapModule(AppModule)
+platformBrowserDynamic().bootstrapModule(MainModule)
   .catch(err => console.log(err));

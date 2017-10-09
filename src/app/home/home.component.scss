@@ -1,9 +1,8 @@
 
-.nav-icon {
-    padding: 0 14px;
-    cursor: pointer;
-}
-  
-.nav-spacer {
-    flex: 1 1 auto;
+//this should be on each host
+//that needs to fill in the page 
+:host{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }

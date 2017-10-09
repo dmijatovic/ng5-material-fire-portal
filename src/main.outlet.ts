@@ -1,0 +1,25 @@
+import { Component } from '@angular/core';
+/**
+ * MAIN OUTLET component
+ * this component is first component 
+ * on the page, IT is simply a router outlet 
+ * for other modules. Note that other module 
+ * also might have router-outlets. This one 
+ * is TOP LEVEL router-outlet to split 
+ * login, app and system modules
+ */
+@Component({
+  selector: 'main-outlet',
+  template: ` 
+    <router-outlet></router-outlet>
+  `,  
+  styles:[` 
+    :host{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        min-height:100%;
+    }
+  `]
+})
+export class MainOutlet {}

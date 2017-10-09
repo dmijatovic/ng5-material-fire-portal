@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatToolbar, MatToolbarRow, MatIcon } from '@angular/material';
-import { Router } from '@angular/router';
 
-import { LoginSvc } from '../../login/login.svc';
+//import { Router } from '@angular/router';
+//import { LoginSvc } from '../../login/login.svc';
 
 
 @Component({
@@ -13,8 +13,8 @@ import { LoginSvc } from '../../login/login.svc';
 export class HomeComponent implements OnInit {
   title="Angular 4 material starter"
   constructor(
-    private login: LoginSvc,
-    private router: Router 
+    //private login: LoginSvc,
+    //private router: Router 
   ) { }
 
   ngOnInit() {
@@ -27,14 +27,12 @@ export class HomeComponent implements OnInit {
     console.log("Wel there is nothing to delete here");    
     //can we log out?!?
     this.login.logOut();
-  }*/
+  }
   logOut(){
     //can we log out?!?
     this.login.logOut();
   }
   deleteAccount(){
-
     this.router.navigate(['remove']);
-    
-  }
+  }*/
 }

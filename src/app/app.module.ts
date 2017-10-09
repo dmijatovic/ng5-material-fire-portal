@@ -36,6 +36,12 @@ import { SystemModule } from '../system/system.module';
  */
 import { LoginModule } from '../login/login.module';
 import { LoginSvc } from '../login/login.svc';
+
+/**
+ * ANIMATIONS module
+ */
+import { AnimationsModule } from './animations/animate.module';
+
 /**
  * MAIN APP PAGES/COMPONENTS 
  */
@@ -43,6 +49,7 @@ import { LoginSvc } from '../login/login.svc';
 import { AppComponent } from './app.component';
 //import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
+import { AppHeader, AppFooter } from './layout';
 
 /**
  * ROUTES
@@ -50,33 +57,39 @@ import { HomeComponent } from './home/home.component';
  * most of the routing is module specific
  * therefore we have minimal routing at the top
  */
-const routes:Routes=[{
+const routes:Routes=[
+/*{
   path:'',
   redirectTo:'home',
   pathMatch:'full'
-},{
-  path:'home',
-  component: HomeComponent,
-  canActivate: [ LoginSvc ]
+},*/{
+    path:'home',
+    component:AppComponent,
+    canActivate: [ LoginSvc ],
+    children:[{
+      path:'',
+      component: HomeComponent
+    }]
 }]
 
 @NgModule({
   declarations: [
-    AppComponent,HomeComponent
+    AppComponent,HomeComponent, AppHeader, AppFooter
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppMateralModule,LoginModule,
-    SystemModule,
+    SystemModule,AnimationsModule,
     //Firebase
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(env.firebase),
     //Router
-    RouterModule.forRoot(routes)
+    RouterModule.forChild(routes)
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  exports:[ AppComponent,HomeComponent, AppHeader, AppFooter ]
+  //bootstrap: [AppComponent]
 })
 export class AppModule { }

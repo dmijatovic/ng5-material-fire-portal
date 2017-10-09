@@ -49,29 +49,30 @@ const routes:Routes=[{
 
 
 @NgModule({
-  declarations: [
-    LoginComponent,
-    VerifyComponent,
-    PasswordComponent,
-    ChangeEmailComponent,
-    RemoveAccountComponent
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    FormsModule,ReactiveFormsModule,
-    MatInputModule,MatButtonModule,
-    MatExpansionModule,
-    SystemModule,
-    RouterModule.forChild(routes)
-  ],
-  providers: [ LoginSvc ],
-  exports: [
-    LoginComponent,
-    VerifyComponent,
-    PasswordComponent,
-    ChangeEmailComponent,
-    RemoveAccountComponent
-    ]
+    declarations: [
+        LoginComponent,
+        VerifyComponent,
+        PasswordComponent,
+        ChangeEmailComponent,
+        RemoveAccountComponent
+    ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        FormsModule,ReactiveFormsModule,
+        MatInputModule,MatButtonModule,
+        MatExpansionModule,
+        SystemModule,
+        RouterModule.forChild(routes)
+    ],
+    providers: [ LoginSvc ],
+    exports: [
+        LoginComponent,
+        VerifyComponent,
+        PasswordComponent,
+        ChangeEmailComponent,
+        RemoveAccountComponent
+    ],
+    bootstrap: [LoginComponent]
 })
 export class LoginModule { }
