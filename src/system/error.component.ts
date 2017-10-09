@@ -39,13 +39,11 @@ export class ErrorComponent implements OnInit {
   }
 
   showError(err){
-    debugger
-
+    //debugger
     this.matIcon = err.matIcon;
     this.errTitle = err.title;
     this.errMsg = err.msg;
     this.errNumber = err.id;
-
   }
 
   standardErrorMessage(){

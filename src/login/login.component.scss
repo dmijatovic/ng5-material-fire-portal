@@ -15,7 +15,8 @@
 
 
 .login-form-wrap{
-    width:325px;
+    min-width: 275px;
+    max-width: 375px;
 
     .login-nav{
         display: flex;
@@ -58,6 +59,10 @@
         background-position: center;
         background-repeat: no-repeat;
 
+    }
+
+    .mat-input-element{
+        line-height:1.25;
     }
 
 }

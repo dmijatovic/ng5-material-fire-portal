@@ -5,13 +5,14 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Project folder structure (modules)
 This project is ment to be template for new portals. Therefore I decided to split 
 number of 'standard' components from the 'client specific' components. The client specific components are placed in app while various system components are placed outside app folder. The complete structure is as follows:
+
 - `app`: here we store customer specific pages
 - `assets`: portal assets, like images etc.
 - `environments`: environment definitions file(s)
 - `firebase`: firebase definitions incl. private key(s). See readme.txt for more info
 - `login`: login and authentication modules
 - `material`: material design styles, custom fixes and material.module that holds material components used in the app 
-- `system`: system module that holds system pages used by app, like 401, 404, loaders etc
+- `system`: system module that holds system pages used by app, like 401, 404, loaders etc.
 
 ## Branches
 

@@ -14,12 +14,18 @@ import {
 import { environment } from '../environments/environment';
 
 //local app
-import { LoginComponent } from './login.component';
-import { RegisterComponent } from './register.component';
-import { PasswordComponent } from './password.component';
+import { 
+    LoginComponent, VerifyComponent,
+    PasswordComponent, ChangeEmailComponent,
+    RemoveAccountComponent
+} from './index';
+
+
 
 //firebase service
 import { LoginSvc } from './login.svc'
+
+import { SystemModule } from '../system/system.module';
 
 //-----------------------------------
 //ROUTES
@@ -28,19 +34,27 @@ const routes:Routes=[{
     path:'login',
     component: LoginComponent
 },{
-    path:'register',
-    component: RegisterComponent
+    path:'verify',
+    component: VerifyComponent
 },{
     path:'password',
     component: PasswordComponent
+},{
+    path:'email',
+    component: ChangeEmailComponent
+},{
+    path:'remove',
+    component: RemoveAccountComponent
 }]
 
 
 @NgModule({
   declarations: [
     LoginComponent,
-    RegisterComponent,
-    PasswordComponent
+    VerifyComponent,
+    PasswordComponent,
+    ChangeEmailComponent,
+    RemoveAccountComponent
   ],
   imports: [
     BrowserModule,
@@ -48,10 +62,16 @@ const routes:Routes=[{
     FormsModule,ReactiveFormsModule,
     MatInputModule,MatButtonModule,
     MatExpansionModule,
+    SystemModule,
     RouterModule.forChild(routes)
   ],
   providers: [ LoginSvc ],
-  exports: [LoginComponent,RegisterComponent,
-    PasswordComponent]
+  exports: [
+    LoginComponent,
+    VerifyComponent,
+    PasswordComponent,
+    ChangeEmailComponent,
+    RemoveAccountComponent
+    ]
 })
 export class LoginModule { }

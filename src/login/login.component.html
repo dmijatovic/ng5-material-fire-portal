@@ -12,7 +12,7 @@
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
-          Login 
+          {{panelTitle}}
         </mat-panel-title>
         <mat-panel-description>
           {{loginStatus}}
@@ -28,7 +28,7 @@
     </mat-expansion-panel>
        
     <!-- LOGIN FORM -->
-    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+    <form [formGroup]="loginForm" (ngSubmit)="onAction()">
       <mat-form-field>
         <input matInput 
             type="text"
@@ -48,13 +48,14 @@
       </mat-form-field>
       <!-- LOGIN NAV -->  
       <div class="login-nav">
-
+        <!--
         <div class="fill-space"></div>
-
+        -->
         <button mat-raised-button
+          style="flex:1"
           color="primary"
           [disabled]="!loginForm.valid">
-            Login            
+            {{primBtn}}            
         </button>        
       </div>      
 
@@ -69,12 +70,16 @@
       </button>
 
       <button mat-button color="primary"
-      routerLink="/register">
-        Register
+        (click)="toggleAction()">
+        {{secoBtn}}
     </button>
       
     </div>
   </div>
-  
-  
+ 
 </section>
+
+<!-- loader -->
+<app-loader 
+  [class.active]="showLoader">
+</app-loader>

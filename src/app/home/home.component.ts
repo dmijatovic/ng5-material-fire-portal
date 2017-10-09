@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
 import { MatToolbar, MatToolbarRow, MatIcon } from '@angular/material';
+import { Router } from '@angular/router';
 
 import { LoginSvc } from '../../login/login.svc';
 
@@ -13,21 +13,28 @@ import { LoginSvc } from '../../login/login.svc';
 export class HomeComponent implements OnInit {
   title="Angular 4 material starter"
   constructor(
-    private login: LoginSvc
+    private login: LoginSvc,
+    private router: Router 
   ) { }
 
   ngOnInit() {
   }
-
+  /*
   getMeFavs(){
     console.log("You clicked favs icon");
   }
-
   deleteSomething(){
     console.log("Wel there is nothing to delete here");    
     //can we log out?!?
     this.login.logOut();
+  }*/
+  logOut(){
+    //can we log out?!?
+    this.login.logOut();
   }
+  deleteAccount(){
 
-
+    this.router.navigate(['remove']);
+    
+  }
 }

@@ -8,7 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment as env } from '../environments/environment';
 
 
-import { MatCardModule } from '@angular/material';
+import { MatCardModule, MatProgressSpinnerModule } from '@angular/material';
 
 /**
  * LOGIN SECTION
@@ -26,6 +26,7 @@ import { MatCardModule } from '@angular/material';
 //import { LoginComponent } from './login/login.component';
 
 import { ErrorComponent } from './error.component';
+import { LoaderComponent } from './loader.component';
 //import { sysMsg } from './sys.msg';
 
 /**
@@ -36,24 +37,28 @@ import { ErrorComponent } from './error.component';
  */
 const routes:Routes=[{
     path:'error',
-    redirectTo:'error/:500',
+    redirectTo:'error/500',
     pathMatch:'full'
 },{
     path:'error/:id',
     component: ErrorComponent    
-}]
+}/*,{
+  //just for testing
+  path:'system/loader',
+  component: LoaderComponent    
+}*/]
 
 @NgModule({
   declarations: [
-    ErrorComponent
+    ErrorComponent, LoaderComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,    
-    MatCardModule,
+    MatCardModule, MatProgressSpinnerModule,
     //Router
     RouterModule.forChild(routes)
   ],  
-  exports:[ MatCardModule ]
+  exports:[ ErrorComponent, LoaderComponent ]
 })
 export class SystemModule { }
