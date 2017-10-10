@@ -63,7 +63,7 @@ const routes:Routes=[
   redirectTo:'home',
   pathMatch:'full'
 },*/{
-    path:'home',
+    path:'private',
     component:AppComponent,
     canActivate: [ LoginSvc ],
     children:[{

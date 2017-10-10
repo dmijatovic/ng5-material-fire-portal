@@ -1,0 +1,8 @@
+
+//this should be on each host
+//that needs to fill in the page 
+:host{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}

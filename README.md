@@ -3,8 +3,7 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.2. This is starter project for ng4 with material (custom theme) and firebase.
 
 ## Project folder structure (modules)
-This project is ment to be template for new portals. Therefore I decided to split 
-number of 'standard' components from the 'client specific' components. The client specific components are placed in app while various system components are placed outside app folder. The complete structure is as follows:
+This project is ment to be template for new portals. Therefore I decided to split number of 'standard' components from the 'client specific' components. The client specific components are placed in app while various system components are placed outside app folder. The complete structure is as follows:
 
 - `app`: here we store customer specific pages
 - `assets`: portal assets, like images etc.
@@ -12,7 +11,8 @@ number of 'standard' components from the 'client specific' components. The clien
 - `firebase`: firebase definitions incl. private key(s). See readme.txt for more info
 - `login`: login and authentication modules
 - `material`: material design styles, custom fixes and material.module that holds material components used in the app 
-- `system`: system module that holds system pages used by app, like 401, 404, loaders etc.
+- `public`: this module keeps public avaliable pages. Public pages are completely separated from app and have their own page layout and routing
+- `system`: system module that holds system pages like 401, 404, loaders etc.
 
 ## Branches
 

@@ -31,9 +31,15 @@ import { LoginModule } from './login/login.module';
 //import { LoginSvc } from './login/login.svc';
 
 /**
- * MAIN APP MODULE
+ * MAIN ***PRIVATE*** APP MODULE
  */
 import { AppModule } from './app/app.module';
+
+/**
+ * PUBLIC pages module
+ */
+import { PublicModule } from './public/public.module';
+
 
 //main outlet component 
 //itś just a router-outlet
@@ -47,7 +53,7 @@ import { MainOutlet } from './main.outlet';
  */
 const routes:Routes=[{
   path:'',
-  redirectTo:'home',
+  redirectTo:'public',
   pathMatch:'full'
 }]
 
@@ -56,7 +62,7 @@ const routes:Routes=[{
   imports: [
     //BrowserModule, BrowserAnimationsModule,
     AppMateralModule,LoginModule,
-    SystemModule,AppModule,    
+    SystemModule,AppModule,PublicModule,    
     //Router
     RouterModule.forRoot(routes)
   ],
