@@ -1,0 +1,29 @@
+{
+    "menu":{
+        "home": {"path":"home", "title": "Home","matIcon": "home"},
+        "animations": {"path":"animations", "title": "Animations","matIcon": "home"},
+        "footbal": {"path":"football", "title": "Football","matIcon": "home"},
+        "weather": {"path":"weather", "title": "Weather","matIcon": "home"},
+        "redux":{"path":"redux", "title": "Redux","matIcon": "home"}
+    },
+    "user":{
+        "ZC5taWphdG92aWNAZHY0YWxsLm5s":{
+            "avatar":"https://lh6.googleusercontent.com/-HRvFCA8NlvQ/AAAAAAAAAAI/AAAAAAAAAA8/QBO85KKjuwA/photo.jpg?sz=64",
+            "firstName":"Dusan",
+            "lastName":"Mijatovic",
+            "email":"d.mijatovic@dv4all.nl",
+            "phone":{
+                "countryCode":"31",
+                "number":"48255850"
+            },
+            "birthdate":"1970-11-25",
+            "birthplace":{
+                "city":"Beograd",
+                "location":{
+                    "latitude":"44.797039",
+                    "longitude":"20.456174"
+                }
+            }
+        }
+    }
+}
