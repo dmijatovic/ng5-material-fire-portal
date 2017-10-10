@@ -9,7 +9,8 @@ import { Router } from '@angular/router';
     styleUrls: ['./header.scss']
 })
 export class AppPublicHeader {
-    title = 'Header title';
+
+    title = 'Angular 4 Firebase demo portal';
 
     constructor(        
         private router: Router 

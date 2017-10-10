@@ -1,39 +1,29 @@
 
-<mat-toolbar color="primary">
+<mat-toolbar class="public-page-header"
+    color="primary">
+    <span>
+        <img class="app-logo"
+            src="assets/img/dv4shapes64.svg" />
+    </span>
     <span>{{title}}!</span>
     <span class="nav-spacer"></span>    
     
+    <!--
     <mat-icon class="nav-icon"
-        matTooltip = "Log out"
-        (click)="logOut()">
-        undo
+        matTooltip = "Log in to ng4fire portal"
+        routerLink="../login">
+        fingerprint
     </mat-icon>
-
-    <mat-icon class="nav-icon"
-        matTooltip = "Delete your account"
-        (click)="deleteAccount()">
-        delete
-    </mat-icon>
+    -->
+    <a mat-button
+        routerLink="../login">
+        <mat-icon>lock_open</mat-icon>
+        <span>Sign in</span>
+    </a>
+    <a mat-button
+        routerLink="../register">
+        <mat-icon>create</mat-icon>
+    <span>Register</span>
+</a>
     
-    <!-- MENU -->
-    <mat-icon class="nav-icon"
-        matTooltip = "Menu items"
-        [matMenuTriggerFor]="menu">
-        more_vert
-    </mat-icon>    
-
-    <mat-menu #menu="matMenu">
-        <button mat-menu-item>
-        <mat-icon>dialpad</mat-icon>
-        <span>Redial</span>
-        </button>
-        <button mat-menu-item disabled>
-        <mat-icon>voicemail</mat-icon>
-        <span>Check voicemail</span>
-        </button>
-        <button mat-menu-item>
-        <mat-icon>notifications_off</mat-icon>
-        <span>Disable alerts</span>
-        </button>
-    </mat-menu>
 </mat-toolbar>

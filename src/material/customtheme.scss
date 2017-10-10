@@ -43,9 +43,8 @@ $app-fonts: mat-typography-config(
 //-------------------------------------------
 //DOES NOT WORK!!!
 //@include mat-core();
-//there is a bug in cdk-overlay mixin (line 29)
-//so we include functions
-//from mat-core separatelly!!!
+//there was a bug in cdk-overlay mixin (line 29)
+//so we included functions from mat-core separatelly
 
 @include mat-ripple();
 @include mat-option();
@@ -65,6 +64,8 @@ $app-fonts: mat-typography-config(
 //-------------------------------------------
 //THEME COLORS
 //-------------------------------------------
+//if you change colors here see _variables too
+
 $app-primary: mat-palette($mat-blue,800);
 $app-accent:  mat-palette($mat-orange, A200, A100, A400);
 $app-warn:    mat-palette($mat-red);
@@ -79,5 +80,3 @@ $app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
 // that you are using.
 @include angular-material-theme($app-theme);
 
-
-//perform some overwrites ?!?

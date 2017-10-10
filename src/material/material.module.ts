@@ -5,17 +5,20 @@ import {NgModule} from '@angular/core';
 //should go here
 import {
     MatToolbarModule, MatIconModule, MatTabsModule,
-    MatInputModule, MatMenuModule, MatTooltipModule
+    MatInputModule, MatMenuModule, MatTooltipModule,
+    MatButtonModule
 } from '@angular/material';
 
 @NgModule({
     imports: [
         MatToolbarModule, MatIconModule, MatTabsModule,
-        MatInputModule, MatMenuModule, MatTooltipModule
+        MatInputModule, MatMenuModule, MatTooltipModule,
+        MatButtonModule
     ],
     exports: [
         MatToolbarModule, MatIconModule, MatTabsModule,
-        MatInputModule, MatMenuModule, MatTooltipModule
+        MatInputModule, MatMenuModule, MatTooltipModule,
+        MatButtonModule
     ],
 })
 export class AppMateralModule { }

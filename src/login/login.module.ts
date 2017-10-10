@@ -32,7 +32,12 @@ import { SystemModule } from '../system/system.module';
 //-----------------------------------
 const routes:Routes=[{
     path:'login',
-    component: LoginComponent
+    component: LoginComponent,
+    data:{signin:true}
+},{
+    path:'register',
+    component: LoginComponent,
+    data:{signin:false}
 },{
     path:'verify',
     component: VerifyComponent

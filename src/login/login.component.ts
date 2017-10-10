@@ -1,7 +1,7 @@
 //angular
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { LoginSvc } from './login.svc';
 
@@ -28,7 +28,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private fire: LoginSvc,
-    private router: Router
+    private router: Router,
+    private routeData: ActivatedRoute
   ) { }
 
   ngOnInit() {
@@ -37,6 +38,13 @@ export class LoginComponent implements OnInit {
        email:['', Validators.required],
        password:['',Validators.required]
      });     
+     //decide based on route data which 
+     //version of component 
+     debugger
+     let data:any = this.routeData.data;
+     this.login = data.login;
+     //set button labels
+     this.buttonLabels()
   }
   /**
    * this function toggles 

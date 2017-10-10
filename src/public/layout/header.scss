@@ -1,4 +1,9 @@
 
+@import '../../material/variables';
+
+.public-page-header{
+    padding: $page-padding;
+}
 
 .nav-icon {
     padding: 0 16px;
@@ -7,4 +12,9 @@
   
 .nav-spacer {
     flex: 1 1 auto;
+}
+
+.app-logo{
+    height:36px;
+    margin-right:24px;
 }

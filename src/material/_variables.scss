@@ -1,0 +1,48 @@
+/*
+    CUSTOM VARIABLES DEFINED FOR THIS PORTAL
+    v0.0.1 2017-10-10
+*/
+
+@import '~@angular/material/theming';
+
+//@import './customtheme';
+
+/** COLORS
+PLEASE USE HERE DEFINED COLORS in all component
+and if you need more colors define it here.
+With this approach we align we theme colors 
+defined in customtheme.scss
+----- CUSTOM THEME COLOR DEFINED ----------
+$app-primary: $mat-blue,800
+$app-accent: $mat-orange, A200 
+$app-warn: $mat-red;
+-------------------------------------------
+*/
+
+$app-blue: mat-color($mat-blue,800);
+$app-blue-contrast: mat-contrast($mat-blue,800);
+$app-light-grey: mat-color($mat-grey,300);
+$app-light-grey-contrast: mat-contrast($mat-grey,300);
+$app-dark-grey: mat-color($mat-grey,800);
+$app-dark-grey-contrast: mat-contrast($mat-grey,800);
+$app-white: mat-color($mat-grey,100);
+$app-white-contrast:mat-contrast($mat-grey,100);
+//$app-orange:
+//$app-green:mat-color($mat-teal,500);
+
+/*
+// retrieve variables from material theme 
+// (all possible variables, use only what you really need)
+$primary: map-get($app-theme, primary);
+$accent: map-get($app-theme, accent);
+$warn: map-get($app-theme, warn);
+$foreground: map-get($app-theme, foreground);
+$background: map-get($app-theme, background);
+*/
+/** 
+PAGE LAYOUT PADDING
+*/
+$page-padding: 0px 24px;
+
+
+
