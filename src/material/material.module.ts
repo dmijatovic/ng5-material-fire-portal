@@ -6,19 +6,19 @@ import {NgModule} from '@angular/core';
 import {
     MatToolbarModule, MatIconModule, MatTabsModule,
     MatInputModule, MatMenuModule, MatTooltipModule,
-    MatButtonModule
+    MatButtonModule, MatExpansionModule, MatSelectModule
 } from '@angular/material';
 
 @NgModule({
     imports: [
         MatToolbarModule, MatIconModule, MatTabsModule,
         MatInputModule, MatMenuModule, MatTooltipModule,
-        MatButtonModule
+        MatButtonModule, MatExpansionModule, MatSelectModule
     ],
     exports: [
         MatToolbarModule, MatIconModule, MatTabsModule,
         MatInputModule, MatMenuModule, MatTooltipModule,
-        MatButtonModule
+        MatButtonModule, MatExpansionModule, MatSelectModule
     ],
 })
 export class AppMateralModule { }

@@ -55,6 +55,10 @@ const routes:Routes=[{
   path:'',
   redirectTo:'public',
   pathMatch:'full'
+},{
+    path:'*',
+    redirectTo:'error/:404',
+    pathMatch:'full'
 }]
 
 @NgModule({
