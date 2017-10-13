@@ -48,7 +48,8 @@ const routes: Routes = [{
    component: RemoveAccountComponent
 }, {
    path: 'profile',
-   component: UserProfilePage
+   component: UserProfilePage,
+   canActivate: [ LoginSvc ],
 }]
 
 

@@ -115,7 +115,7 @@ export class LoginComponent implements OnInit {
             }
          })
          .then((profile:any) => {
-            debugger
+            //debugger
             if (profile) {
                //if profile exist we extract 
                //startpage from profile

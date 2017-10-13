@@ -2,8 +2,6 @@
 @import '~@angular/material/theming';
 
 
-
-
 :host{
     display:flex;
     flex:1;
@@ -13,12 +11,11 @@
 }
 
 
-
 .login-form-wrap{
-    min-width: 275px;
-    max-width: 375px;
+   min-width: 275px;
+   max-width: 375px;
 
-    .login-nav{
+   .login-nav{
         display: flex;
         justify-content: space-between;
         padding: 16px 0px;

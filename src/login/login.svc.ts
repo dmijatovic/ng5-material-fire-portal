@@ -18,7 +18,7 @@ export class LoginSvc implements CanActivate {
       private fire: AngularFireAuth,
       private router: Router,
       private data: AngularFireDatabase
-   ){
+   ) {
       //listen for auth changes
       this.fire.auth.onAuthStateChanged((user) => {
          if (user) {
@@ -44,8 +44,8 @@ export class LoginSvc implements CanActivate {
    /**
     * Returns the start page after user is logged in
     */
-   getUserProfile(email:string) {
-      return new Promise((res,rej)=>{
+   getUserProfile(email: string) {
+      return new Promise((res, rej) => {
          if (email) {
             //debugger
             //convert email to b64 encoded string
@@ -54,24 +54,53 @@ export class LoginSvc implements CanActivate {
                ref = this.data.database.ref(path);
             //request user object ONCE
             ref.once('value')
-               .then((snapshot)=>{
+               .then((snapshot) => {
                   console.group("getUserProfile");
                   console.log("path", path);
                   console.log("snaphot", snapshot.exists());
                   console.groupEnd();
-                  if (snapshot.exists()){
+                  if (snapshot.exists()) {
                      let data = snapshot.val();
-                     debugger
+                     //debugger
                      res(data);
-                  }else{
+                  } else {
                      res(null);
-                  }                  
-               },(e)=>{
+                  }
+               }, (e) => {
                   rej(e);
                });
          } else {
             res(null);
          }
+      });
+   }
+   /**
+    * Returns all menu items avaliable in the app
+    */
+   getAllMenuItems() {
+      return new Promise((res, rej) => {
+
+         //debugger
+         //convert email to b64 encoded string
+         let path = '/menu/',
+            ref = this.data.database.ref(path);
+         //request user object ONCE
+         ref.once('value')
+            .then((snapshot) => {
+               console.group("getAllMenuItems");
+               console.log("path", path);
+               console.log("snaphot", snapshot.exists());
+               console.groupEnd();
+               if (snapshot.exists()) {
+                  let data = snapshot.val();
+                  res(Object.keys(data));
+               } else {
+                  res(null);
+               }
+            }, (e) => {
+               rej(e);
+            });
+
       });
    }
    /**
