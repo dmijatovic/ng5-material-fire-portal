@@ -1,33 +1,40 @@
 //angular
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router'
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MatCardModule, MatProgressSpinnerModule } from '@angular/material';
+//material module
+import { AppMateralModule } from '../../material/material.module'
 
+//local modules 
 import { AnimateFrame, AnimateHomePage, AnimateScrollPage  } from './index';
 
 /**
  * ROUTES
- * top lever route,
+ * module specific routes  
  * most of the routing is module specific
  * therefore we have minimal routing at the top
  */
 const routes:Routes=[{
-    path:'animations',
-    redirectTo:'animations/home',
-    pathMatch:'full'
-},{
-    path:'animations',
-    //component: AppComponent,
+    path:'',        
     component: AnimateFrame,
     children:[{
+        path:'',
+        component: AnimateHomePage,
+        data:{
+            title:"Page title is this now"
+        }
+    },{
         path:'home',
-        component: AnimateHomePage
+        component: AnimateHomePage,
+        data:{
+            title:"Animations"
+        }
     },{
         path:'scroll',
-        component: AnimateScrollPage
+        component: AnimateScrollPage,
+        data:{
+            title:"Animations - scroll effect"
+        }
     }]
 }]
 
@@ -35,10 +42,8 @@ const routes:Routes=[{
   declarations: [
     AnimateFrame, AnimateHomePage, AnimateScrollPage
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,    
-    MatCardModule, MatProgressSpinnerModule,
+  imports: [    
+    AppMateralModule,
     //Router
     RouterModule.forChild(routes)
   ],  

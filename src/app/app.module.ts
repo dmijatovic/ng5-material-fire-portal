@@ -64,12 +64,15 @@ const routes:Routes=[
   pathMatch:'full'
 },*/{
     path:'private',
-    component:AppComponent,
-    canActivate: [ LoginSvc ],
-    /*children:[{
+    component: AppComponent,
+    //canActivate:[LoginSvc],
+    children:[{
       path:'',
       component: HomeComponent
-    }]*/
+    },{
+      path:'animations',
+      loadChildren:'app/animations/animate.module#AnimationsModule'
+    }]
 }]
 
 @NgModule({

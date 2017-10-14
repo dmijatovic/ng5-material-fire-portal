@@ -1,76 +1,99 @@
 {
-    "menu": {
-       "animations": {
-          "pos": 1,
-          "matIcon": "motorcycle",
-          "path": "/private/animations",
-          "title": "Animations",
-          "active": true
-       },
-       "footbal": {
-          "pos": 2,
-          "matIcon": "rowing",
-          "path": "/private/football",
-          "title": "Football",
-          "active": true
-       },
-       "private": {
-          "pos": 3,
-          "matIcon": "home",
-          "path": "/private",
-          "title": "Home",
-          "active": true
-       },
-       "redux": {
-          "pos": 4,
-          "matIcon": "star_rate",
-          "path": "/private/redux",
-          "title": "Redux",
-          "active": true
-       },
-       "weather": {
-          "matIcon": "bubble_chart",
-          "path": "/private/weather",
-          "pos": 5,
-          "title": "Weather",
-          "active": true
-       },
-       "startpage": {
-          "pos": 6,
-          "matIcon": "home",
-          "path": "/public",
-          "title": "Public",
-          "active": true
-       }
-    },
-    "user": {
-       "ZC5taWphdG92aWNAZHY0YWxsLm5s": {
-          "avatar": "https://lh6.googleusercontent.com/-HRvFCA8NlvQ/AAAAAAAAAAI/AAAAAAAAAA8/QBO85KKjuwA/photo.jpg?sz=64",
-          "birthdate": "1970-11-25",
-          "birthplace": {
-             "city": "Beograd",
-             "location": {
-                "latitude": "44.797039",
-                "longitude": "20.456174"
-             }
-          },
-          "email": "d.mijatovic@dv4all.nl",
-          "firstName": "Dusan",
-          "lastName": "Mijatovic",
-          "menuItems": "a,b,c,d",
-          "phone": {
-             "countryCode": "31",
-             "number": "48255850"
-          },
-          "startpage": "private"
-       },
-       "bWlqYXRvdmljMTk3MEBnbWFpbC5jb20=": {
-          "birthCity": "Beograd",
-          "birthDate": "25-11-1970",
-          "email": "mijatovic1970@gmail.com",
-          "firstName": "Dusan",
-          "lastName": "Mijatovic",
-          "startpage": "private"
-       }
-    }
- }
+   "menu": {
+      "animations": {
+         "pos": 1,
+         "matIcon": "motorcycle",
+         "path": "animations/home",
+         "title": "Animations",
+         "active": true
+      },
+      "footbal": {
+         "pos": 2,
+         "matIcon": "rowing",
+         "path": "football",
+         "title": "Football",
+         "active": true
+      },
+      "private": {
+         "pos": 3,
+         "matIcon": "home",
+         "path": "private",
+         "title": "Home",
+         "active": true
+      },
+      "redux": {
+         "pos": 4,
+         "matIcon": "star_rate",
+         "path": "redux",
+         "title": "Redux",
+         "active": true
+      },
+      "weather": {
+         "matIcon": "bubble_chart",
+         "path": "weather",
+         "pos": 5,
+         "title": "Weather",
+         "active": true
+      },
+      "startpage": {
+         "pos": 6,
+         "matIcon": "home",
+         "path": "/public",
+         "title": "Public",
+         "active": true
+      }
+   },
+   "profile": {      
+      "view": {
+         "pos": 1,
+         "active": true,
+         "matIcon": "profile",
+         "path": "profile",
+         "title": "My profile"
+      },
+      "delete": {
+         "pos": 2,
+         "active": true,
+         "matIcon": "delete",
+         "path": "remove",
+         "title": "Delete account"
+      },
+      "logout": {
+         "pos": 10,
+         "active": true,
+         "matIcon": "logout",
+         "path": "/public",         
+         "title": "Logout"
+      }
+   },
+   "user": {
+      "ZC5taWphdG92aWNAZHY0YWxsLm5s": {
+         "avatar": "https://lh6.googleusercontent.com/-HRvFCA8NlvQ/AAAAAAAAAAI/AAAAAAAAAA8/QBO85KKjuwA/photo.jpg?sz=64",
+         "birthdate": "1970-11-25",
+         "birthplace": {
+            "city": "Beograd",
+            "location": {
+               "latitude": "44.797039",
+               "longitude": "20.456174"
+            }
+         },
+         "email": "d.mijatovic@dv4all.nl",
+         "firstName": "Dusan",
+         "lastName": "Mijatovic",
+         "menuItems": "a,b,c,d",
+         "phone": {
+            "countryCode": "31",
+            "number": "48255850"
+         },
+         "startpage": "private"
+      },
+      "bWlqYXRvdmljMTk3MEBnbWFpbC5jb20=": {
+         "birthCity": "Beograd",
+         "birthDate": "25-11-1970",
+         "email": "mijatovic1970@gmail.com",
+         "firstName": "Dusan",
+         "lastName": "Mijatovic",
+         "startpage": "private"
+      }
+   }
+}

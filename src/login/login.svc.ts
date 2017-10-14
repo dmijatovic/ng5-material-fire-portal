@@ -148,6 +148,47 @@ export class LoginSvc implements CanActivate {
       });
    }
    /**
+    * Returns array of objects of 
+    * all profile menu items 
+    */
+    getAllProfileOptions() {
+      return new Promise((res, rej) => {
+
+         //debugger
+         //convert email to b64 encoded string
+         let path = '/profile/',
+            ref = this.data.database.ref(path)
+                      .orderByChild('pos');
+         //request user object ONCE
+         ref.once('value')
+            .then((snapshot) => {
+               /*console.group("getAllMenuItems");
+               console.log("path", path);
+               console.log("snaphot", snapshot.exists());
+               console.groupEnd();*/
+               if (snapshot.exists()) {
+                  let data = snapshot.val(),
+                     keys = Object.keys(data),
+                     d = [];
+                  //convert to array
+                  //of objects
+                  //filter only active! 
+                  keys.map((i) => {
+                     if (data[i]['active']==true){
+                        d.push(data[i]);
+                     }
+                  });
+                  res(d);
+               } else {
+                  res(null);
+               }
+            }, (e) => {
+               rej(e);
+            });
+
+      });
+   }
+   /**
     * Register user to firebase project
     * @param email 
     * @param pass 
