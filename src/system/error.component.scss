@@ -1,24 +1,53 @@
 
-
+@import '../material/variables';
 
 :host{
-    display:flex;
-    flex:1;
-    width:100%;
-    min-height:100%;
-    justify-content: center;
-    align-items: center;
+   display:flex;
+   flex:1;
+   width:100%;
+   min-height:100%;
+   justify-content: center;
+    //align-items: center;
 }
 
+.error-page-wrap{
+   display:flex;
+   height: 50vh;
+   align-items: flex-end;
 
-.error-dialog{
-    min-width:300px;
-    margin:48px;
+   .error-number{
+      display:flex;      
+      height:50vh;
+      color: $app-red-contrast;
+      background-color: $app-red;      
+      align-items: flex-end;
+      padding: 0px 16px;      
+   }
+   .error-body{
+      width:33vw;
+      min-width:325px;
 
-
-    .error-card-header{
-        display:flex;
-        justify-content: space-between;
-        align-items: center;
-    }
+      .error-title{
+         display:flex;
+         font-size:2em;
+         align-items:flex-end;
+         justify-content: space-between;
+         color: $app-red; 
+         border-bottom: 2px solid $app-red;        
+         font-weight: 700;
+         .material-icons.error{
+            font-size:2em;            
+         }
+         div{
+            padding:$page-padding;   
+         }
+      }
+      .error-message{
+         padding:$content-padding;
+         font-size: 14px;
+      }
+      .error-nav-panel{
+         text-align: right;
+      }
+   }
 }

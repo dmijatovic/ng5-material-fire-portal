@@ -112,7 +112,7 @@ export class LoginComponent implements OnInit {
             //this.fire.saveProfile(d);
          })
          .then((d) => {
-            //debugger
+            debugger
             //if email is veryfied
             if (d.veryfied == true) {
                //get user profile 

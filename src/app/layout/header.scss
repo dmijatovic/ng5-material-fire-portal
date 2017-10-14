@@ -1,4 +1,9 @@
 
+@import '../../material/variables';
+
+.private-page-header{
+    padding: $page-padding;
+}
 
 .nav-icon {
     padding: 0 16px;

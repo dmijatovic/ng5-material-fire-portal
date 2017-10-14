@@ -121,10 +121,10 @@ export class LoginSvc implements CanActivate {
          //request user object ONCE
          ref.once('value')
             .then((snapshot) => {
-               console.group("getAllMenuItems");
+               /*console.group("getAllMenuItems");
                console.log("path", path);
                console.log("snaphot", snapshot.exists());
-               console.groupEnd();
+               console.groupEnd();*/
                if (snapshot.exists()) {
                   let data = snapshot.val(),
                      keys = Object.keys(data),
@@ -224,8 +224,8 @@ export class LoginSvc implements CanActivate {
       //debugger
       //check user 
       if (this.user == null) {
-         //this.accessDenied(s);
-         this.redirectUser("login");
+         this.accessDenied(s);
+         //this.redirectUser("public");
          return false;
       } else {
          return true;
@@ -253,10 +253,8 @@ export class LoginSvc implements CanActivate {
     */
    redirectUser(url) {
       //        
-      console.log("Auth0 redirect to", url);
-
+      console.log("login.svc redirect to", url);
       this.router.navigateByUrl(url);
-
       //return false;
    }
 
@@ -271,7 +269,7 @@ export class LoginSvc implements CanActivate {
       //logout
       this.fire.auth.signOut()
          .then((d) => {
-            this.router.navigateByUrl("login");
+            this.router.navigateByUrl("public");
          }, (e) => {
             this.router.navigateByUrl("error/505");
          });

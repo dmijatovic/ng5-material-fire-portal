@@ -1,0 +1,11 @@
+
+@import '../../material/variables';
+//@import '../../material/theming';
+
+:host{
+    padding: $page-padding;    
+    color: $app-light-grey-contrast;
+    background-color: $app-light-grey;
+    font-size:12px;
+    text-align:center;
+}

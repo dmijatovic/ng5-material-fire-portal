@@ -1,34 +1,26 @@
 
-  
-<mat-card class="error-dialog">
+<section class="error-page-wrap">
+   
+   <div class="error-number">
+      <h1>{{ errNumber }}</h1>
+   </div>      
+   
+   <div class="error-body">
+      <div class="error-title">         
+         <div>
+            {{ errTitle }}
+         </div>         
+         <i class="material-icons error">
+            {{ matIcon }}
+         </i>
+      </div>
+      <div class="error-message"
+         [innerHTML]="errMsg">
+      </div>
 
-  <div class="error-card-header">          
-    
-    <i class="material-icons error">
-        {{ matIcon }}
-    </i>
-
-    <div class="error-title">
-        {{errTitle}}
-    </div>      
-
-    <div class="error-number">
-        {{errNumber}}
-    </div>      
-    
-  </div>
-    
-  <div class="error-card-body">
-
-    <div [innerHTML]="errMsg"></div>
-
-  </div>
-  <!--
-  <mat-card-actions>
-    <button mat-button>LIKE</button>
-    <button mat-button>SHARE</button>
-  </mat-card-actions>
-  -->
-</mat-card>
-
+      <div class="error-nav-panel">
+         <a href="/public" mat-button>Start page</a>  
+      </div>
+   </div>      
+</section>
 

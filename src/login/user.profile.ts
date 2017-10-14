@@ -56,7 +56,7 @@ export class UserProfilePage implements OnInit {
       this.user.getListofAllMenuItems()
          .then((d:any)=>{
             console.log(d);
-            debugger
+            //debugger
             this.pages = d;
          });      
    }
@@ -70,8 +70,8 @@ export class UserProfilePage implements OnInit {
          //forward to start page 
          this.router.navigate([data.startpage]);
       },(e)=>{
-         debugger 
-         console.log(e);
+         //debugger 
+         console.error(e);
       });
    }
 }

@@ -3,20 +3,34 @@
 export const sysMsg={
     "401":{
         id:'401',        
-        matIcon:"home",
+        matIcon:"lock",
         title:"Access denied",
-        msg:"Sorry but it does not"
+        msg:`
+            <p>Sorry, it seems you don't have access rights for this page</p>            
+        `
     },
     "404":{
         id:'404',
-        matIcon:"home",
-        title:"Page error",
-        msg:"Something is wrong on the page"
+        matIcon:"warning",
+        title:"Page missing",
+        msg:`
+        <p>Sorry, it seems that page does not exist</p>            
+        `
     },
     "500":{
         id:'500',
-        matIcon:"home",
+        matIcon:"error",
         title:"System error",
-        msg:"This is error"
+        msg:`
+        <p>Sorry, something went terribly wrong</p>            
+        `
+    },
+    "default":{
+        id:'999',
+        matIcon:"error",
+        title:"System error",
+        msg:`
+        <p>Sorry, something went terribly wrong</p>            
+        `
     }
 }

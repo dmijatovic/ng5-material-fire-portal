@@ -5,8 +5,10 @@
 
 //get credentials for firebase database
 import { cred } from '../firebase/credentials';
+import { sysCfg } from '../system/sys.cfg';
 
 export const environment = {
   production: false,
-  firebase: cred.firebase
+  firebase: cred.firebase,
+  cfg: sysCfg
 };

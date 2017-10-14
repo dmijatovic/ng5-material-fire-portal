@@ -8,7 +8,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment as env } from '../environments/environment';
 
 
-import { MatCardModule, MatProgressSpinnerModule } from '@angular/material';
+import { MatProgressSpinnerModule, MatButtonModule } from '@angular/material';
+
+//import { AppMateralModule } from '../material/material.module';
 
 /**
  * LOGIN SECTION
@@ -55,7 +57,8 @@ const routes:Routes=[{
   imports: [
     BrowserModule,
     BrowserAnimationsModule,    
-    MatCardModule, MatProgressSpinnerModule,
+    MatProgressSpinnerModule,
+    MatButtonModule,
     //Router
     RouterModule.forChild(routes)
   ],  
