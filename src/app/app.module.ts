@@ -66,10 +66,10 @@ const routes:Routes=[
     path:'private',
     component:AppComponent,
     canActivate: [ LoginSvc ],
-    children:[{
+    /*children:[{
       path:'',
       component: HomeComponent
-    }]
+    }]*/
 }]
 
 @NgModule({

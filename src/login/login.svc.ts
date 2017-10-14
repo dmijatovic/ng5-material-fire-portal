@@ -55,10 +55,10 @@ export class LoginSvc implements CanActivate {
             //request user object ONCE
             ref.once('value')
                .then((snapshot) => {
-                  console.group("getUserProfile");
+                  /*console.group("getUserProfile");
                   console.log("path", path);
                   console.log("snaphot", snapshot.exists());
-                  console.groupEnd();
+                  console.groupEnd();*/
                   if (snapshot.exists()) {
                      let data = snapshot.val();
                      //debugger
@@ -75,7 +75,40 @@ export class LoginSvc implements CanActivate {
       });
    }
    /**
-    * Returns all menu items avaliable in the app
+    * Returns list of all menu items of the app
+    */
+   getListofAllMenuItems() {
+      return new Promise((res, rej) => {
+
+         //debugger
+
+         let path = '/menu/',
+            ref = this.data.database.ref(path)
+                  .orderByChild('pos');
+
+         //request user object ONCE
+         //ordered by pos 
+         ref.once('value')
+            .then((snapshot) => {
+               /*console.group("getAllMenuItems");
+               console.log("path", path);
+               console.log("snaphot", snapshot.exists());
+               console.groupEnd();*/
+               if (snapshot.exists()) {
+                  let data = snapshot.val();
+                  res(Object.keys(data));
+               } else {
+                  res(null);
+               }
+            }, (e) => {
+               rej(e);
+            });
+
+      });
+   }
+   /**
+    * Returns array of objects of 
+    * all menu items avaliable in the app
     */
    getAllMenuItems() {
       return new Promise((res, rej) => {
@@ -83,7 +116,8 @@ export class LoginSvc implements CanActivate {
          //debugger
          //convert email to b64 encoded string
          let path = '/menu/',
-            ref = this.data.database.ref(path);
+            ref = this.data.database.ref(path)
+                      .orderByChild('pos');
          //request user object ONCE
          ref.once('value')
             .then((snapshot) => {
@@ -92,8 +126,18 @@ export class LoginSvc implements CanActivate {
                console.log("snaphot", snapshot.exists());
                console.groupEnd();
                if (snapshot.exists()) {
-                  let data = snapshot.val();
-                  res(Object.keys(data));
+                  let data = snapshot.val(),
+                     keys = Object.keys(data),
+                     d = [];
+                  //convert to array
+                  //of objects
+                  //filter only active! 
+                  keys.map((i) => {
+                     if (data[i]['active']==true){
+                        d.push(data[i]);
+                     }
+                  });
+                  res(d);
                } else {
                   res(null);
                }

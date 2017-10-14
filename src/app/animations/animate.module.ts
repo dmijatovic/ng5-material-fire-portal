@@ -15,11 +15,12 @@ import { AnimateFrame, AnimateHomePage, AnimateScrollPage  } from './index';
  * therefore we have minimal routing at the top
  */
 const routes:Routes=[{
-    path:'animate',
-    redirectTo:'animate/home',
+    path:'animations',
+    redirectTo:'animations/home',
     pathMatch:'full'
 },{
-    path:'animate',
+    path:'animations',
+    //component: AppComponent,
     component: AnimateFrame,
     children:[{
         path:'home',

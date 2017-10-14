@@ -5,23 +5,30 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { LoginSvc } from './login.svc';
 
+export interface formBtn{
+   label:string;
+   link:string;
+}
+
 @Component({
    selector: 'app-login',
    templateUrl: './login.component.html',
    styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-   panelTitle: string = "Login";
+   panelTitle: string = null;
    loginForm: FormGroup;
-   loginStatus: string = "";
-   loginMsg: string = "provide credentials and hit login";
+   panelStatus: string = null;
+   panelMsg: string = null;
    //indicates if primary button
    //is login or register
    login: boolean = true;
-   //the button labels 
+   //the button labels    
    //used when switching
-   primBtn: string = "Login";
-   secoBtn: string = "Register";
+   primBtn:formBtn;
+   secoBtn:formBtn;
+   thrdBtn:formBtn;
+
    //loader flag
    showLoader: boolean = false;
 
@@ -39,34 +46,39 @@ export class LoginComponent implements OnInit {
          password: ['', Validators.required]
       });
 
-      //decide based on route data which 
-      //version of component      
+      //get form data from route
+      //
       this.routeData.data
          .subscribe((d) => {
             //debugger
             this.login = d.login;
-            //set button labels
-            this.buttonLabels()
+            //buttons
+            this.primBtn = d.primBtn;
+            this.secoBtn = d.secoBtn;
+            this.thrdBtn = d.thrdBtn;
+            //start message
+            this.panelTitle = d.panelTitle;
+            this.panelMsg = d.panelMsg;            
          });
    }
    /**
     * this function toggles 
     * button labels based 
     * on login flag
-    */
+    *//*
    buttonLabels() {
       if (this.login == true) {
-         this.primBtn = "Login";
-         this.secoBtn = "Register";
+         this.primBtn.label = "Login";
+         this.secoBtn.label = "Register";
          this.panelTitle = "Login";
-         this.loginStatus = "";
-         this.loginMsg = "provide credentials and hit login";
+         this.panelStatus = "";
+         this.panelMsg = "provide credentials and hit login";
       } else {
          this.primBtn = "Register";
          this.secoBtn = "Login";
          this.panelTitle = "Register";
-         this.loginStatus = "";
-         this.loginMsg = "provide email and password and hit register button";
+         this.panelStatus = "";
+         this.panelMsg = "provide email and password and hit register button";
       }
    }
    toggleAction() {
@@ -74,7 +86,7 @@ export class LoginComponent implements OnInit {
       this.login = !this.login;
       //change labels 
       this.buttonLabels();
-   }
+   }*/
    onAction() {
       if (this.login) {
          this.onLogin();
@@ -84,7 +96,7 @@ export class LoginComponent implements OnInit {
    }
    onLogin() {
       //console.log("Here we login");
-      this.loginStatus = "TRYING...";
+      this.panelStatus = "TRYING...";
       this.showLoader = true;
       let cred = this.loginForm.value;
       this.fire.logIn(cred.email, cred.password)
@@ -114,13 +126,13 @@ export class LoginComponent implements OnInit {
                return false;
             }
          })
-         .then((profile:any) => {
+         .then((profile: any) => {
             //debugger
             if (profile) {
                //if profile exist we extract 
                //startpage from profile
-               this.router.navigateByUrl(profile.startpage);           
-            }else{
+               this.router.navigateByUrl(profile.startpage);
+            } else {
                //throw new Error("Failed to retreive user profile");
                //user is logged in but it has no profile yet
                //LET'S CREATE  A PROFILE
@@ -129,15 +141,15 @@ export class LoginComponent implements OnInit {
             //this.router.navigateByUrl("home");
          })
          .catch((e) => {
-            this.loginStatus = "FAILED";
-            this.loginMsg = e.message;
+            this.panelStatus = "FAILED";
+            this.panelMsg = e.message;
             console.error("Failed to login", e.message);
             this.showLoader = false;
          });
    }
    onRegister() {
       //console.log("Here we login");
-      this.loginStatus = "TRYING...";
+      this.panelStatus = "TRYING...";
       this.showLoader = true;
       let cred = this.loginForm.value;
       this.fire.register(cred.email, cred.password)
@@ -150,8 +162,8 @@ export class LoginComponent implements OnInit {
             //forward now to home page 
             this.router.navigate(["verify"]);
          }, (e) => {
-            this.loginStatus = "FAILED";
-            this.loginMsg = e.message;
+            this.panelStatus = "FAILED";
+            this.panelMsg = e.message;
             console.error("Failed to register:", e.message);
             this.showLoader = false;
          });

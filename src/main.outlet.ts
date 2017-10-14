@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
  * for other modules. Note that other module 
  * also might have router-outlets. This one 
  * is TOP LEVEL router-outlet to split 
- * login, app and system modules
+ * public, private and login sections/modules
  */
 @Component({
   selector: 'main-outlet',

@@ -26,14 +26,47 @@ import { SystemModule } from '../system/system.module';
 //-----------------------------------
 //ROUTES
 //-----------------------------------
+
 const routes: Routes = [{
    path: 'login',
    component: LoginComponent,
-   data: { login: true }
-}, {
+   data: {   
+      panelTitle:"Login", 
+      login: true,
+      primBtn:{
+         label:'Login',
+         link:'login'
+      },
+      secoBtn:{
+         label:'Forgot password',
+         link:'/password'
+      },
+      thrdBtn:{
+         label:'Register',
+         link:'/register'
+      },
+      panelMsg:'Provide credentials and press login button.'
+   } 
+},{
    path: 'register',
    component: LoginComponent,
-   data: { login: false }
+   data: {    
+      panelTitle:"Register",
+      login: false,
+      primBtn:{
+         label:'Register',
+         link:'register'
+      },
+      secoBtn:{
+         label:'Forgot password',
+         link:'/password'
+      },
+      thrdBtn:{
+         label:'Login',
+         link:'/login'
+      },
+      panelMsg:'Provide email and password to register.'
+   }
 }, {
    path: 'verify',
    component: VerifyComponent

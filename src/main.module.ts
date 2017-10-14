@@ -55,19 +55,19 @@ const routes:Routes=[{
   path:'',
   redirectTo:'public',
   pathMatch:'full'
-},{
-    path:'*',
-    redirectTo:'error/:404',
+}/*,{
+    path:'**',
+    redirectTo:'/error/404',
     pathMatch:'full'
-}]
+}*/]
 
 @NgModule({
   declarations: [ MainOutlet ],
   imports: [
     //BrowserModule, BrowserAnimationsModule,
     AppMateralModule,LoginModule,
-    SystemModule,AppModule,PublicModule,    
-    //Router
+    SystemModule,PublicModule,AppModule,    
+    //Router (always last)
     RouterModule.forRoot(routes)
   ],
   providers: [],

@@ -15,14 +15,14 @@
           {{panelTitle}}
         </mat-panel-title>
         <mat-panel-description>
-          {{loginStatus}}
+          {{panelStatus}}
         </mat-panel-description>
       </mat-expansion-panel-header>
       
       <section class="login-message"
         [class.danger]="loginStatus=='FAILED'">        
         <p>
-          {{loginMsg}}
+          {{panelMsg}}
         </p>
       </section>      
     </mat-expansion-panel>
@@ -55,7 +55,7 @@
           style="flex:1"
           color="primary"
           [disabled]="!loginForm.valid">
-            {{primBtn}}            
+            {{primBtn.label}}            
         </button>        
       </div>      
 
@@ -65,13 +65,13 @@
     <div class="login-nav">
 
       <button mat-button color="warn"
-        routerLink="/password">
-        Forgot password
+        [routerLink]="secoBtn?.link">
+        {{secoBtn.label}}            
       </button>
 
       <button mat-button color="primary"
-        (click)="toggleAction()">
-        {{secoBtn}}
+        [routerLink]="thrdBtn?.link">
+        {{thrdBtn.label}}            
     </button>
       
     </div>

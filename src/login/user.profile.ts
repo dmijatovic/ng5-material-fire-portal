@@ -53,7 +53,7 @@ export class UserProfilePage implements OnInit {
       }      
    }
    getMenuItems(){
-      this.user.getAllMenuItems()
+      this.user.getListofAllMenuItems()
          .then((d:any)=>{
             console.log(d);
             debugger
