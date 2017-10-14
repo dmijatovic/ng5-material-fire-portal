@@ -13,11 +13,11 @@
       face
    </mat-icon>   
    <mat-menu #profile="matMenu" yPosition="below">
-         <button *ngFor="let item of profileItems" 
-            mat-menu-item [routerLink]="item.path">
-            <mat-icon>{{item.matIcon}}</mat-icon>
-            <span>{{item.title}}</span>
-         </button>
+      <button *ngFor="let item of profileItems" 
+         mat-menu-item [routerLink]="item.path">
+         <mat-icon>{{item.matIcon}}</mat-icon>
+         <span>{{item.title}}</span>
+      </button>
    </mat-menu>
    
    <!-- MAIN MENU -->

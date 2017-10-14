@@ -47,21 +47,21 @@
       "view": {
          "pos": 1,
          "active": true,
-         "matIcon": "profile",
+         "matIcon": "person",
          "path": "profile",
          "title": "My profile"
       },
       "delete": {
-         "pos": 2,
+         "pos": 3,
          "active": true,
          "matIcon": "delete",
          "path": "remove",
          "title": "Delete account"
       },
       "logout": {
-         "pos": 10,
+         "pos": 2,
          "active": true,
-         "matIcon": "logout",
+         "matIcon": "exit_to_app",
          "path": "/public",         
          "title": "Logout"
       }
