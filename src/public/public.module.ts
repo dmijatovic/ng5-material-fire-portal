@@ -26,6 +26,8 @@ import {
  * most of the routing is module specific
  * therefore we have minimal routing at the top
  */
+import { loginFormData, registerFormData } from './login/login.data';
+
 const routes: Routes = [{
    path: 'public',
    component: PublicComponent,
@@ -35,11 +37,11 @@ const routes: Routes = [{
    },{
       path: 'signin',
       component: SigninComponent,
-      data:{login:true}
+      data: loginFormData
    },{
-      path: 'register',
+      path: 'signup',
       component: SigninComponent,
-      data:{login:false}
+      data: registerFormData
    }]
 }]
 
