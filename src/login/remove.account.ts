@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginSvc } from './login.svc';
@@ -18,6 +18,9 @@ export class RemoveAccountComponent implements OnInit {
    showLoader: boolean = false;
    //temp user loaded 
    email: string = null;
+   
+   @ViewChild('expPanel') expPanel
+
    constructor(
       private formBuilder: FormBuilder,
       private fire: LoginSvc,
@@ -52,33 +55,23 @@ export class RemoveAccountComponent implements OnInit {
     * Started by button
     */
    onRemoveAccount() {
-      //console.log("reset email");    
+      console.log("remove account");    
       this.pageStatus = "TRYING...";
       this.showLoader = true;
       let cred = this.pageForm.value;
-
-      debugger
+      //debugger
       //sign in again 
       this.fire.logIn(this.email, cred.password)
          .then(() => {
             //we are logged in
-            debugger
+            //debugger
             //lets remove account
-            return this.removeAccount()
+            return this.fire.removeAccount()
          })
          .then((d) => {
-            debugger
-            console.log("User removed");
-            this.pageStatus = "DONE!";
-            this.pageMsg = `
-        We deleted your account. Sorry to see you leaving. Till next time!
-        <br><br>
-        Regards,
-        dv4all team
-        `
-            this.email = null;
-            this.showLoader = false;
-
+            //debugger
+            //show message
+            this.removedAccount();
          })
          .catch((e) => {
             debugger
@@ -91,12 +84,18 @@ export class RemoveAccountComponent implements OnInit {
    /**
     * We call firebase auth delete user
     */
-   removeAccount() {
-      return this.fire.removeAccount()
-         .then(() => {
-            return true;
-         }, (e) => {
-            throw Error(e);
-         });
+   removedAccount() {
+      console.log("User removed");
+      this.pageStatus = "DONE!";
+      this.pageMsg = `
+      We deleted your account. Sorry to see you leaving. Till next time!
+      <br><br>
+      Regards,
+      dv4all team
+      `
+      this.email = null;
+      this.showLoader = false;      
+      this.expPanel.open();      
+      //console.log(this.expPanel);
    }
 }

@@ -5,9 +5,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { LoginSvc } from './login.svc';
 
-export interface formBtn{
-   label:string;
-   link:string;
+export interface formBtn {
+   label: string;
+   link: string;
 }
 
 @Component({
@@ -25,9 +25,9 @@ export class LoginComponent implements OnInit {
    login: boolean = true;
    //the button labels    
    //used when switching
-   primBtn:formBtn;
-   secoBtn:formBtn;
-   thrdBtn:formBtn;
+   primBtn: formBtn;
+   secoBtn: formBtn;
+   thrdBtn: formBtn;
 
    //loader flag
    showLoader: boolean = false;
@@ -58,47 +58,22 @@ export class LoginComponent implements OnInit {
             this.thrdBtn = d.thrdBtn;
             //start message
             this.panelTitle = d.panelTitle;
-            this.panelMsg = d.panelMsg;            
+            this.panelMsg = d.panelMsg;
          });
-   }
-   /**
-    * this function toggles 
-    * button labels based 
-    * on login flag
-    *//*
-   buttonLabels() {
-      if (this.login == true) {
-         this.primBtn.label = "Login";
-         this.secoBtn.label = "Register";
-         this.panelTitle = "Login";
-         this.panelStatus = "";
-         this.panelMsg = "provide credentials and hit login";
-      } else {
-         this.primBtn = "Register";
-         this.secoBtn = "Login";
-         this.panelTitle = "Register";
-         this.panelStatus = "";
-         this.panelMsg = "provide email and password and hit register button";
-      }
-   }
-   toggleAction() {
-      //toggle login glaf
-      this.login = !this.login;
-      //change labels 
-      this.buttonLabels();
-   }*/
+   }  
    onAction() {
-      if (this.login) {
+      //console.log("login.onAction");
+      if (this.login) {         
          this.onLogin();
       } else {
          this.onRegister();
       }
    }
    onLogin() {
-      //console.log("Here we login");
+      //console.log("login.onLogin");
       this.panelStatus = "TRYING...";
       this.showLoader = true;
-      let cred = this.loginForm.value;
+      let cred = this.loginForm.value;      
       this.fire.logIn(cred.email, cred.password)
          .then((d) => {
             //debugger
@@ -112,7 +87,7 @@ export class LoginComponent implements OnInit {
             //this.fire.saveProfile(d);
          })
          .then((d) => {
-            debugger
+            //debugger
             //if email is veryfied
             if (d.veryfied == true) {
                //get user profile 
@@ -127,13 +102,12 @@ export class LoginComponent implements OnInit {
             }
          })
          .then((profile: any) => {
-            //debugger
+            debugger
             if (profile) {
                //if profile exist we extract 
                //startpage from profile
                this.router.navigateByUrl(profile.startpage);
-            } else {
-               //throw new Error("Failed to retreive user profile");
+            } else if (profile == null) {
                //user is logged in but it has no profile yet
                //LET'S CREATE  A PROFILE
                this.router.navigateByUrl("profile");
@@ -145,7 +119,7 @@ export class LoginComponent implements OnInit {
             this.panelMsg = e.message;
             console.error("Failed to login", e.message);
             this.showLoader = false;
-         });
+         });      
    }
    onRegister() {
       //console.log("Here we login");
@@ -155,11 +129,8 @@ export class LoginComponent implements OnInit {
       this.fire.register(cred.email, cred.password)
          .then((d) => {
             //debugger
-            console.log("did register");
-            //let t = d.json();
-            //save credentials 
-            //this.fire.saveProfile(d);
-            //forward now to home page 
+            console.log("did register");            
+            //forward now to verify
             this.router.navigate(["verify"]);
          }, (e) => {
             this.panelStatus = "FAILED";

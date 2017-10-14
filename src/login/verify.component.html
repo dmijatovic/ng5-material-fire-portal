@@ -1,53 +1,44 @@
-
-
 <section class="login-page">
-  
-  <div class="login-form-wrap">  
-    
-    <!-- LOGO -->
-    <section class="login-logo">
-        <!-- Your logo here, check scss file -->
-    </section>
-    <section class="login-message">
-      <h1> Almost there! </h1>    
-      <p>
-        We send an email to: <strong>{{email}}</strong>
-      </p>      
-      <p>
-        Please check you mailbox, find the email and click on the link.
-        This will verify that your email address is valid.
-      </p>
-      <p>
-        <strong>Email is not correct?</strong>
-        <br/><br>
-        In case that email you provided is not correct,
-        you have two options: update the email or delete 
-        your account.
-      </p>      
-      <p>
-        Thanks,
-        <br/>
-        {{signiture}}
-      </p>  
-    </section>
-      <!-- LOGIN NAV -->
-    <div class="login-nav">
-      
-        <button mat-raised-button          
-          color="primary"
-          routerLink="/email">
-          Change email
-        </button>  
 
-        <button mat-raised-button          
-          color="secondary"
-          routerLink="/remove">
-          Remove account
-        </button>
+   <div class="login-form-wrap">
+
+      <!-- LOGO -->
+      <section class="login-logo">
+         <!-- Your logo here, check scss file -->
+      </section>
+      <section class="login-message">
+         <h1> Almost there! </h1>
+         <p>
+            We send an email to:
+            <strong>{{email}}</strong>
+         </p>
+         <p>
+            Please check you mailbox, 
+            find the email and click on the link. 
+            This will verify that your email address is valid.
+         </p>
+         <p>
+            <strong>Oooh no! That e-mail is not correct?</strong>
+            <br/>
+            <br>You have two options in case you provided incorrect e-mail: update the email or delete your account.
+         </p>
+         <p>
+            Thanks,
+            <br/> {{signiture}}
+         </p>
+      </section>
+      <!-- LOGIN NAV -->
+      <div class="login-nav">
+
+         <button mat-raised-button color="primary" routerLink="/email">
+            Change email
+         </button>
+
+         <button mat-raised-button color="secondary" routerLink="/remove">
+            Remove account
+         </button>
 
       </div>
-  </div>
+   </div>
 
 </section>
-
-
