@@ -36,7 +36,7 @@ export class AppHeader implements OnInit {
             this.title = d;
          });
       //get all menus
-      debugger
+      //debugger
       this.login.getAllMenuItems()
          .then((d) => {
             //debugger
