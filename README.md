@@ -50,3 +50,20 @@ Before running the tests make sure you are serving the app via `ng serve`.
 ## Further help
 
 For help on angular, consult angular online documentation or github. For assistance on this portal contact Dusan Mijatovic (d.mijatovic@dv4all.nl)
+
+## Lazy loading and routing
+
+In this project we test lazy loading of the modules. Lazy loading and routing modules influence each other. For example when loading module that also has routes defined, each time the module is imported it will add menu items at specific routing level (the level where module is added). My first idea was to have routing within specific module, but this might not be propper approach in some ocassions. It depends if routing is needed/desired. I can think of two sort of modules: 
+
+- component only module: it has no routing, it just shares the components accross the application
+- component module with routing: it has components and the routing. Note than when importing this module within other modules the routing will be also added every time. This will create multiple routes to same components. This might be desired or NOT. So, think about this!
+- routing only module: it has only routing. This routing module can be than included at the specific location/module in order to achieve desired routing functionality.
+
+In this project we have 2 major sections that are lazy loaded
+- public: main public module, access to public part of the app. This part uses different header/footer layout
+- private: access to private section of the app
+
+Lazy loading also INFLUENCE module imports/refrences in the app. Specific modules cannot be imported twice, this will cause an error. Specific modules should be imported at exact  section where are used because lazy loaded modules are not aware of the module loaded in another lazy loaded module. This might impact sharing data/info between lazy loaded modules. At this moment I am not sure about possibilities in this area. We will test this furher of course.
+
+
+

@@ -1,16 +1,17 @@
 //angular
-import { BrowserModule } from '@angular/platform-browser';
+//import { BrowserModule } from '@angular/platform-browser';
+//import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router'
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 /**
  * FIREBASE SECTION 
  */
-//firebase modules 
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireAuthModule } from 'angularfire2/auth';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
+//firebase module
+import { FireModule } from '../firebase/fire.module';
+
 //get environment for connection to server
 import { environment as env } from '../environments/environment';
 
@@ -20,7 +21,7 @@ import { environment as env } from '../environments/environment';
  * from here the components are avaliable to every component
  * in the application
  */
-import { AppMateralModule } from '../material/material.module'; 
+import { AppMateralModule } from '../material/material.module';
 
 /** 
  * SYSTEM MODULE 
@@ -40,16 +41,20 @@ import { LoginSvc } from '../login/login.svc';
 /**
  * ANIMATIONS module
  */
-import { AnimationsModule } from './animations/animate.module';
+//import { AnimationsModule } from './animations/animate.module';
 
 /**
  * MAIN APP PAGES/COMPONENTS 
  */
 //local app
-import { AppComponent } from './app.component';
+//import { AppComponent } from './app.component';
 //import { LoginComponent } from './login/login.component';
+import { AppHeader, AppFooter, PrivateOutlet } from './layout';
 import { HomeComponent } from './home/home.component';
-import { AppHeader, AppFooter } from './layout';
+
+//main state shared service
+import { AppStateSvc } from './app.state.svc';
+
 
 /**
  * ROUTES
@@ -57,42 +62,54 @@ import { AppHeader, AppFooter } from './layout';
  * most of the routing is module specific
  * therefore we have minimal routing at the top
  */
-const routes:Routes=[
-/*{
-  path:'',
-  redirectTo:'home',
-  pathMatch:'full'
-},*/{
-    path:'private',
-    component: AppComponent,
-    //canActivate:[LoginSvc],
-    children:[{
-      path:'',
-      component: HomeComponent
-    },{
-      path:'animations',
-      loadChildren:'app/animations/animate.module#AnimationsModule'
-    }]
+const routes: Routes = [{
+   path:'',
+   component: PrivateOutlet,
+   //canActivate:[LoginSvc],
+   children: [{
+      path: 'admin',
+      loadChildren: 'app/admin/admin.module#AdminModule'
+   },{
+      path: 'animations',
+      loadChildren: 'app/animations/animate.module#AnimationsModule'
+   },{
+      path: 'chat',
+      loadChildren: 'app/chat/chat.module#ChatModule'
+   },{
+      path: 'football',
+      loadChildren: 'app/football/football.module#FootballModule'
+   },{
+      path: 'profile',
+      loadChildren: 'app/profile/profile.module#ProfileModule'
+   },{
+      path: 'weather',
+      loadChildren: 'app/weather/weather.module#WeatherModule'
+   },{//empty path as last
+      path: '',
+      component: HomeComponent,
+      pathMatch:'full'
+   }]
 }]
 
 @NgModule({
-  declarations: [
-    AppComponent,HomeComponent, AppHeader, AppFooter
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    AppMateralModule,LoginModule,
-    SystemModule,AnimationsModule,
-    //Firebase
-    AngularFireAuthModule,
-    AngularFireDatabaseModule,
-    AngularFireModule.initializeApp(env.firebase),
-    //Router
-    RouterModule.forChild(routes)
-  ],
-  providers: [],
-  exports:[ AppComponent,HomeComponent, AppHeader, AppFooter ]
-  //bootstrap: [AppComponent]
+   declarations: [
+      HomeComponent, AppHeader, AppFooter, PrivateOutlet
+   ],
+   imports: [
+      //BrowserModule,
+      //BrowserAnimationsModule,
+      CommonModule,
+      AppMateralModule,
+      //routed modules
+      //LoginModule, 
+      SystemModule, 
+      //Firebase
+      FireModule,      
+      //Router
+      RouterModule.forChild(routes)
+   ],
+   providers: [ AppStateSvc, LoginSvc ],
+   exports: [HomeComponent, AppHeader, AppFooter, PrivateOutlet]
+   //bootstrap: [AppComponent]
 })
 export class AppModule { }

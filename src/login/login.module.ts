@@ -1,12 +1,20 @@
 //angular
-import { BrowserModule } from '@angular/platform-browser';
+//import { BrowserModule } from '@angular/platform-browser';
+//import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router'
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 //material modules
 import { AppMateralModule } from '../material/material.module';
+
+/**
+ * FIREBASE SECTION 
+ */
+//firebase modules 
+import { FireModule } from '../firebase/fire.module';
 
 //get environment for connection to server
 import { environment } from '../environments/environment';
@@ -39,11 +47,11 @@ const routes: Routes = [{
       },
       secoBtn:{
          label:'Forgot password',
-         link:'/password'
+         link:'../password'
       },
       thrdBtn:{
          label:'Register',
-         link:'/register'
+         link:'../register'
       },
       panelMsg:'Provide credentials and press login button.'
    } 
@@ -59,11 +67,11 @@ const routes: Routes = [{
       },
       secoBtn:{
          label:'Forgot password',
-         link:'/password'
+         link:'../password'
       },
       thrdBtn:{
          label:'Login',
-         link:'/login'
+         link:'../login'
       },
       panelMsg:'Provide email and password to register.'
    }
@@ -96,10 +104,10 @@ const routes: Routes = [{
       UserProfilePage
    ],
    imports: [
-      BrowserModule,
-      BrowserAnimationsModule,
-      FormsModule, ReactiveFormsModule,
-      AppMateralModule, SystemModule,
+      //BrowserModule,
+      //BrowserAnimationsModule,
+      CommonModule, FormsModule, ReactiveFormsModule,
+      AppMateralModule, SystemModule, FireModule,
       RouterModule.forChild(routes)
    ],
    providers: [LoginSvc],
@@ -111,6 +119,11 @@ const routes: Routes = [{
       RemoveAccountComponent,
       UserProfilePage
    ],
-   bootstrap: [LoginComponent]
+   //bootstrap: [LoginComponent]
 })
-export class LoginModule { }
+export class LoginModule {
+   constructor(){
+      //debugger
+      //console.log("Login module loaded");
+   }
+}

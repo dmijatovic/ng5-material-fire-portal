@@ -2,7 +2,10 @@
 import { Component, OnInit } from '@angular/core';
 
 import { LoginSvc } from '../../login/login.svc';
+import { AppStateSvc } from "../app.state.svc";
 import { Router, ActivatedRoute } from '@angular/router';
+
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
    selector: 'app-header',
@@ -14,21 +17,29 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class AppHeader implements OnInit {
 
-   title = 'Header title';
-
+   title: string = null;
+   title$: Subscription;
    menuItems: any;
    profileItems: any;
 
    constructor(
       private login: LoginSvc,
       private router: Router,
-      private route: ActivatedRoute
+      private route: ActivatedRoute,
+      private state: AppStateSvc
    ) { }
    ngOnInit() {
-
+      //list to title
+      this.title$ = this.state.title$
+         .subscribe((d:any)=>{
+            //debugger
+            this.title = d;
+         });
+      //get all menus
+      debugger
       this.login.getAllMenuItems()
          .then((d) => {
-            //debugger 
+            //debugger
             this.menuItems = d;
             return this.login.getAllProfileOptions();
          })
@@ -39,12 +50,6 @@ export class AppHeader implements OnInit {
             debugger
             console.error(e);
          });
-
-      this.route.data
-         .subscribe((d)=>{
-            console.log("header route data", d);
-         });
-
    }
 
    logOut() {

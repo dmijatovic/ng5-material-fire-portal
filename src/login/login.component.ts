@@ -37,9 +37,12 @@ export class LoginComponent implements OnInit {
       private fire: LoginSvc,
       private router: Router,
       private routeData: ActivatedRoute
-   ) { }
+   ) { 
+      //debugger
+      //console.log("Login.LoginComponent...constructor");
+   }
 
-   ngOnInit() {
+   ngOnInit() {      
       //create form group
       this.loginForm = this.formBuilder.group({
          email: ['', Validators.required],
@@ -60,10 +63,10 @@ export class LoginComponent implements OnInit {
             this.panelTitle = d.panelTitle;
             this.panelMsg = d.panelMsg;
          });
-   }  
+   }
    onAction() {
       //console.log("login.onAction");
-      if (this.login) {         
+      if (this.login) {
          this.onLogin();
       } else {
          this.onRegister();
@@ -73,7 +76,7 @@ export class LoginComponent implements OnInit {
       //console.log("login.onLogin");
       this.panelStatus = "TRYING...";
       this.showLoader = true;
-      let cred = this.loginForm.value;      
+      let cred = this.loginForm.value;
       this.fire.logIn(cred.email, cred.password)
          .then((d) => {
             //debugger
@@ -119,7 +122,7 @@ export class LoginComponent implements OnInit {
             this.panelMsg = e.message;
             console.error("Failed to login", e.message);
             this.showLoader = false;
-         });      
+         });
    }
    onRegister() {
       //console.log("Here we login");
@@ -129,7 +132,7 @@ export class LoginComponent implements OnInit {
       this.fire.register(cred.email, cred.password)
          .then((d) => {
             //debugger
-            console.log("did register");            
+            console.log("did register");
             //forward now to verify
             this.router.navigate(["verify"]);
          }, (e) => {

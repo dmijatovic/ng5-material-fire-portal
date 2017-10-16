@@ -3,7 +3,7 @@ import { MatToolbar, MatToolbarRow, MatIcon } from '@angular/material';
 
 //import { Router } from '@angular/router';
 //import { LoginSvc } from '../../login/login.svc';
-
+import { AppStateSvc } from '../app.state.svc';
 
 @Component({
   selector: 'app-home',
@@ -15,9 +15,12 @@ export class HomeComponent implements OnInit {
   constructor(
     //private login: LoginSvc,
     //private router: Router 
+    private state: AppStateSvc
   ) { }
 
   ngOnInit() {
+    //pass title we want to use
+    this.state.setPageTitle(this.title);
   }
   /*
   getMeFavs(){

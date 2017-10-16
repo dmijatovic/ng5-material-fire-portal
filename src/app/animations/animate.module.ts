@@ -10,33 +10,31 @@ import { AnimateFrame, AnimateHomePage, AnimateScrollPage  } from './index';
 
 /**
  * ROUTES
- * module specific routes  
- * most of the routing is module specific
- * therefore we have minimal routing at the top
+ * ANIMATION MODULE specific routes  
+ 
  */
 const routes:Routes=[{
-    path:'',        
+    path:'home',
     component: AnimateFrame,
     children:[{
         path:'',
         component: AnimateHomePage,
         data:{
-            title:"Page title is this now"
-        }
-    },{
-        path:'home',
-        component: AnimateHomePage,
-        data:{
             title:"Animations"
         }
-    },{
-        path:'scroll',
+    }]        
+},{
+    path:'scroll',
+    component: AnimateFrame,
+    children:[{
+        path:'',
         component: AnimateScrollPage,
         data:{
             title:"Animations - scroll effect"
         }
-    }]
+    }]        
 }]
+
 
 @NgModule({
   declarations: [

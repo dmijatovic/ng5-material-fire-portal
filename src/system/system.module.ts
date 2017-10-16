@@ -1,8 +1,9 @@
+//angular boot
+//import { BrowserModule } from '@angular/platform-browser';
+//import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //angular
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router'
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //get environment for connection to server
 import { environment as env } from '../environments/environment';
@@ -37,31 +38,30 @@ import { LoaderComponent } from './loader.component';
  * most of the routing is module specific
  * therefore we have minimal routing at the top
  */
-const routes:Routes=[{
-    path:'error',
-    redirectTo:'error/500',
-    pathMatch:'full'
-},{
-    path:'error/:id',
-    component: ErrorComponent    
-}/*,{
-  //just for testing
-  path:'system/loader',
-  component: LoaderComponent    
-}*/]
+const routes: Routes = [{
+   path: 'error',
+   children: [{
+      path: '',
+      redirectTo: '500',
+      pathMatch: 'full'
+   }, {
+      path: ':id',
+      component: ErrorComponent
+   }]
+}]
 
 @NgModule({
-  declarations: [
-    ErrorComponent, LoaderComponent
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,    
-    MatProgressSpinnerModule,
-    MatButtonModule,
-    //Router
-    RouterModule.forChild(routes)
-  ],  
-  exports:[ ErrorComponent, LoaderComponent ]
+   declarations: [
+      ErrorComponent, LoaderComponent
+   ],
+   imports: [
+      //BrowserModule,
+      //BrowserAnimationsModule,    
+      MatProgressSpinnerModule,
+      MatButtonModule,
+      //Router
+      RouterModule.forChild(routes)
+   ],
+   exports: [ErrorComponent, LoaderComponent]
 })
 export class SystemModule { }

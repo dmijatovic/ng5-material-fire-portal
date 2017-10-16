@@ -1,69 +1,76 @@
 {
    "menu": {
       "animations": {
-         "pos": 1,
-         "matIcon": "motorcycle",
+         "active": true,
+         "matIcon": "flight_takeoff",
          "path": "animations/home",
-         "title": "Animations",
-         "active": true
+         "pos": 2,
+         "title": "Animations"
       },
       "footbal": {
-         "pos": 2,
-         "matIcon": "rowing",
+         "active": true,
+         "matIcon": "group_work",
          "path": "football",
-         "title": "Football",
-         "active": true
+         "pos": 3,
+         "title": "Football"
       },
       "private": {
-         "pos": 3,
+         "active": true,
          "matIcon": "home",
-         "path": "private",
-         "title": "Home",
-         "active": true
-      },
-      "redux": {
+         "path": "/private",
          "pos": 4,
-         "matIcon": "star_rate",
-         "path": "redux",
-         "title": "Redux",
-         "active": true
+         "title": "Home"
+      },
+      "chat": {
+         "active": true,
+         "matIcon": "chat",
+         "path": "chat",
+         "pos": 5,
+         "title": "Chat"
+      },
+      "public": {
+         "active": true,
+         "matIcon": "power_settings_new",
+         "path": "/public",
+         "pos": 9,
+         "title": "Start page"
       },
       "weather": {
+         "active": true,
          "matIcon": "bubble_chart",
          "path": "weather",
-         "pos": 5,
-         "title": "Weather",
-         "active": true
-      },
-      "startpage": {
          "pos": 6,
-         "matIcon": "home",
-         "path": "/public",
-         "title": "Public",
-         "active": true
+         "title": "Weather"
+      },
+      "admin": {
+         "active": true,
+         "matIcon": "settings",
+         "path": "admin",
+         "pos": 7,
+         "title": "Settings"
       }
    },
-   "profile": {      
-      "view": {
-         "pos": 1,
-         "active": true,
-         "matIcon": "person",
-         "path": "profile",
-         "title": "My profile"
-      },
+   "profile": {
       "delete": {
-         "pos": 3,
          "active": true,
          "matIcon": "delete",
          "path": "remove",
+         "pos": 3,
          "title": "Delete account"
       },
       "logout": {
-         "pos": 2,
          "active": true,
          "matIcon": "exit_to_app",
-         "path": "/public",         
+         "path": "logout",
+         "pos": 2,
          "title": "Logout"
+      },
+      "view": {
+         "active": true,
+         "matIcon": "person",
+         "path": "profile",
+         "pos": 1,
+         "title": "My profile"
       }
    },
    "user": {

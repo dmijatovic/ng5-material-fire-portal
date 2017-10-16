@@ -9,16 +9,19 @@ import { RouterModule, Routes } from '@angular/router'
  * in the application
  */
 import { AppMateralModule } from '../material/material.module';
+import { FireModule } from '../firebase/fire.module';
 import { LoginModule } from '../login/login.module'
+//import { LoginSvc } from '../login/login.svc';
 
 /**
  * LOCAL COMPONENTS
  */
 import {
-   PublicComponent, AppPublicHeader, AppPublicFooter,
-   HomePublic,SigninComponent
+   PublicOutlet, AppPublicHeader, AppPublicFooter,
+   HomePublic, SigninComponent
 } from './index';
 
+import { loginFormData, registerFormData } from './login/login.data';
 
 /**
  * ROUTES
@@ -26,11 +29,9 @@ import {
  * most of the routing is module specific
  * therefore we have minimal routing at the top
  */
-import { loginFormData, registerFormData } from './login/login.data';
-
 const routes: Routes = [{
-   path: 'public',
-   component: PublicComponent,
+   path: '',
+   component: PublicOutlet,
    children: [{
       path: '',
       component: HomePublic
@@ -47,17 +48,21 @@ const routes: Routes = [{
 
 @NgModule({
    declarations: [
-      PublicComponent, AppPublicHeader, 
+      PublicOutlet, AppPublicHeader, 
       AppPublicFooter, HomePublic,
       SigninComponent
    ],
    imports: [
       //material components
-      AppMateralModule,LoginModule,
+      AppMateralModule,
+      FireModule, LoginModule,
       //Router
       RouterModule.forChild(routes)
    ],
-   providers: [],
-   exports: [PublicComponent]
+   providers: [ ],
+   exports: [
+      PublicOutlet, AppPublicHeader, AppPublicFooter,
+      HomePublic, SigninComponent
+   ]
 })
 export class PublicModule { }
