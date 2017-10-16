@@ -17,10 +17,10 @@ import { RouterModule, Routes } from '@angular/router'
 import { AppMateralModule } from './material/material.module'; 
 
 /** 
- * SYSTEM MODULE 
+ * SYSTEM MODULES 
  * here we handle 
 */
-import { SystemModule } from './system/system.module';
+import { SystemErrorModule } from './system/error.module';
 
 /**
  * LOGIN SECTION
@@ -60,12 +60,11 @@ const routes:Routes=[{
   path:'',  
   redirectTo:'public',
   pathMatch:'full'
-}
-/*,{
+},{
     path:'**',
     redirectTo:'/error/404',
     pathMatch:'full'
-}*/]
+}]
 
 @NgModule({
   declarations: [ MainOutlet ],
@@ -74,7 +73,7 @@ const routes:Routes=[{
     BrowserAnimationsModule,
     AppMateralModule,
     //LoginModule,
-    SystemModule,//PublicModule,AppModule,    
+    SystemErrorModule,//PublicModule,AppModule,    
     //Router (always last)
     RouterModule.forRoot(routes)
   ],

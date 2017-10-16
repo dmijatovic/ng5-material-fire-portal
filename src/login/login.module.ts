@@ -29,7 +29,8 @@ import {
 //firebase service
 import { LoginSvc } from './login.svc'
 
-import { SystemModule } from '../system/system.module';
+//import { SystemErrorModule } from '../system/error.module';
+import { SystemComponentsModule } from '../system/util.module';
 
 //-----------------------------------
 //ROUTES
@@ -107,7 +108,7 @@ const routes: Routes = [{
       //BrowserModule,
       //BrowserAnimationsModule,
       CommonModule, FormsModule, ReactiveFormsModule,
-      AppMateralModule, SystemModule, FireModule,
+      AppMateralModule, SystemComponentsModule, FireModule,
       RouterModule.forChild(routes)
    ],
    providers: [LoginSvc],

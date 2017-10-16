@@ -27,7 +27,7 @@ import { AppMateralModule } from '../material/material.module';
  * SYSTEM MODULE 
  * here we handle 
 */
-import { SystemModule } from '../system/system.module';
+import { SystemComponentsModule } from '../system/util.module';
 
 /**
  * LOGIN SECTION
@@ -102,7 +102,7 @@ const routes: Routes = [{
       AppMateralModule,
       //routed modules
       //LoginModule, 
-      SystemModule, 
+      SystemComponentsModule, 
       //Firebase
       FireModule,      
       //Router
