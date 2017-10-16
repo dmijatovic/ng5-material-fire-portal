@@ -1,0 +1,17 @@
+
+.list-item-row{
+   display:flex;
+   flex-wrap: wrap;
+   align-items: center;
+   justify-content: space-between;
+
+   .list-item-field{
+      padding:1px;
+      flex:1;
+      width:100%;      
+   }
+
+   .list-item-nav{
+      padding:0 8px;
+   }
+}

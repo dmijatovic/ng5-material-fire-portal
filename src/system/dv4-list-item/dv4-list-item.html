@@ -1,0 +1,36 @@
+
+<form #itemForm="ngForm">
+
+<div class="list-item-row">
+
+   <div class="list-item-field" *ngFor="let field of listItem.items">
+      
+      <mat-form-field          
+         class="list-item-field"
+         (click)="enableEdit()">
+
+         <input matInput
+            [name]="field.key"
+            [type]="field.type"
+            [(ngModel)]="field.value"         
+            [placeholder]="field.title"
+            [disabled]="disabled" />
+
+      </mat-form-field>
+
+   </div>
+
+   <div class="list-item-nav">
+      <button mat-icon-button 
+         *ngFor="let item of listItem.commands"
+         (click)="sendEvent(item.eventKey, itemForm.value)"
+         [disabled]="item.disabled">         
+         <mat-icon
+            aria-label="item.title">
+            {{item.matIcon}}
+         </mat-icon>
+      </button>
+   </div>
+</div>
+
+</form>
