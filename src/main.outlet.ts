@@ -25,7 +25,7 @@ import { Router } from '@angular/router';
 })
 export class MainOutlet {
   constructor(private router:Router){
-    //what is in here?
-    console.log(this.router)
+    //what is in router?
+    //console.log(this.router)
   }
 }
