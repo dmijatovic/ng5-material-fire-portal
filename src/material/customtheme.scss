@@ -80,3 +80,6 @@ $app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
 // that you are using.
 @include angular-material-theme($app-theme);
 
+//err-message-snackbar style
+@import 'snackbar';
+

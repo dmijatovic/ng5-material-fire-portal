@@ -9,5 +9,13 @@ export const cred = {
         projectId: "dv4fire",
         storageBucket: "dv4fire.appspot.com",
         messagingSenderId: "153465783888"
+    },
+    firestore:{
+        apiKey: "AIzaSyAvxkIOWhMbVKxU13Nt9lHOmR24bqR9Jvw",
+        authDomain: "dv4firestore.firebaseapp.com",
+        databaseURL: "https://dv4firestore.firebaseio.com",
+        projectId: "dv4firestore",
+        storageBucket: "dv4firestore.appspot.com",
+        messagingSenderId: "788054368467"
     }
 }
