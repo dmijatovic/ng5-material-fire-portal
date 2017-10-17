@@ -1,7 +1,18 @@
-import { Injectable } from '@angular/core';
+/**
+ * CHECK SysStateSvc in system folder!!!
+ * This was first idea, but later on 
+ * seemed better to have this service 
+ * be stored under the system module
+ */
 
+import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+
+export interface stateEvent{
+   type:string;
+   payload?:any;
+}
 
 @Injectable()
 export class AppStateSvc {
@@ -28,5 +39,5 @@ export class AppStateSvc {
     */
    getPageTitle(){
       return this._title;
-   }
+   }   
 }

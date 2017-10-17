@@ -9,8 +9,9 @@ import { RouterModule, Routes } from '@angular/router'
 /**
  * FIREBASE SECTION 
  */
-//firebase module
+//firebase module & service
 import { FireModule } from '../firebase/fire.module';
+import { FireSvc } from '../firebase/firebase.svc';
 
 //get environment for connection to server
 import { environment as env } from '../environments/environment';
@@ -54,7 +55,8 @@ import { HomeComponent } from './home/home.component';
 
 //main state shared service
 import { AppStateSvc } from './app.state.svc';
-
+//injected at lover levels to restrict events sharing
+//import { SysStoreSvc } from '../system/sys.store';
 
 /**
  * ROUTES
@@ -108,7 +110,7 @@ const routes: Routes = [{
       //Router
       RouterModule.forChild(routes)
    ],
-   providers: [ AppStateSvc, LoginSvc ],
+   providers: [AppStateSvc, LoginSvc, FireSvc ],
    exports: [HomeComponent, AppHeader, AppFooter, PrivateOutlet]
    //bootstrap: [AppComponent]
 })

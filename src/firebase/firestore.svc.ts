@@ -31,6 +31,110 @@ export class FireSvc implements CanActivate {
       });
    }
    /**
+    * Get list of items at specific path
+    * @param path 
+    */
+   getListOfKeys(path){
+      return new Promise((res, rej) => {
+         //debugger
+         let ref = this.data.database.ref(path)
+                        .orderByKey();
+         //request user object ONCE
+         let d=[];
+         //ordered by pos 
+         ref.once('value')
+         .then((snapshot) => {
+            /*console.group("getListOfKeys");
+            console.log("path", path);
+            console.log("snaphot", snapshot.val());
+            console.log("hasChildren", snapshot.hasChildren());
+            console.groupEnd();*/
+
+            snapshot.forEach(el => {               
+               debugger 
+               d.push(el.key)
+            });
+            //resolve
+            res(d);
+         },(e) => {
+            rej(e);            
+         });
+      });
+   }
+   /**
+    * 
+    * @param path 
+    * @param orderBy 
+    */   
+   getItems(path:string,orderBy:string=null){
+      return new Promise((res, rej) => {
+         //debugger
+         let ref:any, d=[];
+
+         if (orderBy){
+            ref = this.data.database.ref(path)
+                        .orderByChild(orderBy);
+         }else{
+            ref = this.data.database.ref(path)
+                        .orderByKey();
+         }                    
+         //ordered by pos 
+         ref.once('value')
+         .then((snapshot) => {
+            /*console.group("getItems");
+            console.log("path", path);
+            console.log("snaphot", snapshot.val());
+            console.log("hasChildren", snapshot.hasChildren());
+            console.groupEnd();*/
+
+            snapshot.forEach(el => {               
+               //debugger 
+               d.push({
+                  key: el.key,
+                  rawItems:el.val()
+               })
+            });
+            //resolve
+            res(d);
+         },(e) => {
+            rej(e);            
+         });
+      });
+   }
+   /**
+    * Get schema of specific table
+    * @param table 
+    */
+   getSchema(table:string){
+      return new Promise((res, rej) => {
+         //debugger
+         let path = "/map/" + table,
+            ref = this.data.database.ref(path)
+                        .orderByChild('pos');   
+         //request user object ONCE
+         let d=[];
+         //ordered by pos 
+         ref.once('value')
+         .then((snapshot) => {
+            /*console.group("getSchema");
+            console.log("path", path);
+            console.log("snaphot", snapshot.val());
+            console.log("hasChildren", snapshot.hasChildren());
+            console.groupEnd();*/
+
+            snapshot.forEach(el => {               
+               //debugger 
+               d.push(el.val());
+            });
+            //resolve
+            res(d);
+         },(e) => {
+            rej(e);            
+         });
+      });
+   }
+   
+   /**
     * Login user to firebase project
     * @param email 
     * @param pass 
@@ -79,9 +183,7 @@ export class FireSvc implements CanActivate {
     */
    getListofAllMenuItems() {
       return new Promise((res, rej) => {
-
          //debugger
-
          let path = '/menu/',
             ref = this.data.database.ref(path)
                   .orderByChild('pos');
@@ -103,7 +205,6 @@ export class FireSvc implements CanActivate {
             }, (e) => {
                rej(e);
             });
-
       });
    }
    /**
@@ -151,7 +252,7 @@ export class FireSvc implements CanActivate {
     * Returns array of objects of 
     * all profile menu items 
     */
-    getAllProfileOptions() {
+   getAllProfileOptions() {
       return new Promise((res, rej) => {
 
          //debugger

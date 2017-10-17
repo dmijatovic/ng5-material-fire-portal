@@ -10,7 +10,12 @@ import { SystemComponentsModule } from '../../system/util.module'
 
 import { AppMateralModule } from '../../material/material.module';
 
-//import { FireSvc } from '../../firebase/firebase.svc';
+//need to import these here I got error no provider for fire service
+//import { FireModule } from '../../firebase/fire.module';
+
+//SysStoreSvc injected here to share events with components 
+//within this module ONLY - now only home uses it
+import { SysStoreSvc } from '../../system/sys.store';
 
 /**
  * ROUTES
@@ -30,10 +35,11 @@ const routes: Routes = [{
    imports: [
       CommonModule,
       FormsModule,
-      AppMateralModule,
-      SystemComponentsModule,
+      AppMateralModule,      
+      SystemComponentsModule,      
       RouterModule.forChild(routes)
    ],
+   providers:[ SysStoreSvc ],
    declarations: [HomeComponent, MenuComponent]
 })
 export class AdminModule { }

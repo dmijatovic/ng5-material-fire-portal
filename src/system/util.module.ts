@@ -17,6 +17,10 @@ import { MatProgressSpinnerModule, MatButtonModule,
 import { LoaderComponent } from './loader.component';
 import { ListItemComponent } from './dv4-list-item/dv4-list-item';
 
+/**
+ * UTILITY SERVICE
+ */
+//import {} from ''
 
 @NgModule({
    declarations: [
@@ -30,6 +34,7 @@ import { ListItemComponent } from './dv4-list-item/dv4-list-item';
       MatProgressSpinnerModule,
       MatIconModule, MatInputModule
    ],
+   providers:[],
    exports: [
       LoaderComponent,
       ListItemComponent

@@ -1,36 +1,34 @@
 
-<form #itemForm="ngForm">
+<form #itemForm="ngForm"
+   style="display:flex">
 
 <div class="list-item-row">
+   
+   <mat-form-field 
+      *ngFor="let field of listItem.items"         
+      class="list-item-field"
+      (click)="enableEdit()">
 
-   <div class="list-item-field" *ngFor="let field of listItem.items">
-      
-      <mat-form-field          
-         class="list-item-field"
-         (click)="enableEdit()">
+      <input matInput
+         [name]="field.key"
+         [type]="field.type"
+         [(ngModel)]="field.value"         
+         [placeholder]="field.title"
+         [disabled]="disabled" />
 
-         <input matInput
-            [name]="field.key"
-            [type]="field.type"
-            [(ngModel)]="field.value"         
-            [placeholder]="field.title"
-            [disabled]="disabled" />
-
-      </mat-form-field>
-
-   </div>
-
-   <div class="list-item-nav">
-      <button mat-icon-button 
-         *ngFor="let item of listItem.commands"
-         (click)="sendEvent(item.eventKey, itemForm.value)"
-         [disabled]="item.disabled">         
-         <mat-icon
-            aria-label="item.title">
-            {{item.matIcon}}
-         </mat-icon>
-      </button>
-   </div>
+   </mat-form-field>
+   
+</div>
+<div class="list-item-nav">
+   <button mat-icon-button 
+      *ngFor="let item of listItem.commands"
+      (click)="sendEvent(item.eventKey, itemForm.value)"
+      [disabled]="item.disabled">         
+      <mat-icon
+         aria-label="item.title">
+         {{item.matIcon}}
+      </mat-icon>
+   </button>
 </div>
 
 </form>

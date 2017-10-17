@@ -1,4 +1,12 @@
 
+:host{
+   display:flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   align-items: center;
+   min-width: 360px;
+}
+
 .list-item-row{
    display:flex;
    flex-wrap: wrap;
@@ -8,10 +16,17 @@
    .list-item-field{
       padding:1px;
       flex:1;
-      width:100%;      
-   }
+      min-width:75px;
 
-   .list-item-nav{
-      padding:0 8px;
-   }
+      .mat-input-element{
+         line-height: 1.42;
+      }
+   }   
+}
+
+.list-item-nav{
+   display:flex;
+   align-items: center;
+   padding:0 8px;
+
 }
