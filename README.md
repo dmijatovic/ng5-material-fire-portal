@@ -60,10 +60,8 @@ In this project we test lazy loading of the modules. Lazy loading and routing mo
 - routing only module: it has only routing. This routing module can be than included at the specific location/module in order to achieve desired routing functionality.
 
 In this project we have 2 major sections that are lazy loaded
+
 - public: main public module, access to public part of the app. This part uses different header/footer layout
 - private: access to private section of the app
 
 Lazy loading also INFLUENCE module imports/refrences in the app. Specific modules cannot be imported twice, this will cause an error. Specific modules should be imported at exact  section where are used because lazy loaded modules are not aware of the module loaded in another lazy loaded module. This might impact sharing data/info between lazy loaded modules. At this moment I am not sure about possibilities in this area. We will test this furher of course.
-
-
-

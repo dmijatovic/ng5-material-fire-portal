@@ -1,71 +1,55 @@
 <header class="admin-page-header">
-   <div class="admin-page-title">
-      <h3>{{ pageTitle }} 
-         <span *ngIf="activeTable!=null">
-            - table: {{ activeTable }}
-         </span>
-      </h3>
-   </div>
-   <div *ngIf="activeTable!=null"
-         class="admin-page-sort">
-      <mat-select          
-         placeholder="Order by"
-         [(ngModel)]="sortBy"         
-         (change)="sortTable($event.value)">
+  <div class="admin-page-title">
+    <h3>{{ pageTitle }}
+      <span *ngIf="activeTable!=null">
+        - table: {{ activeTable }}
+      </span>
+    </h3>
+  </div>
+  <div *ngIf="activeTable!=null" class="admin-page-sort">
+    <mat-select placeholder="Order by" [(ngModel)]="sortBy" (change)="sortTable($event.value)">
 
-         <mat-option *ngFor="let field of itemMap" 
-            [value]="field.key">
-            {{ field.title }}
-         </mat-option>
+      <mat-option *ngFor="let field of itemMap" [value]="field.key">
+        {{ field.title }}
+      </mat-option>
 
-      </mat-select>
-   </div>
+    </mat-select>
+  </div>
 </header>
 
 <section class="admin-page">
-   
-   <nav class="sidebar">
-      <h4>{{ panelTitle }}</h4>
-      <div class="table-list">
-         <ul>
-            <li class="nav-item"
-               *ngFor="let table of tables"        
-               [class.active]="activeTable==table"
-               (click)="loadTable(table)">
-               {{table}}
-            </li>            
-         </ul>
-      </div>
-   </nav>
 
-   <section class="content">
-      <div *ngIf="activeTable===null"
-         class="empty-content-message">
-         <p>
-            No table loaded. Please select one on the left.
-         </p>
-      </div>
-      <dv4-list-item *ngFor="let item of itemList"
-         [listItem]="item">
-      </dv4-list-item>
-   </section>
+  <nav class="sidebar">
+    <h4>{{ panelTitle }}</h4>
+    <div class="table-list">
+      <ul>
+        <li class="nav-item" *ngFor="let table of tables" [class.active]="activeTable==table" (click)="loadTable(table)">
+          {{table}}
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="content">
+    <div *ngIf="activeTable===null" class="empty-content-message">
+      <p>
+        No table loaded. Please select one on the left.
+      </p>
+    </div>
+    <dv4-list-item *ngFor="let item of itemList" [listItem]="item">
+    </dv4-list-item>
+  </section>
 </section>
 
 <section class="float-bottom-nav">
-   <button mat-icon-button color="secondary"
-      matTooltip="Add table"
-      (click)="createTable()"> 
-      <mat-icon>add</mat-icon>
-   </button>
+  <button mat-icon-button color="secondary" matTooltip="Add table" (click)="createTable()">
+    <mat-icon>add</mat-icon>
+  </button>
 
-   <button mat-fab matTooltip="Add item"
-      *ngIf="activeTable!=null"
-      color="primary"
-      (click)="addRow()"> 
-      <mat-icon>add</mat-icon>
-   </button>
+  <button mat-fab matTooltip="Add item" *ngIf="activeTable!=null" color="primary" (click)="addRow()">
+    <mat-icon>add</mat-icon>
+  </button>
 </section>
 
-<app-loader 
-   [class.active]="loader">
+<app-loader [class.active]="loader">
 </app-loader>
