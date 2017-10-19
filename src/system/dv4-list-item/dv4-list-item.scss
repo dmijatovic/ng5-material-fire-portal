@@ -1,32 +1,37 @@
 
 :host{
-   display:flex;
-   flex-wrap: wrap;
-   justify-content: center;
-   align-items: center;
-   min-width: 360px;
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  min-width: 360px;
+}
+
+.list-item-wrap{
+  display:flex;
+  flex:1;  
 }
 
 .list-item-row{
-   display:flex;
-   flex-wrap: wrap;
-   align-items: center;
-   justify-content: space-between;
+  display:flex;
+  flex:1;
+  flex-wrap: wrap;
+  align-items: center;   
 
-   .list-item-field{
-      padding:1px;
-      flex:1;
-      min-width:75px;
+  .list-item-field{
+    padding:1px;
+    flex:1;
+    min-width:75px;
 
-      .mat-input-element{
-         line-height: 1.42;
-      }
-   }   
+    .mat-input-element{
+        line-height: 1.42;
+    }
+  }   
 }
 
 .list-item-nav{
-   display:flex;
-   align-items: center;
-   padding:0 8px;
+  display:flex;
+  align-items: center;
+  padding:0 8px;
 
 }

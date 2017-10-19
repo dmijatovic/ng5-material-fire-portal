@@ -1,34 +1,39 @@
+<form #itemForm="ngForm" class="list-item-wrap" novalidate>
 
-<form #itemForm="ngForm"
-   style="display:flex">
+  <div class="list-item-row">
+    
+    <mat-form-field *ngFor="let field of listItem.items" 
+      class="list-item-field" (click)="enableEdit()">
 
-<div class="list-item-row">
-   
-   <mat-form-field 
-      *ngFor="let field of listItem.items"         
-      class="list-item-field"
-      (click)="enableEdit()">
+      <!--version without placeholder -->
+      <input *ngIf="field.placeholder===false"
+        matInput 
+        [name]="field.key" 
+        [type]="field.type" 
+        [(ngModel)]="field.value"         
+        [disabled]="disabled"
+      />
+      <!--version with placeholder -->
+      <input *ngIf="field.placeholder===true"
+        matInput 
+        [name]="field.key" 
+        [type]="field.type" 
+        [(ngModel)]="field.value"         
+        [placeholder]="field.title"
+        [disabled]="disabled"
+      />
+    </mat-form-field>
 
-      <input matInput
-         [name]="field.key"
-         [type]="field.type"
-         [(ngModel)]="field.value"         
-         [placeholder]="field.title"
-         [disabled]="disabled" />
-
-   </mat-form-field>
-   
-</div>
-<div class="list-item-nav">
-   <button mat-icon-button 
-      *ngFor="let item of listItem.commands"
-      (click)="sendEvent(item.eventKey, itemForm.value)"
-      [disabled]="item.disabled">         
-      <mat-icon
-         aria-label="item.title">
-         {{item.matIcon}}
+  </div>
+  <div class="list-item-nav">
+    <button mat-icon-button 
+      *ngFor="let item of listItem.commands" 
+      (click)="sendEvent(item.eventKeyStart, itemForm.value)" 
+      [disabled]="item.disabled">
+      <mat-icon aria-label="item.title">
+        {{item.matIcon}}
       </mat-icon>
-   </button>
-</div>
+    </button>
+  </div>
 
 </form>

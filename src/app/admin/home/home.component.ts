@@ -30,6 +30,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   activeTable: string = null;
   loader: boolean = false;
   state$: Subscription;
+  //this variable is used 
+  //to share actions to 
+  //child components
+  stateAction:storeEvent;
 
   constructor(
     private store: SysStoreSvc,
@@ -48,6 +52,8 @@ export class HomeComponent implements OnInit, OnDestroy {
    * This is main reducer function 
    * for this component. ALL events 
    * are distributed from here
+   * stateAction is used to distribute
+   * actions to child components
    * @param e
    */
   reducer(e: storeEvent) {
@@ -71,6 +77,14 @@ export class HomeComponent implements OnInit, OnDestroy {
       case event.SET_DATA:
         //ok now we have prepared data
         this.setData(e.payload);
+        //pass to child 
+        this.stateAction = e;
+        break;
+      case event.SET_ITEMS_COMPLETED:
+        //ok now we have prepared data
+        //this.setData(e.payload);
+        //pass to child 
+        this.stateAction = e;
         break;
       case event.SAVE:
         //ok now we have prepared data
@@ -80,10 +94,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         //hide loader adn show error popup
         this.loader = false;
         this.showErrMsg(e.payload);
-        break;
-      case event.SET_DATA:
-        this.itemList = e.payload;
-        break;
+        break;      
       case event.PREP_DATA:
         break;
     }
@@ -170,13 +181,13 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
   saveRow({ key, data }) {
     // we need to add table name to this
-    debugger
-    let path = "/" + this.activeTable + "/" + key;
+    //debugger    
     //emit new event 
     this.store.dispatch({
       type: event.SET_ITEMS,
       payload: {
-        path: path,
+        table: this.activeTable,
+        item: key,
         data: data
       }
     });

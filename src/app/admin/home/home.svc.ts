@@ -130,7 +130,8 @@ export class HomeSvc {
           title: field.title,
           type: field.type,
           value: rec.rawItems[field.key],
-          required: field.required
+          required: field.required,
+          placeholder: true //this for table approach
         }
         //field description
         items.push(item);
@@ -157,29 +158,44 @@ export class HomeSvc {
     let commands = [];
     //add commands 
     commands.push({
-      matIcon: 'save', eventKey: EventType.SAVE, title: 'Save this thing!!!', disabled: false
+      matIcon: 'save', 
+      eventKeyStart: EventType.SAVE, 
+      eventKeyEnd: EventType.SET_ITEMS_COMPLETED,
+      title: 'Save this thing!!!', 
+      disabled: true,
+      disabledFormState: 'pristine'
     });
-    commands.push({
+    /*commands.push({
       matIcon: 'edit', eventKey: EventType.EDIT, title: 'Edit this thing!!!', disabled: false
-    });
+    });*/
     commands.push({
-      matIcon: 'delete', eventKey: EventType.DELETE, title: 'Delete this thing!!!', disabled: false
+      matIcon: 'delete', 
+      eventKeyStart: EventType.DELETE, 
+      eventKeyEnd: EventType.DELETE_COMPLETED, 
+      title: 'Delete this thing!!!', 
+      disabled: false
     });
     return commands;
   }
-  setItems({ path, data }) {
+  setItems({ table, item, data }) {
     //console.log("saveItem",payload);
+    let path = "/" + table + "/" + item;
+
     this.fire.setItems(path, data)
       .then((d) => {
         this.store.dispatch({
           type: EventType.SET_ITEMS_COMPLETED,
-          payload: d
+          payload:{
+            table:table,
+            key:item,
+            data:d
+          }
         });
       })
       .catch((e) => {
         this.store.dispatch({
           type: EventType.ERROR,
-          payload: e
+          payload:e
         });
       })
   }
@@ -199,6 +215,7 @@ export const EventType = {
   SET_ITEMS_COMPLETED: <string>"SET_ITEMS_COMPLETED",
   EDIT: <string>"EDIT_LIST_ITEM",
   DELETE: <string>"DELETE_LIST_ITEM",
+  DELETE_COMPLETED: <string>"DELETE_LIST_ITEM_COMPLETED",
   GET_SCHEMA: <string>"GET_SCHEMA",
   SET_SCHEMA: <string>"SET_SCHEMA",
   GET_RAW_DATA: <string>"GET_RAW_DATA",

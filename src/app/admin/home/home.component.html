@@ -36,11 +36,13 @@
         No table loaded. Please select one on the left.
       </p>
     </div>
-    <dv4-list-item *ngFor="let item of itemList" [listItem]="item">
-    </dv4-list-item>
+    <dv4-list *ngIf="activeTable!=null"
+        [itemList]="itemList"
+        [state]="stateAction">
+    </dv4-list>
   </section>
 </section>
-
+<!--
 <section class="float-bottom-nav">
   <button mat-icon-button color="secondary" matTooltip="Add table" (click)="createTable()">
     <mat-icon>add</mat-icon>
@@ -50,6 +52,6 @@
     <mat-icon>add</mat-icon>
   </button>
 </section>
-
+-->
 <app-loader [class.active]="loader">
 </app-loader>

@@ -63,7 +63,7 @@ export class SysStoreSvc {
 
 
 /**
- * Redux based state object format
+ * Redux based action object format
  */
 export interface storeEvent{
    type:string;

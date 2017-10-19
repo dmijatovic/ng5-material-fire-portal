@@ -15,7 +15,7 @@ import { MatProgressSpinnerModule, MatButtonModule,
  * UTILITY components
  */
 import { LoaderComponent } from './loader.component';
-import { ListItemComponent } from './dv4-list-item/dv4-list-item';
+import { ListItemComponent, dv4List } from './dv4-list-item';
 
 /**
  * UTILITY SERVICE
@@ -25,7 +25,8 @@ import { ListItemComponent } from './dv4-list-item/dv4-list-item';
 @NgModule({
    declarations: [
       LoaderComponent,
-      ListItemComponent
+      ListItemComponent,
+      dv4List
    ],
    imports: [      
       CommonModule,
@@ -37,7 +38,8 @@ import { ListItemComponent } from './dv4-list-item/dv4-list-item';
    providers:[],
    exports: [
       LoaderComponent,
-      ListItemComponent
+      ListItemComponent,
+      dv4List
    ]
 })
 export class SystemComponentsModule { }
