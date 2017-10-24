@@ -12,6 +12,7 @@ import { RouterModule, Routes } from '@angular/router'
 //firebase module & service
 import { FireModule } from '../firebase/fire.module';
 import { FireSvc } from '../firebase/firebase.svc';
+import { LoginSvc } from '../firebase/login.svc';
 
 //get environment for connection to server
 import { environment as env } from '../environments/environment';
@@ -37,7 +38,7 @@ import { SystemComponentsModule } from '../system/util.module';
  * pages are part of the module
  */
 //import { UserModule } from '../user/user.module';
-import { LoginSvc } from '../firebase/login.svc';
+//import { LoginSvc } from '../firebase/login.svc';
 
 /**
  * ANIMATIONS module
@@ -67,7 +68,7 @@ import { AppStateSvc } from './app.state.svc';
 const routes: Routes = [{
    path:'',
    component: PrivateOutlet,
-   //canActivate:[LoginSvc],
+   canActivate:[ LoginSvc ],
    children: [{
       path: 'admin',
       loadChildren: 'app/admin/admin.module#AdminModule'
@@ -89,8 +90,7 @@ const routes: Routes = [{
    },{//empty path as last
       path: '',
       component: HomeComponent,
-      pathMatch:'full',
-      //canActivate:[ ] 
+      pathMatch:'full'
    }]
 }]
 
@@ -111,7 +111,7 @@ const routes: Routes = [{
       //Router
       RouterModule.forChild(routes)
    ],
-   providers: [AppStateSvc, LoginSvc, FireSvc ],
+   providers: [AppStateSvc, FireSvc ],
    exports: [HomeComponent, AppHeader, AppFooter, PrivateOutlet]
    //bootstrap: [AppComponent]
 })

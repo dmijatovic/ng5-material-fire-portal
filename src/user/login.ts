@@ -138,7 +138,7 @@ export class LoginComponent implements OnInit {
         //debugger
         console.log("did register");
         //forward now to verify
-        this.router.navigate(["verify"]);
+        this.router.navigate(["user","verify"]);
       }, (e) => {
         this.panelStatus = "FAILED";
         this.panelMsg = e.message;

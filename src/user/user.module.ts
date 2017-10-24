@@ -15,6 +15,10 @@ import { AppMateralModule } from '../material/material.module';
  */
 //firebase modules 
 import { FireModule } from '../firebase/fire.module';
+//NOTE that loginSvc provider is defined at 
+//HIGHEST level in main.module so it can be 
+//chared between app and user modules 
+import { LoginSvc } from '../firebase/login.svc'
 
 //get environment for connection to server
 import { environment as env } from '../environments/environment';
@@ -28,7 +32,6 @@ import {
 } from './index';
 
 //firebase service
-import { LoginSvc } from '../firebase/login.svc'
 
 //import { SystemErrorModule } from '../system/error.module';
 import { SystemComponentsModule } from '../system/util.module';
@@ -43,28 +46,30 @@ const routes: Routes = [{
   data: env.cfg.user.login
 },{
   path: 'logout',
-  component: LogoutComponent,
-  data: env.cfg.user.login
+  component: LogoutComponent
 },{
   path: 'register',
   component: LoginComponent,
   data: env.cfg.user.register
-}, {
-  path: 'verify',
-  component: VerifyEmailComponent
-}, {
+},{
   path: 'password',
   component: PasswordResetComponent
-}, {
+},{
+  path: 'verify',
+  component: VerifyEmailComponent,
+  //canActivate:[LoginSvc] 
+},{
   path: 'email',
-  component: ChangeEmailComponent
-}, {
+  component: ChangeEmailComponent,
+  canActivate:[LoginSvc] 
+},{
   path: 'remove',
-  component: RemoveAccountComponent
+  component: RemoveAccountComponent,
+  canActivate:[LoginSvc] 
 },{
   path: 'profile',
   component: UserProfilePage,
-  //canActivate: [LoginSvc],
+  canActivate: [LoginSvc]
 },{
   path:'',
   redirectTo:'login',
@@ -88,7 +93,7 @@ const routes: Routes = [{
     AppMateralModule, SystemComponentsModule, FireModule,
     RouterModule.forChild(routes)
   ],
-  providers: [LoginSvc],
+  //providers: [LoginSvc],
   exports: [
     LoginComponent,LogoutComponent,
     VerifyEmailComponent,

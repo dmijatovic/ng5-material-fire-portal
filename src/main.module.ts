@@ -29,7 +29,9 @@ import { SystemErrorModule } from './system/error.module';
  * pages are part of the module
  */
 //import { UserModule } from './user/user.module';
-//import { LoginSvc } from './firebase/login.svc';
+//firebase modules 
+import { FireModule } from './firebase/fire.module';
+import { LoginSvc } from './firebase/login.svc';
 
 /**
  * MAIN ***PRIVATE*** APP MODULE
@@ -74,13 +76,13 @@ const routes:Routes=[/*{
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    AppMateralModule,
+    AppMateralModule, FireModule,
     //LoginModule,
     SystemErrorModule,//PublicModule,AppModule,    
     //Router (always last)
     RouterModule.forRoot(routes)
   ],
-  providers: [ ],
+  providers: [ LoginSvc ],
   bootstrap: [ MainOutlet ]
 })
 export class MainModule { }

@@ -33,6 +33,13 @@ export class LoginSvc implements CanActivate {
         this.user = null;
       }
     });
+    //debugger
+    //check if we have user signed to firebase
+    //login.svc is split between user and app
+    //in other words
+    if (this.fire.auth.currentUser && this.user==null){
+      this.user = this.fire.auth.currentUser; 
+    }      
   }
   /**
    * Login user to firebase project
