@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-import { LoginSvc } from './login.svc';
+import { LoginSvc } from '../firebase/login.svc';
 
 @Component({
   selector: 'app-password',
-  templateUrl: './password.component.html',
-  styleUrls: ['./login.component.scss']
+  templateUrl: './password.reset.html',
+  styleUrls: ['./login.scss']
 })
-export class PasswordComponent implements OnInit {
+export class PasswordResetComponent implements OnInit {
   panelTitle:string="Password reset";
   loginForm:FormGroup;
   loginStatus:string="";

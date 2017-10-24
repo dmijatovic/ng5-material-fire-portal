@@ -1,7 +1,7 @@
 //angular 
 import { Component, OnInit } from '@angular/core';
 
-import { LoginSvc } from '../../login/login.svc';
+import { LoginSvc } from '../../firebase/login.svc';
 import { AppStateSvc } from "../app.state.svc";
 import { Router, ActivatedRoute } from '@angular/router';
 

@@ -28,8 +28,8 @@ import { SystemErrorModule } from './system/error.module';
  * register, login and forgot password
  * pages are part of the module
  */
-//import { LoginModule } from './login/login.module';
-//import { LoginSvc } from './login/login.svc';
+//import { UserModule } from './user/user.module';
+//import { LoginSvc } from './firebase/login.svc';
 
 /**
  * MAIN ***PRIVATE*** APP MODULE
@@ -50,21 +50,24 @@ import { MainOutlet } from './main.outlet';
  * top lever route loaded in main-outlet
  * lazy loading public or private module
  */
-const routes:Routes=[{
+const routes:Routes=[/*{
   path:'public',  
   loadChildren: 'public/public.module#PublicModule'
-},{
-  path:'private',  
+},*/{
+  path:'app',  
   loadChildren: 'app/app.module#AppModule'
 },{
-  path:'',  
-  redirectTo:'public',
-  pathMatch:'full'
+  path:'user',  
+  loadChildren: 'user/user.module#UserModule'
 },{
+  path:'',  
+  redirectTo:'app',
+  pathMatch:'full'
+},/*{
     path:'**',
     redirectTo:'/error/404',
     pathMatch:'full'
-}]
+}*/]
 
 @NgModule({
   declarations: [ MainOutlet ],

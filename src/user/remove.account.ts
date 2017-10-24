@@ -1,12 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoginSvc } from './login.svc';
+import { LoginSvc } from '../firebase/login.svc';
 
 @Component({
    selector: 'app-remove-account',
    templateUrl: './remove.account.html',
-   styleUrls: ['./login.component.scss']
+   styleUrls: ['./login.scss']
 })
 export class RemoveAccountComponent implements OnInit {
    pageTitle: string = "Delete account";

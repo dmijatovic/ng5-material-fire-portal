@@ -19,7 +19,7 @@
       </div>
 
       <div class="error-nav-panel">
-         <a href="/public" mat-button>Start page</a>  
+         <a [routerLink]="btn.path" mat-button>{{ btn.label }}</a>  
       </div>
    </div>      
 </section>

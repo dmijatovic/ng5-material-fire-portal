@@ -10,8 +10,8 @@ import { RouterModule, Routes } from '@angular/router'
  */
 import { AppMateralModule } from '../material/material.module';
 import { FireModule } from '../firebase/fire.module';
-import { LoginModule } from '../login/login.module'
-//import { LoginSvc } from '../login/login.svc';
+import { UserModule } from '../user/user.module'
+//import { LoginSvc } from '../firebase/login.svc';
 
 /**
  * LOCAL COMPONENTS
@@ -55,7 +55,7 @@ const routes: Routes = [{
    imports: [
       //material components
       AppMateralModule,
-      FireModule, LoginModule,
+      FireModule, UserModule,
       //Router
       RouterModule.forChild(routes)
    ],

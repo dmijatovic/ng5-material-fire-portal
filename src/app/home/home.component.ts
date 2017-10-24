@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatToolbar, MatToolbarRow, MatIcon } from '@angular/material';
 
 //import { Router } from '@angular/router';
-//import { LoginSvc } from '../../login/login.svc';
+//import { LoginSvc } from '../../firebase/login.svc';
 import { AppStateSvc } from '../app.state.svc';
 
 @Component({

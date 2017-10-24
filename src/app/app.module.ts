@@ -36,8 +36,8 @@ import { SystemComponentsModule } from '../system/util.module';
  * register, login and forgot password
  * pages are part of the module
  */
-import { LoginModule } from '../login/login.module';
-import { LoginSvc } from '../login/login.svc';
+//import { UserModule } from '../user/user.module';
+import { LoginSvc } from '../firebase/login.svc';
 
 /**
  * ANIMATIONS module
@@ -89,7 +89,8 @@ const routes: Routes = [{
    },{//empty path as last
       path: '',
       component: HomeComponent,
-      pathMatch:'full'
+      pathMatch:'full',
+      //canActivate:[ ] 
    }]
 }]
 

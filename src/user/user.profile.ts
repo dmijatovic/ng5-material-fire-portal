@@ -3,13 +3,13 @@ import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { LoginSvc } from './login.svc';
-import { ProfileSvc } from './profile.svc';
+import { LoginSvc } from '../firebase/login.svc';
+import { ProfileSvc } from '../firebase/profile.svc';
 
 @Component({
    selector: 'app-user-profile',
    templateUrl: './user.profile.html',
-   styleUrls: ['./login.component.scss', './user.profile.scss'],
+   styleUrls: ['./login.scss', './user.profile.scss'],
    providers:[ ProfileSvc ]
 })
 export class UserProfilePage implements OnInit {

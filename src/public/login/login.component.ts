@@ -5,7 +5,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
 
 //when lazy loading we need service reference here
-//import { LoginSvc } from '../../login/login.svc';
+//import { LoginSvc } from '../../firebase/login.svc';
 
 /**
  * Public signin component that uses app-login 

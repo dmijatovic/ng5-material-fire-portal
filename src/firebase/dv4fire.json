@@ -1,142 +1,184 @@
 {
-   "menu": {
-      "animations": {
-         "active": true,
-         "matIcon": "flight_takeoff",
-         "path": "animations/home",
-         "pos": 2,
-         "title": "Animations"
-      },
-      "footbal": {
-         "active": true,
-         "matIcon": "group_work",
-         "path": "football",
-         "pos": 3,
-         "title": "Football"
-      },
-      "private": {
-         "active": true,
-         "matIcon": "home",
-         "path": "/private",
-         "pos": 1,
-         "title": "Home"
-      },
-      "chat": {
-         "active": true,
-         "matIcon": "chat",
-         "path": "chat",
-         "pos": 5,
-         "title": "Chat"
-      },
-      "public": {
-         "active": true,
-         "matIcon": "power_settings_new",
-         "path": "/public",
-         "pos": 9,
-         "title": "Start page"
-      },
-      "weather": {
-         "active": true,
-         "matIcon": "bubble_chart",
-         "path": "weather",
-         "pos": 6,
-         "title": "Weather"
-      },
-      "admin": {
-         "active": true,
-         "matIcon": "settings",
-         "path": "admin",
-         "pos": 7,
-         "title": "Settings"
-      }
-   },
-   "profile": {
+  "menu": {
+    "main": {      
+      "home": {
+        "active": true,
+        "matIcon": "home",
+        "path": "/home",
+        "pos": 1,
+        "title": "Home"
+      }     
+    },
+    "profile": {
       "delete": {
-         "active": true,
-         "matIcon": "delete",
-         "path": "remove",
-         "pos": 3,
-         "title": "Delete account"
+        "active": true,
+        "matIcon": "delete",
+        "path": "remove",
+        "pos": 3,
+        "title": "Delete account"
       },
       "logout": {
-         "active": true,
-         "matIcon": "exit_to_app",
-         "path": "logout",
-         "pos": 2,
-         "title": "Logout"
+        "active": true,
+        "matIcon": "exit_to_app",
+        "path": "logout",
+        "pos": 2,
+        "title": "Logout"
       },
       "view": {
-         "active": true,
-         "matIcon": "person",
-         "path": "profile",
-         "pos": 1,
-         "title": "My profile"
+        "active": true,
+        "matIcon": "person",
+        "path": "profile",
+        "pos": 1,
+        "title": "My profile"
       }
-   },
-   "user": {
-      "ZC5taWphdG92aWNAZHY0YWxsLm5s": {
-         "avatar": "https://lh6.googleusercontent.com/-HRvFCA8NlvQ/AAAAAAAAAAI/AAAAAAAAAA8/QBO85KKjuwA/photo.jpg?sz=64",
-         "birthdate": "1970-11-25",
-         "birthplace": {
-            "city": "Beograd",
-            "location": {
-               "latitude": "44.797039",
-               "longitude": "20.456174"
-            }
-         },
-         "email": "d.mijatovic@dv4all.nl",
-         "firstName": "Dusan",
-         "lastName": "Mijatovic",
-         "menuItems": "a,b,c,d",
-         "phone": {
-            "countryCode": "31",
-            "number": "48255850"
-         },
-         "startpage": "private"
+    }
+  },
+  "map": {
+    "map": {
+      "pos": {
+        "pos": 1,
+        "key": "pos",
+        "title": "Position",
+        "type": "number",
+        "required": true
       },
-      "bWlqYXRvdmljMTk3MEBnbWFpbC5jb20=": {
-         "birthCity": "Beograd",
-         "birthDate": "25-11-1970",
-         "email": "mijatovic1970@gmail.com",
-         "firstName": "Dusan",
-         "lastName": "Mijatovic",
-         "startpage": "private"
-      }
-   },
-   "map":{
-      "map":{
-         "pos":{
-            "pos":1,"key":"pos","title":"Position","type":"number","required":true
-         },
-         "key":{
-            "pos":2, "key":"key", "title":"Key","type":"string", "required":true
-         },
-         "title":{
-            "pos": 3, "key":"title","title":"Title","type":"string","required":true
-         },
-         "type":{
-            "pos": 4, "key":"type", "title":"Title","type":"string","required":true
-         },
-         "required":{
-            "pos": 5, "key":"required","title":"Required","type":"boolean","required":true
-         }
+      "key": {
+        "pos": 2,
+        "key": "key",
+        "title": "Key",
+        "type": "string",
+        "required": true
       },
-      "menu":{         
-         "pos":{
-            "pos":1, "key":"pos","title":"Position","type":"number","required":true
-         },
-         "active":{
-            "pos":2,"key":"active", "title": "Active", "type":"boolean","required": true
-         },
-         "title":{
-            "pos":3,"key":"title","title":"Title","type":"text","required":true
-         },
-         "matIcon":{         
-            "pos":4, "key":"matIcon","title":"Material icon","type":"text","required": true
-         },
-         "path":{
-            "pos":5,"key":"path","title": "Local path","type":"text","required":true 
-         }
+      "title": {
+        "pos": 3,
+        "key": "title",
+        "title": "Title",
+        "type": "string",
+        "required": true
+      },
+      "type": {
+        "pos": 4,
+        "key": "type",
+        "title": "Title",
+        "type": "string",
+        "required": true
+      },
+      "required": {
+        "pos": 5,
+        "key": "required",
+        "title": "Required",
+        "type": "boolean",
+        "required": true
       }
-   }
+    },
+    "menu": {
+      "pos": {
+        "pos": 1,
+        "key": "pos",
+        "title": "Position",
+        "type": "number",
+        "required": true
+      },
+      "active": {
+        "pos": 2,
+        "key": "active",
+        "title": "Active",
+        "type": "boolean",
+        "required": true
+      },
+      "title": {
+        "pos": 3,
+        "key": "title",
+        "title": "Title",
+        "type": "text",
+        "required": true
+      },
+      "matIcon": {
+        "pos": 4,
+        "key": "matIcon",
+        "title": "Material icon",
+        "type": "text",
+        "required": true
+      },
+      "path": {
+        "pos": 5,
+        "key": "path",
+        "title": "Local path",
+        "type": "text",
+        "required": true
+      }
+    },
+    "user": {
+      "avatar": {
+        "pos": 1,
+        "key": "avatar",
+        "title": "Picture",
+        "type": "image",
+        "required": false
+      },
+      "active": {
+        "pos": 2,
+        "key": "active",
+        "title": "Active",
+        "type": "boolean",
+        "required": true
+      },
+      "firstName": {
+        "pos": 3,
+        "key": "firstName",
+        "title": "First name",
+        "type": "text",
+        "required": true
+      },
+      "lastName": {
+        "pos": 4,
+        "key": "lastName",
+        "title": "Last name",
+        "type": "text",
+        "required": true
+      },
+      "jobTitle": {
+        "pos": 5,
+        "key": "jobTitle",
+        "title": "Job title",
+        "type": "text",
+        "required": false
+      },
+      "companyName": {
+        "pos": 6,
+        "key": "companyName",
+        "title": "Company",
+        "type": "text",
+        "required": false
+      },
+      "birthDate": {
+        "pos": 7,
+        "key": "birthDate",
+        "title": "Date of birth",
+        "type": "date",
+        "required": false
+      },
+      "birthCity": {
+        "pos": 8,
+        "key": "birthCity",
+        "title": "City of birth",
+        "type": "date",
+        "required": false
+      }
+    }
+  },
+  "user": {
+    "bWlqYXRvdmljMTk3MEBnbWFpbC5jb20=": {
+      "avatar": "https://lh6.googleusercontent.com/-HRvFCA8NlvQ/AAAAAAAAAAI/AAAAAAAAAA8/QBO85KKjuwA/photo.jpg?sz=64",
+      "active":true,
+      "firstName": "Dusan",
+      "lastName": "Mijatovic",
+      "jobTitle": "data visualizatie expert",
+      "companyName": "dv4all",
+      "birthDate": "25-11-1970",
+      "birthCity": "Beograd",
+      "email": "mijatovic1970@gmail.com",
+      "startpage": "home"
+    }
+  }
 }

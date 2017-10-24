@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 
-import { LoginSvc } from './login.svc';
+import { LoginSvc } from '../firebase/login.svc';
 
 @Component({
    selector: 'app-change-email',
    templateUrl: './change.email.html',
-   styleUrls: ['./login.component.scss']
+   styleUrls: ['./login.scss']
 })
 export class ChangeEmailComponent implements OnInit {
    pageTitle: string = "Change email";
