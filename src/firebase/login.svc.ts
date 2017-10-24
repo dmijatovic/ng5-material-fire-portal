@@ -302,14 +302,17 @@ export class LoginSvc implements CanActivate {
    * is set to null
    */
   logOut() {
-    //remove use 
+    //remove user 
     this.user = null;
     //logout
-    this.fire.auth.signOut()
+    return this.fire.auth.signOut()
       .then((d) => {
-        this.router.navigateByUrl("public");
+        //this.router.navigateByUrl("public");
+        return true
       }, (e) => {
-        this.router.navigateByUrl("error/505");
+        //unknown error        
+        //this.router.navigateByUrl("error/505");
+        throw new Error(e.mesage);
       });
   }
 }

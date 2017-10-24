@@ -35,7 +35,7 @@ export class ErrorComponent implements OnInit {
         } else {
           this.standardErrorMessage()
         }
-      }, (e) => {
+      },(e) => {
         console.error("ErrorComponent:", e);
       });
 

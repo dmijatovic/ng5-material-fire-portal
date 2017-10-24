@@ -1,11 +1,11 @@
-<section class="error-page-wrap">
+<section class="logout-page-wrap">
   
-  <div class="error-number">
+  <div class="logout-number">
      <h1>{{ errNumber }}</h1>
   </div>      
   
-  <div class="error-body">
-     <div class="error-title">         
+  <div class="logout-body">
+     <div class="logout-title">         
         <div>
            {{ errTitle }}
         </div>         
@@ -13,12 +13,12 @@
            {{ matIcon }}
         </i>
      </div>
-     <div class="error-message"
+     <div class="logout-message"
         [innerHTML]="errMsg">
      </div>
 
-     <div class="error-nav-panel">
-        <a [routerLink]="btn.path" mat-button>{{ btn.label }}</a>  
+     <div class="logout-nav-panel">
+        <a [routerLink]="btn?.path" mat-button>{{ btn?.label }}</a>  
      </div>
   </div>      
 </section>
