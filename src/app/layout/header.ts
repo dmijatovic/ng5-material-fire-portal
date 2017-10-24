@@ -21,6 +21,8 @@ export class AppHeader implements OnInit {
   title$: Subscription;
   menuItems: any;
   profileItems: any;
+  displayName:string;
+  avatar:string = "assets/img/avatar.png";
 
   constructor(
     private login: LoginSvc,
@@ -50,6 +52,11 @@ export class AppHeader implements OnInit {
         debugger
         console.error(e);
       });
+    //get avatar image and display name 
+    this.displayName = this.login.getCurrentUserInfo().displayName;
+    if (this.login.getCurrentUserInfo().photoURL){
+      this.avatar = this.login.getCurrentUserInfo().photoURL; 
+    }    
   }
 
   logOut() {

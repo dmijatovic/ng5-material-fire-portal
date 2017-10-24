@@ -90,39 +90,7 @@ export class LoginSvc implements CanActivate {
         res(null);
       }
     });
-  }
-  /**
-   * Returns list of all menu items of the app
-   */
-  getListofAllMenuItems() {
-    return new Promise((res, rej) => {
-
-      //debugger
-
-      let path = env.cfg.firebase.mainMenuPath,
-        ref = this.data.database.ref(path)
-          .orderByChild('pos');
-
-      //request user object ONCE
-      //ordered by pos 
-      ref.once('value')
-        .then((snapshot) => {
-          /*console.group("getAllMenuItems");
-          console.log("path", path);
-          console.log("snaphot", snapshot.exists());
-          console.groupEnd();*/
-          if (snapshot.exists()) {
-            let data = snapshot.val();
-            res(Object.keys(data));
-          } else {
-            res(null);
-          }
-        }, (e) => {
-          rej(e);
-        });
-
-    });
-  }
+  }  
   /**
    * Returns array of objects of 
    * all menu items avaliable in the app
@@ -138,10 +106,10 @@ export class LoginSvc implements CanActivate {
       //request user object ONCE
       ref.once('value')
         .then((snapshot) => {
-          /*console.group("getAllMenuItems");
-          console.log("path", path);
-          console.log("snaphot", snapshot.exists());
-          console.groupEnd();*/
+          //console.group("getAllMenuItems");
+          //console.log("path", path);
+          //console.log("snaphot", snapshot.exists());
+          //console.groupEnd();
           let d = [];
           //get list of items 
           //ordered by position
@@ -257,6 +225,12 @@ export class LoginSvc implements CanActivate {
     return this.user;
   }
   /**
+   * 
+   */
+  getCurrentUserInfo(){
+    return this.fire.auth.currentUser
+  }
+  /**
    * Can user activate angular route
    * this function is implemented in angular router     
    * @param next 
@@ -266,7 +240,7 @@ export class LoginSvc implements CanActivate {
     let n = next.data['permission'],
       s = state.url;
 
-    debugger
+    //debugger
     //check user 
     if (this.user == null) {
       this.accessDenied(s);

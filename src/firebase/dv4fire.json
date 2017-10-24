@@ -4,30 +4,37 @@
       "home": {
         "active": true,
         "matIcon": "home",
-        "path": "/home",
+        "path": "app",
         "pos": 1,
         "title": "Home"
+      },
+      "profile": {
+        "active": true,
+        "matIcon": "person",
+        "path": "/profile",
+        "pos": 1,
+        "title": "Profile"
       }     
     },
     "profile": {
       "delete": {
         "active": true,
         "matIcon": "delete",
-        "path": "remove",
+        "path": "/user/remove",
         "pos": 3,
         "title": "Delete account"
       },
       "logout": {
         "active": true,
         "matIcon": "exit_to_app",
-        "path": "logout",
+        "path": "/user/logout",
         "pos": 2,
         "title": "Logout"
       },
       "view": {
         "active": true,
         "matIcon": "person",
-        "path": "profile",
+        "path": "/profile",
         "pos": 1,
         "title": "My profile"
       }
@@ -71,7 +78,7 @@
         "required": true
       }
     },
-    "menu": {
+    "m enu": {
       "pos": {
         "pos": 1,
         "key": "pos",
@@ -178,7 +185,7 @@
       "birthDate": "25-11-1970",
       "birthCity": "Beograd",
       "email": "mijatovic1970@gmail.com",
-      "startpage": "home"
+      "startpage": "app"
     }
   }
 }

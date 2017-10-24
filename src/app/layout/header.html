@@ -1,39 +1,44 @@
 <mat-toolbar class="private-page-header">
-   <span>
-      <img class="app-logo" src="assets/img/dv4shapes64.svg" />
-   </span>
-   <span>{{title}}</span>
-   <span class="nav-spacer"></span>
-   <span class="nav-spacer"></span>
+  <span>
+    <img class="app-logo" src="assets/img/dv4shapes64.svg" />
+  </span>
+  <span>{{title}}</span>
+  <span class="nav-spacer"></span>
+  <span class="nav-spacer"></span>
 
-   <!-- USER MENU -->
-   <mat-icon class="nav-icon" 
+  <!-- USER MENU 
+  <mat-icon class="nav-icon avatar"
+    matTooltip="Your profile" 
+    [matMenuTriggerFor]="profile">
+    person
+  </mat-icon>-->
+  
+  <div class="nav-avatar" 
       matTooltip="Your profile" 
       [matMenuTriggerFor]="profile">
-      face
-   </mat-icon>   
-   <mat-menu #profile="matMenu" yPosition="below">
-      <button *ngFor="let item of profileItems" 
-         mat-menu-item [routerLink]="item.path">
-         <mat-icon>{{item.matIcon}}</mat-icon>
-         <span>{{item.title}}</span>
-      </button>
-   </mat-menu>
-   
-   <!-- MAIN MENU -->
-   <mat-icon class="nav-icon" matTooltip="Menu items" [matMenuTriggerFor]="menu">
-      more_vert
-   </mat-icon>
+    <img [src]="avatar" />
+  </div>
+  <mat-menu #profile="matMenu" yPosition="below">
+    <button *ngFor="let item of profileItems" mat-menu-item [routerLink]="item.path">
+      <mat-icon>{{item.matIcon}}</mat-icon>
+      <span>{{item.title}}</span>
+    </button>
+  </mat-menu>
 
-   <mat-menu #menu="matMenu">
-      <button *ngFor="let item of menuItems" mat-menu-item [routerLink]="item.path">
-         <mat-icon>{{item.matIcon}}</mat-icon>
-         <span>{{item.title}}</span>
-      </button>
-      <!-- 
+  <!-- MAIN MENU -->
+  <mat-icon class="nav-icon" matTooltip="Menu items" [matMenuTriggerFor]="menu">
+    more_vert
+  </mat-icon>
+
+  <mat-menu #menu="matMenu">
+    <button *ngFor="let item of menuItems" mat-menu-item [routerLink]="item.path">
+      <mat-icon>{{item.matIcon}}</mat-icon>
+      <span>{{item.title}}</span>
+    </button>
+    <!-- 
       <button mat-menu-item disabled>
          <mat-icon>voicemail</mat-icon>
          <span>Check voicemail</span>
       </button> -->
-   </mat-menu>
+  </mat-menu>
 </mat-toolbar>

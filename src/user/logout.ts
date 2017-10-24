@@ -24,7 +24,7 @@ export class LogoutComponent implements OnInit, OnDestroy {
     private fire:LoginSvc
   ){}
   ngOnInit() {
-    debugger    
+    //debugger    
     //get logout message from system
     let msg = sysMsg["logout"];
     //logout user

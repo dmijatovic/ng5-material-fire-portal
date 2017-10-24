@@ -106,7 +106,7 @@ export class LoginComponent implements OnInit {
         }
       })
       .then((profile: any) => {
-        debugger
+        //debugger
         if (profile && profile.type && profile.type=="NAVIGATE") {
           //navigate to verify page
           this.router.navigate(profile.payload);

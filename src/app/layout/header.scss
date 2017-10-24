@@ -18,3 +18,14 @@
     height:36px;
     margin-right:24px;
 }
+
+.nav-avatar{
+    height: 36px;
+    width: 36px;
+    border: 2px solid $app-dark-grey;    
+    border-radius: 50%;
+    
+    img{
+      height: 100%;
+    }
+}

@@ -1,89 +1,85 @@
 <section class="login-page">
 
-   <div class="login-form-wrap">
+  <div class="login-form-wrap">
 
-      <!-- LOGO -->
-      <section class="login-logo">
-         <!-- Your logo here, check scss file -->
-      </section>
+    <!-- LOGO -->
+    <section class="login-logo">
+      <!-- Your logo here, check scss file -->
+    </section>
 
+    <mat-card class="mat-card">
 
-      <mat-card class="mat-card">
+      <mat-card-header>
+        <h1>{{title}}</h1>
+      </mat-card-header>
 
-         <mat-card-header>
-            <h1>{{title}}</h1>
-         </mat-card-header>
+      <mat-card-content>
 
-         <mat-card-content>
+        <form [formGroup]="profileForm" (ngSubmit)="onSubmit(profileForm.value)">
 
-            <form [formGroup]="profileForm" (ngSubmit)="onSubmit(profileForm.value)">
-               
-               <input 
-                  type="hidden"
-                  name="email"
-                  formControlName="email"/>
+          <input type="hidden" name="email" formControlName="email" />
+          <div class="form-row">
+            <mat-form-field>
+              <input matInput name="firstName" type="text" 
+                formControlName="firstName" maxlength="50" 
+                placeholder="First name *">
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput name="lastName" type="text" 
+                maxlength="50" formControlName="lastName" 
+                placeholder="Last name *">
+            </mat-form-field>
+          </div>
+          <div class="form-row">
+            <mat-form-field>
+              <input matInput name="companyName" type="text" 
+                formControlName="companyName" 
+                maxlength="50" placeholder="Company">
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput name="jobTitle" type="text" 
+                maxlength="50" 
+                formControlName="jobTitle" placeholder="Job title">
+            </mat-form-field>
+          </div>
+          <div class="form-row">
+            <mat-form-field>
+              <input matInput name="birthDate" type="text" 
+                formControlName="birthDate" placeholder="Your birthdate">
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput type="text" maxlength="50" 
+                formControlName="birthCity" placeholder="City of birth">
+            </mat-form-field>
+          </div>
+          <mat-form-field>
+            <mat-select formControlName="startpage" 
+              placeholder="Start page *">
 
-               <mat-form-field>
-                  <input matInput 
-                     name="firstName" 
-                     type="text" 
-                     formControlName="firstName" 
-                     maxlength="50"                     
-                     placeholder="First name">
-               </mat-form-field>
-               <mat-form-field>
-                  <input matInput 
-                     name="lastName"
-                     type="text" 
-                     maxlength="50" 
-                     formControlName="lastName" 
-                     placeholder="Last name">
-               </mat-form-field>
-               <mat-form-field>
-                  <input matInput 
-                     name="birthDate"
-                     type="text" 
-                     formControlName="birthDate" 
-                     placeholder="Your birthdate">
-               </mat-form-field>
-               <mat-form-field>
-                  <input matInput 
-                     type="text" 
-                     maxlength="50" 
-                     formControlName="birthCity" 
-                     placeholder="City of birth">
-               </mat-form-field>
-               <mat-form-field>
-                  <mat-select                      
-                     formControlName="startpage" 
-                     placeholder="Start page">
+              <mat-option *ngFor="let item of pages" 
+                [value]="item.path">
+                {{ item.title }}
+              </mat-option>
 
-                     <mat-option *ngFor="let item of pages" [value]="item">
-                        {{ item }}
-                     </mat-option>
+            </mat-select>
+          </mat-form-field>
 
-                  </mat-select>
-               </mat-form-field>
+          <div class="login-nav">
+            <span style="flex:1"></span>
 
-               <div class="login-nav">
-                  <span style="flex:1"></span>
-                     
-                  <button mat-raised-button
-                     style="flex:1"
-                     color="primary"
-                     [disabled]="!profileForm.valid">
-                           Create profile
-                  </button>                          
-               </div>
-            </form>
-         </mat-card-content>
+            <button mat-raised-button style="flex:1" color="primary" [disabled]="!profileForm.valid">
+              Create profile
+            </button>
+          </div>
+        </form>
+      </mat-card-content>
 
-         <mat-card-actions>
-           
-         </mat-card-actions>
-      </mat-card>
+      <mat-card-actions>
 
-   </div>
+      </mat-card-actions>
+    </mat-card>
+
+  </div>
 
 </section>
 
