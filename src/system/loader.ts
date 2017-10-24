@@ -3,8 +3,8 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-loader',
-  templateUrl: './loader.component.html',
-  styleUrls: ['./loader.component.scss']
+  templateUrl: './loader.html',
+  styleUrls: ['./loader.scss']
 })
 export class LoaderComponent implements OnInit {
   

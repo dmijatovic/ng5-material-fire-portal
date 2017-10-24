@@ -1,0 +1,25 @@
+<section class="error-page-wrap">
+  
+  <div class="error-number">
+     <h1>{{ errNumber }}</h1>
+  </div>      
+  
+  <div class="error-body">
+     <div class="error-title">         
+        <div>
+           {{ errTitle }}
+        </div>         
+        <i class="material-icons error">
+           {{ matIcon }}
+        </i>
+     </div>
+     <div class="error-message"
+        [innerHTML]="errMsg">
+     </div>
+
+     <div class="error-nav-panel">
+        <a [routerLink]="btn.path" mat-button>{{ btn.label }}</a>  
+     </div>
+  </div>      
+</section>
+

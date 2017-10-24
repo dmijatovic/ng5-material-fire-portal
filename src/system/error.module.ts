@@ -10,7 +10,7 @@ import { environment as env } from '../environments/environment';
 
 import { MatButtonModule } from '@angular/material';
 
-import { ErrorComponent } from './error.component';
+import { ErrorComponent } from './error';
 
 //import { sysMsg } from './sys.msg';
 

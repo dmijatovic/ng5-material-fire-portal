@@ -157,7 +157,7 @@ export class LoginSvc implements CanActivate {
   getAllProfileOptions() {
     return new Promise((res, rej) => {
 
-      debugger
+      //debugger
       //convert email to b64 encoded string
       let path = env.cfg.firebase.profileMenuPath,
         ref = this.data.database.ref(path)

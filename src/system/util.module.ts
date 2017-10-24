@@ -14,7 +14,7 @@ import { MatProgressSpinnerModule, MatButtonModule,
 /**
  * UTILITY components
  */
-import { LoaderComponent } from './loader.component';
+import { LoaderComponent } from './loader';
 import { ListItemComponent, dv4List } from './dv4-list-item';
 
 /**

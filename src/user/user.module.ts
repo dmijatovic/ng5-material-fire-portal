@@ -23,7 +23,8 @@ import { environment as env } from '../environments/environment';
 import {
   LoginComponent, VerifyEmailComponent,
   PasswordResetComponent, ChangeEmailComponent,
-  RemoveAccountComponent, UserProfilePage
+  RemoveAccountComponent, UserProfilePage,
+  LogoutComponent
 } from './index';
 
 //firebase service
@@ -40,7 +41,11 @@ const routes: Routes = [{
   path: 'login',
   component: LoginComponent,
   data: env.cfg.user.login
-}, {
+},{
+  path: 'logout',
+  component: LogoutComponent,
+  data: env.cfg.user.login
+},{
   path: 'register',
   component: LoginComponent,
   data: env.cfg.user.register
@@ -56,7 +61,7 @@ const routes: Routes = [{
 }, {
   path: 'remove',
   component: RemoveAccountComponent
-}, {
+},{
   path: 'profile',
   component: UserProfilePage,
   //canActivate: [LoginSvc],
@@ -69,12 +74,12 @@ const routes: Routes = [{
 
 @NgModule({
   declarations: [
-    LoginComponent,
+    LoginComponent,LogoutComponent,
     VerifyEmailComponent,
     PasswordResetComponent,
     ChangeEmailComponent,
     RemoveAccountComponent,
-    UserProfilePage
+    UserProfilePage    
   ],
   imports: [
     //BrowserModule,
@@ -85,7 +90,7 @@ const routes: Routes = [{
   ],
   providers: [LoginSvc],
   exports: [
-    LoginComponent,
+    LoginComponent,LogoutComponent,
     VerifyEmailComponent,
     PasswordResetComponent,
     ChangeEmailComponent,

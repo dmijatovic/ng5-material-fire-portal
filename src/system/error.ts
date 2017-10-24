@@ -6,8 +6,8 @@ import { sysMsg } from './sys.msg';
 
 @Component({
   selector: 'app-error',
-  templateUrl: './error.component.html',
-  styleUrls: ['./error.component.scss']
+  templateUrl: './error.html',
+  styleUrls: ['./error.scss']
 })
 export class ErrorComponent implements OnInit {
 
