@@ -10,16 +10,17 @@ This project is ment to be template for new portals. Therefore I decided to spli
 - `environments`: environment definitions file(s)
 - `firebase`: firebase definitions incl. private key(s). See readme.txt for more info
 - `login`: login and authentication modules
-- `material`: material design styles, custom fixes and material.module that holds material components used in the app 
+- `material`: material design styles, custom fixes and material.module that holds material components used in the app
 - `public`: this module keeps public avaliable pages. Public pages are completely separated from app and have their own page layout and routing
 - `system`: system module that holds system pages like 401, 404, loaders etc.
 
 ## Branches
 
-- `ng4mat`: starter branch ng4 with custom material theme. use this as stater. note that material is still in beta (beta 12 in this case). There was a bug in beta 11 version of angular/material, so I extracted scss file and changed few lines of theming code. The adapted material theming version is in material folder. 
+- `ng4mat`: starter branch ng4 with custom material theme. use this as stater. note that material is still in beta (beta 12 in this case). There was a bug in beta 11 version of angular/material, so I extracted scss file and changed few lines of theming code. The adapted material theming version is in material folder.
+- `ng4portal`: basic dashboard portal demo and project starter for dashboards hosted with firebase. It has login and user modules for authentication. In addition it uses lazy loading of site modules (sections)
 - `dev`: branch used for developing new features testing new ideas
 - `master`: demo portal verson live on dv4all website
-- `others`: this project might hold other branches in the future 
+- `others`: this project might hold other branches in the future
 
 ## Development
 
