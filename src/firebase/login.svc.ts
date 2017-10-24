@@ -9,6 +9,10 @@ import {
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
 
+//enviroment
+import { environment as env } from '../environments/environment';
+
+
 @Injectable()
 export class LoginSvc implements CanActivate {
   //user object 
@@ -88,10 +92,9 @@ export class LoginSvc implements CanActivate {
 
       //debugger
 
-      let path = '/menu/',
+      let path = env.cfg.firebase.mainMenuPath,
         ref = this.data.database.ref(path)
-          .orderByChild('pos')
-          .orderByValue();
+          .orderByChild('pos');
 
       //request user object ONCE
       //ordered by pos 
@@ -122,7 +125,7 @@ export class LoginSvc implements CanActivate {
 
       //debugger
       //convert email to b64 encoded string
-      let path = '/menu/',
+      let path = env.cfg.firebase.mainMenuPath,
         ref = this.data.database.ref(path)
           .orderByChild('pos');
       //request user object ONCE
@@ -154,9 +157,9 @@ export class LoginSvc implements CanActivate {
   getAllProfileOptions() {
     return new Promise((res, rej) => {
 
-      //debugger
+      debugger
       //convert email to b64 encoded string
-      let path = '/profile/',
+      let path = env.cfg.firebase.profileMenuPath,
         ref = this.data.database.ref(path)
           .orderByChild('pos');
       //request user object ONCE

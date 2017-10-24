@@ -47,6 +47,13 @@ export const sysCfg = {
       panelMsg:'Provide email and password to register.'
     }  
   },
+  //firebase paths used by 
+  //login.svc
+  firebase:{
+    mainMenuPath:'/menu/main',
+    profileMenuPath:'/menu/profile',
+    userPath:'/user'
+  },
   //props used by admin section of portal 
   admin: {
      //tables

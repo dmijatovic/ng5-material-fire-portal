@@ -43,4 +43,4 @@ const routes: Routes = [{
    ],
    exports: [ErrorComponent]
 })
-export class SystemErrorModule { }
+export class SystemErrorModule {}
