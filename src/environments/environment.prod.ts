@@ -9,8 +9,6 @@ import { sysCfg } from '../system/sys.cfg';
 
 export const environment = {
   production: true,
-  //firebase credentials
-  firebase: cred.firebase,
-  //system settings
+  firebase: cred.firestore,
   cfg: sysCfg
 };

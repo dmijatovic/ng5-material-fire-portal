@@ -26,7 +26,7 @@ This project is ment to be template for new portals. Therefore I decided to spli
 ## Development
 
 - Run `npm run dev` for a dev server and sourcemaps. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-- To add new material component, you need to 'inject' references in two places 
+- To add new material component, you need to 'inject' references in two places
     - add material component reference in your angualr component
     - add meterial module reference into material module (material/material.module.ts)
 
@@ -71,4 +71,15 @@ Lazy loading also INFLUENCE module imports/refrences in the app. Specific module
 
 This webapp is setup for firebase hosting. For deployment firebase cli is required. It can be installed through npm, see: https://firebase.google.com/docs/hosting/quickstart?authuser=0
 
-To deploy project to firebase hosting site (firebase.json) use command `npm run deploy`. This will call firebase cli to deploy app from dist folder to firebase host. Prior to deplyment run `npm run build-prod` to create production build of angular app.
+To deploy project to firebase hosting site (firebase.json) use command `npm run deploy`. This will call firebase cli to deploy app from dist folder to firebase host. Prior to deplyment run `npm run build-prod` to create production build of angular app. Account used is dv4all with spark plan. Within spark plan following traffic is included in service
+
+- Relatime database (firebase):
+  - 100 simultanious connections
+  - 1 GB storage
+  - 10 GB/month traffic
+
+- Hosting webapp files
+  - 1 GB storage
+  - 10 GB/month traffic
+
+For more info about firebase hosting costs, see: https://firebase.google.com/pricing/?authuser=0
