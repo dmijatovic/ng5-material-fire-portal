@@ -63,7 +63,7 @@ const routes:Routes=[/*{
   loadChildren: 'user/user.module#UserModule'
 },{
   path:'',  
-  redirectTo:'app',
+  redirectTo:'user/login',
   pathMatch:'full'
 },/*{
     path:'**',

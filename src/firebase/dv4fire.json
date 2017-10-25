@@ -4,14 +4,14 @@
       "home": {
         "active": true,
         "matIcon": "home",
-        "path": "app",
+        "path": "/app",
         "pos": 1,
         "title": "Home"
       },
       "profile": {
         "active": true,
         "matIcon": "person",
-        "path": "/profile",
+        "path": "profile",
         "pos": 1,
         "title": "Profile"
       }     
@@ -34,7 +34,7 @@
       "view": {
         "active": true,
         "matIcon": "person",
-        "path": "/profile",
+        "path": "profile",
         "pos": 1,
         "title": "My profile"
       }

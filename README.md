@@ -3,6 +3,7 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.2. This is starter project for ng4 with material (custom theme) and firebase.
 
 ## Project folder structure (modules)
+
 This project is ment to be template for new portals. Therefore I decided to split number of 'standard' components from the 'client specific' components. The client specific components are placed in app while various system components are placed outside app folder. The complete structure is as follows:
 
 - `app`: here we store customer specific pages
@@ -32,7 +33,6 @@ This project is ment to be template for new portals. Therefore I decided to spli
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
 
 ## Build
 
@@ -66,3 +66,9 @@ In this project we have 2 major sections that are lazy loaded
 - private: access to private section of the app
 
 Lazy loading also INFLUENCE module imports/refrences in the app. Specific modules cannot be imported twice, this will cause an error. Specific modules should be imported at exact  section where are used because lazy loaded modules are not aware of the module loaded in another lazy loaded module. This might impact sharing data/info between lazy loaded modules. At this moment I am not sure about possibilities in this area. We will test this furher of course.
+
+## Firebase hosting
+
+This webapp is setup for firebase hosting. For deployment firebase cli is required. It can be installed through npm, see: https://firebase.google.com/docs/hosting/quickstart?authuser=0
+
+To deploy project to firebase hosting site (firebase.json) use command `npm run deploy`. This will call firebase cli to deploy app from dist folder to firebase host. Prior to deplyment run `npm run build-prod` to create production build of angular app.

@@ -68,7 +68,7 @@ import { AppStateSvc } from './app.state.svc';
 const routes: Routes = [{
    path:'',
    component: PrivateOutlet,
-   canActivate:[ LoginSvc ],
+   //canActivate:[ LoginSvc ],
    children: [{
       path: 'admin',
       loadChildren: 'app/admin/admin.module#AdminModule'

@@ -53,10 +53,12 @@ export class AppHeader implements OnInit {
         console.error(e);
       });
     //get avatar image and display name 
-    this.displayName = this.login.getCurrentUserInfo().displayName;
-    if (this.login.getCurrentUserInfo().photoURL){
-      this.avatar = this.login.getCurrentUserInfo().photoURL; 
-    }    
+    if (this.login.getCurrentUserInfo()){
+      this.displayName = this.login.getCurrentUserInfo().displayName;
+      if (this.login.getCurrentUserInfo().photoURL){
+        this.avatar = this.login.getCurrentUserInfo().photoURL; 
+      }
+    }        
   }
 
   logOut() {
