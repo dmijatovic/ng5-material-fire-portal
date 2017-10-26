@@ -39,18 +39,18 @@ export class ProfileSvc {
       ref = this.data.database.ref(path);
     
     //save name 
-    debugger
+    //debugger
     let user = this.fire.auth.currentUser;
     user.updateProfile({
       displayName: data.firstName + " " + data.lastName,
-      photoURL:'assets/img/avatar.png'
+      photoURL: data.avatar
     })
     .catch((e)=>{
       console.error(e);
     });   
     //add default avatar
-    data['avatar'] = 'assets/img/avatar.png';
-    //debugger
+    //data['avatar'] = 'assets/img/avatar.png';
+    debugger
     return ref.set(data);
   }
 }

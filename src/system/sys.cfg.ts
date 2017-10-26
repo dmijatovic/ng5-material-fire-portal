@@ -6,6 +6,7 @@ export const sysCfg = {
   //app startpage
   startPage:'/app',
   loginPage:'/user/login',
+  defaultAvatar:'assets/img/avatar.png',
   //user login page 
   //button data 
   //passed via router

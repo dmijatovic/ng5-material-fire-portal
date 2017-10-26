@@ -3,8 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
+import { environment as env } from '../environments/environment';
 import { LoginSvc } from '../firebase/login.svc';
 import { ProfileSvc } from '../firebase/profile.svc';
+
 
 @Component({
   selector: 'app-user-profile',
@@ -27,12 +29,16 @@ export class UserProfilePage implements OnInit {
   ){}
   ngOnInit() {
     //get email 
-    let eml = this.getEmail();
+    let eml = this.getEmail(),
+      createDate = new Date().toISOString(),
+      avatar = env.cfg.defaultAvatar;
     //get metnu items 
     this.getMenuItems();
     //debugger 
     this.profileForm = this.fb.group({
       email: [eml, Validators.required],
+      createDate: [createDate, Validators.required],
+      avatar: [avatar, Validators.required],
       firstName: [null, Validators.required],
       lastName: [null, Validators.required],
       companyName: [null],

@@ -16,8 +16,10 @@
       <mat-card-content>
 
         <form [formGroup]="profileForm" (ngSubmit)="onSubmit(profileForm.value)">
-
+          <input type="hidden" name="avatar" formControlName="avatar" />
           <input type="hidden" name="email" formControlName="email" />
+          <input type="hidden" name="createDate" formControlName="createDate" />
+          
           <div class="form-row">
             <mat-form-field>
               <input matInput name="firstName" type="text" 

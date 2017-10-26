@@ -83,3 +83,6 @@ To deploy project to firebase hosting site (firebase.json) use command `npm run 
   - 10 GB/month traffic
 
 For more info about firebase hosting costs, see: https://firebase.google.com/pricing/?authuser=0
+
+## Domains
+Firebase hosting offers possibility to connect custom domain and get ssl for it. Note that dv4all domains (dv4all.com and dv4all.nl) are at Hostign2Go. During the precess of adding subdomain to firebase project, firebase will require you to add two A records at your provider. At Hosting2Go this is not possible, only one A record per subdomain is supported. So you should use CNAME records and provide firebase domainname as forward. This is the only way with hostings that do not allow multiple A records for same domain values.

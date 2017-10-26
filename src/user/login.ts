@@ -79,7 +79,7 @@ export class LoginComponent implements OnInit {
     this.fire.logIn(cred.email, cred.password)
       .then((d) => {
         //debugger
-        console.log("logged in");
+        //console.log("logged in");
         //check 
         return {
           email: d.email,

@@ -98,4 +98,11 @@ export class RemoveAccountComponent implements OnInit {
       this.expPanel.open();      
       //console.log(this.expPanel);
    }
+   /**
+    * Go back to previous page using history
+    */
+   goBack(){
+      //just go back
+      window.history.back();
+   }
 }

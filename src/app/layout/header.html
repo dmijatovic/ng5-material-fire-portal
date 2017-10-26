@@ -7,18 +7,10 @@
   <span class="nav-spacer"></span>
   <span class="nav-spacer"></span>
 
-  <!-- USER MENU 
-  <mat-icon class="nav-icon avatar"
-    matTooltip="Your profile" 
-    [matMenuTriggerFor]="profile">
-    person
-  </mat-icon>-->
-  
-  <div class="nav-avatar" 
-      matTooltip="Your profile" 
-      [matMenuTriggerFor]="profile">
+  <div class="nav-avatar" matTooltip="Your profile" [matMenuTriggerFor]="profile">
     <img [src]="avatar" />
   </div>
+  
   <mat-menu #profile="matMenu" yPosition="below">
     <button *ngFor="let item of profileItems" mat-menu-item [routerLink]="item.path">
       <mat-icon>{{item.matIcon}}</mat-icon>

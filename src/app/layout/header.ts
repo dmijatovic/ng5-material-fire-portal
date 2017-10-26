@@ -7,6 +7,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { Subscription } from 'rxjs/Subscription';
 
+import { environment as env } from '../../environments/environment';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.html',
@@ -22,7 +24,7 @@ export class AppHeader implements OnInit {
   menuItems: any;
   profileItems: any;
   displayName:string;
-  avatar:string = "assets/img/avatar.png";
+  avatar:string = env.cfg.defaultAvatar;
 
   constructor(
     private login: LoginSvc,
@@ -53,6 +55,7 @@ export class AppHeader implements OnInit {
         console.error(e);
       });
     //get avatar image and display name 
+    //debugger
     if (this.login.getCurrentUserInfo()){
       this.displayName = this.login.getCurrentUserInfo().displayName;
       if (this.login.getCurrentUserInfo().photoURL){
