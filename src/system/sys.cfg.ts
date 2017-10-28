@@ -13,6 +13,7 @@ export const sysCfg = {
   user: {
     login: {
       panelTitle: "Login",
+      matIcon:"lock_open",
       login: true,
       primBtn: {
         label: 'Login',
@@ -32,6 +33,7 @@ export const sysCfg = {
     },
     register: {
       panelTitle: "Register",
+      matIcon:"login",
       login: false,
       primBtn: {
         label: 'Register',

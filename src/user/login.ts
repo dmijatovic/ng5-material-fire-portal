@@ -17,12 +17,14 @@ export interface formBtn {
 })
 export class LoginComponent implements OnInit {
   panelTitle: string = null;
+  matIcon:string = null;
   loginForm: FormGroup;
   panelStatus: string = null;
   panelMsg: string = null;
   //indicates if primary button
   //is login or register
   login: boolean = true;
+  error: boolean = false;
   //the button labels    
   //used when switching
   primBtn: formBtn;
@@ -60,6 +62,7 @@ export class LoginComponent implements OnInit {
         this.thrdBtn = d.thrdBtn;
         //start message
         this.panelTitle = d.panelTitle;
+        this.matIcon = d.matIcon;
         this.panelMsg = d.panelMsg;
       });
   }
@@ -72,9 +75,11 @@ export class LoginComponent implements OnInit {
     }
   }
   onLogin() {
-    //console.log("login.onLogin");
-    this.panelStatus = "TRYING...";
+    //console.log("login.onLogin");    
+    this.panelStatus = "T...";
     this.showLoader = true;
+    this.panelMsg = "Trying..."
+    this.error = false;
     let cred = this.loginForm.value;
     this.fire.logIn(cred.email, cred.password)
       .then((d) => {
@@ -121,16 +126,17 @@ export class LoginComponent implements OnInit {
         }
       })
       .catch((e) => {
-        debugger
-        this.panelStatus = "FAILED";
+        //debugger
+        this.panelStatus = "F...";
         this.panelMsg = e.message;
         console.error("Failed to login", e.message);
         this.showLoader = false;
+        this.error = true;
       });
   }
   onRegister() {
     //console.log("Here we login");
-    this.panelStatus = "TRYING...";
+    this.panelStatus = "T...";
     this.showLoader = true;
     let cred = this.loginForm.value;
     this.fire.register(cred.email, cred.password)
