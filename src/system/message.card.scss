@@ -9,12 +9,12 @@
   justify-content: center;  
 }
 
-.logout-page-wrap{
+.message-page-wrap{
   display:flex;
   height: 50vh;
   align-items: flex-end;
 
-  .logout-number{
+  .message-number{
     display:flex;      
     height:50vh;
     min-width:4vw;
@@ -23,12 +23,12 @@
     align-items: flex-end;
     padding: 0px 16px;      
   }
-  .logout-body{
+  .message-body{
     //33vw incl ribon
     width:29vw;
     min-width:325px;
 
-    .logout-title{
+    .message-title{
       display:flex;
       font-size:2em;
       align-items:flex-end;
@@ -43,11 +43,11 @@
         padding:$page-padding;   
       }
     }
-    .logout-message{
+    .message-content{
       padding:$content-padding;
       font-size: 14px;
     }
-    .logout-nav-panel{
+    .message-nav-panel{
       text-align: right;
     }
   }

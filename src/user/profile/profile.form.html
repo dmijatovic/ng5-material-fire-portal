@@ -1,0 +1,56 @@
+<!---HEADER OF THE CARD -->
+<div class="profile-header">      
+  <h2>{{displayTitle}}</h2>
+  <h5>{{displaySubtitle}}</h5>  
+</div> 
+
+<!-- BODY OF THE FORM -->
+<div class="profile-body">  
+  
+  <form [formGroup]="profileForm">  
+    
+    <!-- first hidden fields -->
+    <div *ngFor="let item of hiddenFields">
+      <input 
+        #inputField
+        [type]="item.type"
+        [name]="item.key"
+        [formControlName]="item.key"      
+        [required]="item.required"/>
+      
+    </div>
+    <!-- std input fields -->
+    <div *ngFor="let item of profileFields"
+      class="profile-item-row">      
+      
+      <div class="item-label">
+        {{item.title}}
+      </div>
+
+      <div class="item-value">
+        <input 
+          #inputField
+          [type]="item.type"
+          [name]="item.key"
+          [formControlName]="item.key"          
+          [required]="item.required"/>          
+      </div>   
+    </div>        
+  </form>   
+
+</div>
+
+<!-- FOOTER & NAV -->
+<div class="profile-notes">
+  <div class="header">
+    <div class="notes">
+        Click on the field you want to change.
+    </div>
+
+    <button mat-button
+      (click)="saveForm()"
+      [disabled]="!profileForm.valid && !profileForm.dirty">
+      Save
+    </button>    
+  </div>
+</div>

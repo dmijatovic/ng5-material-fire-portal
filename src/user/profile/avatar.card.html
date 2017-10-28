@@ -1,0 +1,18 @@
+
+<div class="avatar-image"
+ (click)="changeAvatar()"
+  *ngIf="avatar">
+  <img [src]="avatar" />
+</div>
+
+<input #imgFileLoader 
+  style="display:none"
+  type="file"
+  accept="image/*"
+  (change)="imgFileToB64($event)"/>
+
+<button 
+  mat-button  
+  (click)="changeAvatar()">
+  Change
+</button>

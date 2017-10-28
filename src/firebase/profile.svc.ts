@@ -5,9 +5,13 @@ import {
   RouterStateSnapshot, CanActivate
 } from '@angular/router';
 
+//RxJS
+import { Observable } from 'rxjs/Observable';
+
 //firebase
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
+//import { FirebaseObjectObservable } from 'angularfire2';
 
 //environment
 import { environment as env } from '../environments/environment';
@@ -20,22 +24,31 @@ export class ProfileSvc {
     private fire: AngularFireAuth,
     private data: AngularFireDatabase
   ){
-    /*
-    //listen for auth changes
-    this.fire.auth.onAuthStateChanged((user) => {
-       if (user) {
-          //signed in 
-          this.user = user;
-       } else {
-          //signed out
-          this.user = null;
-       }
-    });*/
+    //map use on change state
+    this.fire.authState.map((user)=>{
+      debugger 
+      this.user = user;
+    });
   }
+  getCurrentProfile():Promise<any>{
+    //debugger
+    return new Promise((res,rej)=>{      
+      let user = this.fire.auth.currentUser
+      if (user){
+        let path = this.getProfilePath(user.email),
+            ref = this.data.database.ref(path);
 
+        ref.on('value',(snapshot)=>{
+          res(snapshot.val());
+        });
+
+      }else{
+        rej("No current user");
+      }
+    });
+  }
   saveProfile(data: any) {
-    let uid = btoa(data.email),
-      path = env.cfg.firebase.userPath + "/" + uid,
+    let path = this.getProfilePath(data.email),
       ref = this.data.database.ref(path);
     
     //save name 
@@ -50,7 +63,46 @@ export class ProfileSvc {
     });   
     //add default avatar
     //data['avatar'] = 'assets/img/avatar.png';
-    debugger
+    //debugger
     return ref.set(data);
+  }
+  /**
+   * Save avatar only
+   * data can be path to image or base64 image string
+   * @param data 
+   */
+  saveAvatar({ email, data }){
+    let path = this.getProfilePath(email),
+        ref = this.data.database.ref(path);
+    //debugger 
+    return ref.update({ avatar: data });
+  }
+  /**
+   * Subscribes to avatar image stored in 
+   * profile and emits changes to subscriber
+   * data is path to image or base64 string
+   * @param email 
+   */
+  avatar(email):Observable<string>{
+    //get all references 
+    let path = this.getProfilePath(email),
+        ref = this.data.database.ref(path + "/avatar");
+
+    return new Observable((observer)=>{
+      ref.on('value',(snap)=>{  
+        observer.next(snap.val());
+      });      
+    });
+  }
+  /**
+   * Constructs path to profile data based on email addres
+   * profile table based on unique base64 encoded email address
+   * @param email
+   */
+  getProfilePath(email:string){
+    let uid = btoa(email),
+        path = env.cfg.firebase.userPath + "/" + uid;
+
+    return path;
   }
 }

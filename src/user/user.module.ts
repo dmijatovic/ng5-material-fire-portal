@@ -31,6 +31,11 @@ import {
   LogoutComponent
 } from './index';
 
+/*
+import {
+  AvatarCard, ProfileCard, ProfileForm
+} from './profile';*/
+
 //firebase service
 
 //import { SystemErrorModule } from '../system/error.module';
@@ -84,7 +89,7 @@ const routes: Routes = [{
     PasswordResetComponent,
     ChangeEmailComponent,
     RemoveAccountComponent,
-    UserProfilePage    
+    UserProfilePage
   ],
   imports: [
     //BrowserModule,

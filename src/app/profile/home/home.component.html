@@ -1,3 +1,19 @@
-<p>
-  PROFILE home works!
-</p>
+
+<!-- PAGE TITLE -->
+<div class="page-title">
+  <h2>{{ pageTitle }}</h2>
+</div>
+
+<!-- view profile -->
+<app-profile-card 
+  [hidden]="!showLoader"
+  [formField]="formField"
+  [formData]="formData"
+  (onSaveProfile)="saveProfile($event)">
+</app-profile-card>
+
+<!-- loader -->
+<app-loader 
+  [class.active]="showLoader">
+</app-loader>
+

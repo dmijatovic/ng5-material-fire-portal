@@ -1,0 +1,101 @@
+
+@import '../../material/variables';
+
+
+.profile-header{
+  //display:flex;    
+  border-bottom: 1px solid $app-light-grey;  
+  h5{
+    margin: 0px 0px 16px;
+  }
+}
+
+.profile-body{
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid $app-light-grey;
+}
+
+.profile-item-row{
+  display:flex;
+  align-items: baseline;
+  padding: 16px 0px 8px;
+  
+  .item-label{
+    text-transform: lowercase;
+    font-size: 0.9em;
+    color: $app-light-grey;
+    width: 100px;
+    padding:0px 8px 0px 8px;
+  } 
+
+  .item-value{
+    flex:1;
+    
+    input{
+      width:100%;
+      border:none;      
+      border-bottom: 2px solid transparent;
+    }
+
+    input:focus{
+      outline:none!important;
+    }
+
+    input:focus.ng-valid{      
+      border-bottom: 2px solid $app-blue;
+    }
+    
+    input.ng-invalid{
+      border-bottom: 2px solid $app-red;
+    }
+  }
+}
+
+.profile-notes{
+  .header{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;      
+
+    .subtitle{
+      flex:1;
+      font-size: 0.9em;
+      font-weight: 500;
+    }
+  }
+  .notes{
+    font-size: 0.8em;
+    color: $app-dark-grey;      
+    padding: 8px 0px;
+  }
+}
+
+//---------------------------------------
+//ANIMATION
+//---------------------------------------
+.hvr-underline-from-center{
+  position:relative;
+}
+
+//.hvr-underline-from-center:hover:before, 
+.hvr-underline-from-center:focus:before, 
+.hvr-underline-from-center:active:before {
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.hvr-underline-from-center:before {
+  content: "";
+  position: absolute;
+  height: 2px;  
+  left: 50%;
+  right: 50%;
+  bottom: 0;
+  background-color: $app-blue;    
+  transition-property: left, right;  
+  transition-duration: 0.3s;  
+  transition-timing-function: ease-out;
+  z-index: -1;
+}

@@ -12,7 +12,9 @@ import { RouterModule, Routes } from '@angular/router'
 //firebase module & service
 import { FireModule } from '../firebase/fire.module';
 import { FireSvc } from '../firebase/firebase.svc';
-import { LoginSvc } from '../firebase/login.svc';
+//import { LoginSvc } from '../firebase/login.svc';
+import { ProfileSvc } from '../firebase/profile.svc';
+
 
 //get environment for connection to server
 import { environment as env } from '../environments/environment';
@@ -59,6 +61,7 @@ import { AppStateSvc } from './app.state.svc';
 //injected at lover levels to restrict events sharing
 //import { SysStoreSvc } from '../system/sys.store';
 
+
 /**
  * ROUTES
  * top lever route,
@@ -66,53 +69,54 @@ import { AppStateSvc } from './app.state.svc';
  * therefore we have minimal routing at the top
  */
 const routes: Routes = [{
-   path:'',
-   component: PrivateOutlet,
-   //canActivate:[ LoginSvc ],
-   children: [{
-      path: 'admin',
-      loadChildren: 'app/admin/admin.module#AdminModule'
-   },{
-      path: 'animations',
-      loadChildren: 'app/animations/animate.module#AnimationsModule'
-   },{
-      path: 'chat',
-      loadChildren: 'app/chat/chat.module#ChatModule'
-   },{
-      path: 'football',
-      loadChildren: 'app/football/football.module#FootballModule'
-   },{
+  path: '',
+  component: PrivateOutlet,
+  //canActivate:[ LoginSvc ],
+  children: [{
+    path: 'admin',
+    loadChildren: 'app/admin/admin.module#AdminModule'
+  }, {
+    path: 'animations',
+    loadChildren: 'app/animations/animate.module#AnimationsModule'
+  }, {
+    path: 'chat',
+    loadChildren: 'app/chat/chat.module#ChatModule'
+  }, {
+    path: 'football',
+    loadChildren: 'app/football/football.module#FootballModule'
+  },{
       path: 'profile',
-      loadChildren: 'app/profile/profile.module#ProfileModule'
-   },{
-      path: 'weather',
-      loadChildren: 'app/weather/weather.module#WeatherModule'
-   },{//empty path as last
-      path: '',
-      component: HomeComponent,
-      pathMatch:'full'
-   }]
+      loadChildren: 'app/profile/profile.module#ProfileModule'      
+  },{
+    path: 'weather',
+    loadChildren: 'app/weather/weather.module#WeatherModule'
+  }, {//empty path as last
+    path: '',
+    component: HomeComponent,
+    pathMatch: 'full'
+  }]
 }]
 
 @NgModule({
-   declarations: [
-      HomeComponent, AppHeader, AppFooter, PrivateOutlet
-   ],
-   imports: [
-      //BrowserModule,
-      //BrowserAnimationsModule,
-      CommonModule,
-      AppMateralModule,
-      //routed modules
-      //LoginModule, 
-      SystemComponentsModule, 
-      //Firebase
-      FireModule,      
-      //Router
-      RouterModule.forChild(routes)
-   ],
-   providers: [AppStateSvc, FireSvc ],
-   exports: [HomeComponent, AppHeader, AppFooter, PrivateOutlet]
-   //bootstrap: [AppComponent]
+  declarations: [
+    HomeComponent, AppHeader, AppFooter, PrivateOutlet
+  ],
+  imports: [
+    //BrowserModule,
+    //BrowserAnimationsModule,
+    CommonModule,
+    AppMateralModule,
+    //routed modules
+    //LoginModule, 
+    SystemComponentsModule,
+    //Firebase
+    FireModule,    
+    //Router
+    RouterModule.forChild(routes)
+  ],
+  providers: [AppStateSvc, FireSvc, ProfileSvc],
+
+  exports: [HomeComponent, AppHeader, AppFooter, PrivateOutlet]
+  //bootstrap: [AppComponent]
 })
 export class AppModule { }

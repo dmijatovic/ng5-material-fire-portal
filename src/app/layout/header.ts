@@ -1,11 +1,13 @@
 //angular 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { LoginSvc } from '../../firebase/login.svc';
+import { ProfileSvc } from '../../firebase/profile.svc';
 import { AppStateSvc } from "../app.state.svc";
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { Subscription } from 'rxjs/Subscription';
+import { Observable } from 'rxjs/Observable';
 
 import { environment as env } from '../../environments/environment';
 
@@ -18,16 +20,17 @@ import { environment as env } from '../../environments/environment';
   }
 })
 export class AppHeader implements OnInit {
-
   title: string = null;
   title$: Subscription;
   menuItems: any;
   profileItems: any;
   displayName:string;
   avatar:string = env.cfg.defaultAvatar;
+  avatar$:Observable<string>;
 
   constructor(
     private login: LoginSvc,
+    private profile: ProfileSvc,
     private router: Router,
     private route: ActivatedRoute,
     private state: AppStateSvc
@@ -58,17 +61,25 @@ export class AppHeader implements OnInit {
     //debugger
     if (this.login.getCurrentUserInfo()){
       this.displayName = this.login.getCurrentUserInfo().displayName;
-      if (this.login.getCurrentUserInfo().photoURL){
+      /*if (this.login.getCurrentUserInfo().photoURL){
         this.avatar = this.login.getCurrentUserInfo().photoURL; 
-      }
-    }        
+      }*/
+      //subscribe to avatar stream 
+      this.avatar$ = this.profile.avatar(this.login.getCurrentUserInfo().email);
+      this.avatar$.subscribe((d)=>{
+        //debugger
+        console.log("avatar changed");
+        this.avatar = d;
+      });
+    }
   }
 
   logOut() {
     //can we log out?!?
     this.login.logOut();
   }
+  
   deleteAccount() {
     this.router.navigate(['remove']);
-  }
+  }  
 }

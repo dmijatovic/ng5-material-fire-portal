@@ -1,0 +1,20 @@
+
+@import '../../material/variables';
+
+
+:host{
+  display:flex;  
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+
+.view-profile-avatar{
+  display: flex;
+  //align-items: flex-end;
+  min-width: 300px;  
+}
+
+.view-profile-card{
+  flex:1;
+  min-width:400px;
+}

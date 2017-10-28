@@ -78,7 +78,7 @@
         "required": true
       }
     },
-    "m enu": {
+    "menu": {
       "pos": {
         "pos": 1,
         "key": "pos",

@@ -24,13 +24,18 @@
 }
 
 .nav-avatar{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 36px;
   width: 36px;
-  border: 2px solid $app-dark-grey;    
+  //border: 1px solid $app-light-grey;
   border-radius: 50%;
+  overflow:hidden;
   cursor: pointer;
+  
   img{
-    height: 100%;
+    width: 100%;
   }
 }
 
