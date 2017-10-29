@@ -1,23 +1,55 @@
-<section class="message-page-wrap">
 
-  <div class="message-number">
-    <!--<h1>{{ errNumber }}</h1>-->
+<section class="app-message-card">
+    
+  <div class="msg-sidebar">
+    <h1>{{ panelStatus }}</h1>
   </div>
-
-  <div class="message-body">
-    <div class="message-title">
+  
+  <div class="msg-card">        
+    <!-- logo -->
+    <div class="logo active">
+      <img [src]="cfg.logo" />
+    </div>  
+        
+    <!--HEADER/TITLE-->
+    <div class="msg-title">
       <div>
-        {{ msgTitle }}
+        {{ cfg.panelTitle }}
       </div>
-      <i class="material-icons error">
-        {{ matIcon }}
+      <i class="material-icons large">
+        {{ cfg.matIcon }}
       </i>
     </div>
-    <div class="message-content" [innerHTML]="message">
-    </div>
 
-    <div class="message-nav-panel">
-      <a [routerLink]="btn?.path" mat-button>{{ btn?.label }}</a>
+    <!-- loader -->
+    <div class="loader"
+      [class.active]="showLoader">
+      <mat-spinner></mat-spinner>
+    </div>  
+    <!-- INPUT BODY -->
+    <div class="msg-body"
+      [class.active]="!showLoader">      
+      
+      <div *ngIf="panelMsg"
+        class="msg-msg"
+        [class.error]="error"
+        [innerHTML]="panelMsg">
+      </div>    
+      
     </div>
+    
+    <!--- NAV (routerLink)-->
+    <div class="msg-nav-panel"
+      *ngIf="cfg.button"
+      [class.active]="!showLoader">
+
+      <button *ngFor="let btn of cfg.button" 
+        mat-button             
+        [routerLink]="btn.link"
+        [color]="btn?.color">
+        {{btn.label}}
+      </button>      
+      
+    </div>        
   </div>
 </section>

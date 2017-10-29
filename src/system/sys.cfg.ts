@@ -29,7 +29,11 @@ export const sysCfg = {
         label: 'Register',
         link: '../register'
       },
-      panelMsg: 'Provide credentials and press login button.'
+      panelMsg: 'Provide credentials and press login button.',
+      input:[
+        {"pos": 1, "key":"email","title":"Your email",type:"email",required:true},
+        {"pos": 2, "key":"password","title":"Your password",type:"password",required:true}
+      ]
     },
     register: {
       panelTitle: "Register",

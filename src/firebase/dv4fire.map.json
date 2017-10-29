@@ -1,0 +1,136 @@
+{
+  "map": {
+    "map": {
+      "pos": {
+        "pos": 1,
+        "key": "pos",
+        "title": "Position",
+        "type": "number",
+        "required": true
+      },
+      "key": {
+        "pos": 2,
+        "key": "key",
+        "title": "Key",
+        "type": "string",
+        "required": true
+      },
+      "title": {
+        "pos": 3,
+        "key": "title",
+        "title": "Title",
+        "type": "string",
+        "required": true
+      },
+      "type": {
+        "pos": 4,
+        "key": "type",
+        "title": "Title",
+        "type": "string",
+        "required": true
+      },
+      "required": {
+        "pos": 5,
+        "key": "required",
+        "title": "Required",
+        "type": "boolean",
+        "required": true
+      }
+    },
+    "menu": {
+      "pos": {
+        "pos": 1,
+        "key": "pos",
+        "title": "Position",
+        "type": "number",
+        "required": true
+      },
+      "active": {
+        "pos": 2,
+        "key": "active",
+        "title": "Active",
+        "type": "boolean",
+        "required": true
+      },
+      "title": {
+        "pos": 3,
+        "key": "title",
+        "title": "Title",
+        "type": "text",
+        "required": true
+      },
+      "matIcon": {
+        "pos": 4,
+        "key": "matIcon",
+        "title": "Material icon",
+        "type": "text",
+        "required": true
+      },
+      "path": {
+        "pos": 5,
+        "key": "path",
+        "title": "Local path",
+        "type": "text",
+        "required": true
+      }
+    },
+    "user": {
+      "avatar": {
+        "pos": 1,
+        "key": "avatar",
+        "title": "Picture",
+        "type": "image",
+        "required": false
+      },
+      "active": {
+        "pos": 2,
+        "key": "active",
+        "title": "Active",
+        "type": "boolean",
+        "required": true
+      },
+      "firstName": {
+        "pos": 3,
+        "key": "firstName",
+        "title": "First name",
+        "type": "text",
+        "required": true
+      },
+      "lastName": {
+        "pos": 4,
+        "key": "lastName",
+        "title": "Last name",
+        "type": "text",
+        "required": true
+      },
+      "jobTitle": {
+        "pos": 5,
+        "key": "jobTitle",
+        "title": "Job title",
+        "type": "text",
+        "required": false
+      },
+      "companyName": {
+        "pos": 6,
+        "key": "companyName",
+        "title": "Company",
+        "type": "text",
+        "required": false
+      },
+      "birthDate": {
+        "pos": 7,
+        "key": "birthDate",
+        "title": "Date of birth",
+        "type": "date",
+        "required": false
+      },
+      "birthCity": {
+        "pos": 8,
+        "key": "birthCity",
+        "title": "City of birth",
+        "type": "date",
+        "required": false
+      }
+    }
+  }
+}

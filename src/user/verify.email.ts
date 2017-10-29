@@ -1,61 +1,70 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 
 //firebase
 import { AngularFireAuth } from 'angularfire2/auth';
 import { LoginSvc } from '../firebase/login.svc';
 
+import { VerifyEmailCfg } from './user.cfg';
+import { MessageCard } from '../system/message.card';
+
+/**
+ * Page to show when email verification 
+ * is send
+ */
 @Component({
-  selector: 'app-verify-email',
+  selector: 'user-verify-email',
   templateUrl: './verify.email.html',
   styleUrls: ['./login.scss']
 })
-export class VerifyEmailComponent implements OnInit {
-  /**
-   * Page to show when email verification 
-   * is send
-   */
+export class UserVerifyEmail implements OnInit {  
   //user email used
-  email: string = "no email provided";
-  signiture: string = 'dv4all, Firebase demo team';
-  showBtn: boolean = false;
-  
+  verifyCfg = VerifyEmailCfg;
+  @ViewChild('verifyCard') verifyCard:MessageCard;  
   constructor(
-    private fire: AngularFireAuth,
+    //private fire: AngularFireAuth,
     private login: LoginSvc,
-    private router: Router
+    //private router: Router
   ) { }
 
   ngOnInit() {
-    debugger
+    //debugger
     let user = this.login.getProfile();
     if (user) {
-      this.showBtn = true;
-      this.email = user.email;
+      //this.showBtn = true;
+      this.verifyCfg.email = user.email;
       this.sendVerificationEmail();
     } else {
-      this.showBtn = false;
-      //console.error("No user logged in");
-      //this.router.navigate(['error', '401']);
+      //debugger
+      //console.error(e);
+      this.verifyCard.setMsg({
+        status:'F...',
+        msg: this.verifyCfg.msg.login,
+        error:true
+      });
     }
-
-    /* this does not work
-    //subscribe here to user changes 
-    this.fire.auth.onAuthStateChanged((u) => {
-      if (u && u.emailVerified == true) {
-        console.log("verified onAuthStateChange:", u);
-      }
-    });
-    */
   }
   sendVerificationEmail() {
+    this.verifyCard.toggleLoader();
     this.login.sendEmailVerification()
-      .then(() => {
+      .then((email:string) => {
         //debugger 
-        console.log("send code to email");
-      }, (e) => {
+        //console.log("send code to email");
+        this.verifyCard.setMsg({
+          status:'OK',
+          msg: this.verifyCfg.msg.success.replace("{{email}}",email),
+          error:false
+        });
+        this.verifyCard.toggleLoader();
+      },(e) => {
         //debugger 
-        console.error(e);
+        //console.error(e);
+        this.verifyCard.setMsg({
+          status:'F...',
+          msg: e.message,
+          error:true
+        });
+        this.verifyCard.toggleLoader();
       });
   }
 }

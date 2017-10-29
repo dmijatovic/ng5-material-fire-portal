@@ -1,97 +1,61 @@
 //angular
-import { Component, OnInit } from '@angular/core';
-import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
+//services
 import { LoginSvc } from '../firebase/login.svc';
 
-export interface formBtn {
-  label: string;
-  link: string;
-}
+//page definitions from user.cfg file 
+import { LoginCfg } from './user.cfg';
+import { UserInputForm } from './user.input.form';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.html',
-  styleUrls: ['./login.scss']
+  selector: 'app-user-register',
+  templateUrl: './login.html'
+  //styleUrls: ['./login.scss']
 })
-export class LoginComponent implements OnInit {
-  panelTitle: string = null;
-  matIcon:string = null;
-  loginForm: FormGroup;
-  panelStatus: string = null;
-  panelMsg: string = null;
-  //indicates if primary button
-  //is login or register
-  login: boolean = true;
-  error: boolean = false;
-  //the button labels    
-  //used when switching
-  primBtn: formBtn;
-  secoBtn: formBtn;
-  thrdBtn: formBtn;
-
-  //loader flag
-  showLoader: boolean = false;
-
-  constructor(
-    private formBuilder: FormBuilder,
+export class UserLogin implements OnInit {  
+  //config
+  loginCfg = LoginCfg;
+  //ref to child form
+  @ViewChild('loginForm') loginForm:UserInputForm;
+  
+  constructor(    
     private fire: LoginSvc,
-    private router: Router,
-    private routeData: ActivatedRoute
+    private router: Router    
   ) {
     //debugger
-    //console.log("Login.LoginComponent...constructor");
+    //console.log("UserLogin...constructor");
   }
-
-  ngOnInit() {
-    //create form group
-    this.loginForm = this.formBuilder.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required]
+  ngOnInit(){
+    this.loginForm.setMsg({
+      status:'',
+      msg: this.loginCfg.panelMsg,
+      error: false 
     });
-
-    //get form data from route      
-    this.routeData.data
-      .subscribe((d) => {
-        //debugger
-        this.login = d.login;
-        //buttons
-        this.primBtn = d.primBtn;
-        this.secoBtn = d.secoBtn;
-        this.thrdBtn = d.thrdBtn;
-        //start message
-        this.panelTitle = d.panelTitle;
-        this.matIcon = d.matIcon;
-        this.panelMsg = d.panelMsg;
-      });
   }
-  onAction() {
-    //console.log("login.onAction");
-    if (this.login) {
-      this.onLogin();
-    } else {
-      this.onRegister();
-    }
-  }
-  onLogin() {
-    //console.log("login.onLogin");    
-    this.panelStatus = "T...";
-    this.showLoader = true;
-    this.panelMsg = "Trying..."
-    this.error = false;
-    let cred = this.loginForm.value;
-    this.fire.logIn(cred.email, cred.password)
+  /**
+   * LOGIN
+   */
+  onLogin({ email, password }) {
+    //console.log("Here we login");
+    //debugger 
+    //set message 
+    this.loginForm.setMsg({
+      status: "T...",
+      msg:"Signin in ...",
+      error: false 
+    });
+    //show loader
+    this.loginForm.toggleLoader();      
+    //issue register request 
+    this.fire.logIn(email, password)
       .then((d) => {
-        //debugger
-        //console.log("logged in");
         //check 
         return {
           email: d.email,
           veryfied: d.emailVerified
         };
-        //save credentials
-        //this.fire.saveProfile(d);
       })
       .then((d) => {
         //debugger
@@ -126,30 +90,14 @@ export class LoginComponent implements OnInit {
         }
       })
       .catch((e) => {
-        //debugger
-        this.panelStatus = "F...";
-        this.panelMsg = e.message;
-        console.error("Failed to login", e.message);
-        this.showLoader = false;
-        this.error = true;
-      });
-  }
-  onRegister() {
-    //console.log("Here we login");
-    this.panelStatus = "T...";
-    this.showLoader = true;
-    let cred = this.loginForm.value;
-    this.fire.register(cred.email, cred.password)
-      .then((d) => {
-        //debugger
-        console.log("did register");
-        //forward now to verify
-        this.router.navigate(["user","verify"]);
-      }, (e) => {
-        this.panelStatus = "FAILED";
-        this.panelMsg = e.message;
-        console.error("Failed to register:", e.message);
-        this.showLoader = false;
+        //set message 
+        this.loginForm.setMsg({
+          status: "F...",
+          msg: e.message,
+          error: true 
+        }); 
+        //toggle loader
+        this.loginForm.toggleLoader();
       });
   }
 }

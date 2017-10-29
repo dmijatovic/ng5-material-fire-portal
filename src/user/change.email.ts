@@ -1,77 +1,123 @@
-import { Component, OnInit } from '@angular/core';
-import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+//angular
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
+//services
 import { LoginSvc } from '../firebase/login.svc';
 
+//page definitions from user.cfg file 
+import { ChangeEmailCfg } from './user.cfg';
+import { UserInputForm } from './user.input.form';
+
 @Component({
-   selector: 'app-change-email',
-   templateUrl: './change.email.html',
-   styleUrls: ['./login.scss']
+  selector: 'user-change-email',
+  templateUrl: './change.email.html'
+  //styleUrls: ['./PasswordReset.scss']
 })
-export class ChangeEmailComponent implements OnInit {
-   pageTitle: string = "Change email";
-   pageForm: FormGroup;
-   pageStatus: string = "";
-   pageMsg: string = "Provide the same email address you used to create the account.";
-   primBtn: string = "Change email";
-   //loader flag
-   showLoader: boolean = false;
-   //temp user loaded 
-   user: any
-   constructor(
-      private formBuilder: FormBuilder,
-      private fire: LoginSvc
-   ) { }
+export class UserChangeEmail implements OnInit {
+  //config
+  changeEmailCfg = ChangeEmailCfg;  
+  //ref to child form
+  @ViewChild('changeForm') changeForm: UserInputForm;
+  //user reference
+  user:any;  
+  constructor(
+    private fire: LoginSvc,
+    private router: Router
+  ) {
+    //debugger
+    //console.log("UserPasswordReset...constructor");
+  }
+  ngOnInit() {    
+    //check 
+    this.user = this.fire.getProfile();
+    debugger 
+    if (this.user){
+      //set initial message
+      this.changeForm.setMsg({
+        status: '',
+        msg: this.changeEmailCfg.msg.default,
+        error: false
+      });
+    }else{
+      //ups no user/email
+      this.changeForm.hideForm = true;
+      this.changeForm.setMsg({
+        status:'F...',
+        msg: this.changeEmailCfg.msg.login,
+        error:true 
+      });
+    }
+  }
+  /**
+   * Change email
+   */
+  onEmailChange({ oldemail, newemail }) {
+    //console.log("Here we login");
+    debugger
 
-   ngOnInit() {
-      this.user = this.fire.getProfile();
-      if (this.user) {
-         //create form group
-         this.pageForm = this.formBuilder.group({
-            oldemail: [{ value: this.user.email, disabled: true }, Validators.required],
-            newemail: ['', Validators.required]
-         });
-      } else {
-         //create form group
-         this.pageForm = this.formBuilder.group({
-            oldemail: [{ value: '', disabled: true }, Validators.required],
-            newemail: [{ value: '', disabled: true }, Validators.required]
-         });
+    if (oldemail.toLowerCase() == this.user.email.toLowerCase()
+      && newemail.toLowerCase()!= this.user.email.toLowerCase() ){
+      
+      //set message 
+      this.changeForm.setMsg({
+        status: "T...",
+        msg: "Updating ...",
+        error: false
+      });
+      //show loader
+      this.changeForm.toggleLoader();
 
-         this.pageStatus = "DISABLED";
-         this.pageMsg = "Please login first. We are unable to verify you current email.";
-      }
-   }
+      //change email
+      this.changeEmail(newemail)
+      .then((d)=>{
+        //hide loader
+        this.changeForm.toggleLoader();
+        //hide form 
+        this.changeForm.hideForm = true;
+        //show message
+        this.changeForm.setMsg(d);  
+      })
+      .catch((m)=>{
+        //show message in child form
+        this.changeForm.setMsg(m);  
+      });
 
-   onChangeEmail() {
-      //console.log("reset email");    
-      this.pageStatus = "TRYING...";
-      this.showLoader = true;
-      let cred = this.pageForm.value;
-      debugger
-      if (this.user.email != cred.newemail) {
-         this.fire.changeUserEmail(cred.newemail)
-            .then((d) => {
-               debugger
-               console.log("reset email SEND");
+    }else{
+      //set message 
+      this.changeForm.setMsg({
+        status: "F...",
+        msg: this.changeEmailCfg.msg.invalid,
+        error: true
+      });
+      //change start email from here 
+      this.changeForm.inputForm.patchValue({
+        oldemail: this.user.email 
+      });
+      //disable it
+      //debugger
+      //this.changeForm.inputForm.controls['oldemail'].disabled();
+    }   
+  }  
 
-               this.pageStatus = "SUCCESS!";
-
-               this.pageMsg = `
-                        We updated your e-mail. However we need to verify that your new email is valid.
-                        We send you an email to your new mailbox. You need to open that email and click on the link. 
-                        Check your mailbox and follow the instruction in the e-mail we send you.
-                        <br><br>
-                        Thanks,
-                        dv4all team
-                    `
-               this.showLoader = false;
-            }, (e) => {
-               this.pageStatus = "FAILED";
-               this.pageMsg = e.message;
-               console.error("Failed to login", e.message);
-               this.showLoader = false;
-            });
-      }
-   }
+  changeEmail(email):Promise<any>{
+    return new Promise((res,rej)=>{
+      this.fire.changeUserEmail(email)
+        .then((d) => {          
+          //console.log("changed email");          
+          //show message
+          res({
+            status: "OK",
+            msg:this.changeEmailCfg.msg.success,
+            error: false
+          });
+        }, (e) => {
+          rej({
+            status: "F...",
+            msg: e.message,
+            error: true
+          });          
+        });
+    });
+  }
 }

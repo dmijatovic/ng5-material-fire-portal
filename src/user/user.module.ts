@@ -25,16 +25,11 @@ import { environment as env } from '../environments/environment';
 
 //local app
 import {
-  LoginComponent, VerifyEmailComponent,
-  PasswordResetComponent, ChangeEmailComponent,
+  UserInputForm, UserLogin, UserRegister, UserVerifyEmail,
+  UserResetPassword, UserChangeEmail,
   RemoveAccountComponent, UserProfilePage,
   LogoutComponent
 } from './index';
-
-/*
-import {
-  AvatarCard, ProfileCard, ProfileForm
-} from './profile';*/
 
 //firebase service
 
@@ -47,26 +42,24 @@ import { SystemComponentsModule } from '../system/util.module';
 
 const routes: Routes = [{
   path: 'login',
-  component: LoginComponent,
-  data: env.cfg.user.login
+  component: UserLogin
 },{
   path: 'logout',
   component: LogoutComponent
 },{
   path: 'register',
-  component: LoginComponent,
-  data: env.cfg.user.register
+  component: UserRegister  
 },{
   path: 'password',
-  component: PasswordResetComponent
+  component: UserResetPassword
 },{
   path: 'verify',
-  component: VerifyEmailComponent,
+  component: UserVerifyEmail,
   //canActivate:[LoginSvc] 
 },{
   path: 'email',
-  component: ChangeEmailComponent,
-  canActivate:[LoginSvc] 
+  component: UserChangeEmail,
+  //canActivate:[LoginSvc] 
 },{
   path: 'remove',
   component: RemoveAccountComponent,
@@ -84,10 +77,12 @@ const routes: Routes = [{
 
 @NgModule({
   declarations: [
-    LoginComponent,LogoutComponent,
-    VerifyEmailComponent,
-    PasswordResetComponent,
-    ChangeEmailComponent,
+    UserInputForm,
+    UserLogin,LogoutComponent,
+    UserRegister,
+    UserVerifyEmail,
+    UserResetPassword,
+    UserChangeEmail,
     RemoveAccountComponent,
     UserProfilePage
   ],
@@ -100,10 +95,12 @@ const routes: Routes = [{
   ],
   //providers: [LoginSvc],
   exports: [
-    LoginComponent,LogoutComponent,
-    VerifyEmailComponent,
-    PasswordResetComponent,
-    ChangeEmailComponent,
+    UserInputForm,
+    UserLogin,LogoutComponent,
+    UserRegister,
+    UserVerifyEmail,
+    UserResetPassword,
+    UserChangeEmail,
     RemoveAccountComponent,
     UserProfilePage
   ],

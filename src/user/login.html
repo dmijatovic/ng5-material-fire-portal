@@ -1,68 +1,7 @@
 
-<section class="login-page-wrap">
 
-  <div class="login-sidebar">
-    <h1>{{ panelStatus }}</h1>
-  </div>
-  
-  <div class="login-card">        
-    <!-- loader -->
-    <div class="logo"
-      [class.active]="!showLoader">
-      <img src="assets/img/logo.jpg" />
-    </div>  
-
-    <!-- loader -->
-    <div class="loader"
-      [class.active]="showLoader">
-      <mat-spinner></mat-spinner>
-    </div>  
-
-    <div class="login-title">
-      <div>
-        {{ panelTitle }}
-      </div>
-      <i class="material-icons large">
-        {{ matIcon }}
-      </i>
-    </div>
-
-    <div class="login-body">
-
-      <div *ngIf="panelMsg"
-        class="login-msg"
-        [class.error]="error">        
-        {{ panelMsg }}
-      </div>
-
-      <!-- LOGIN FORM -->
-      <form class="login-form"
-        [formGroup]="loginForm" (ngSubmit)="onAction()">      
-        <mat-form-field>
-          <input matInput type="text" name="email" formControlName="email" autocomplete="false" placeholder="Your email">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput type="password" name="password" formControlName="password" placeholder="Your password" autocomplete="false">
-        </mat-form-field>
-
-        <!-- LOGIN NAV -->
-        <div class="login-nav">        
-          <button mat-raised-button style="flex:1" color="primary" [disabled]="!loginForm.valid">
-            {{primBtn.label}}
-          </button>      
-        </div>     
-      </form>   
-
-    </div>
-    
-    <div class="login-nav-panel">
-      <button *ngIf="secoBtn.link" mat-button color="warn" [routerLink]="secoBtn?.link">
-        {{secoBtn.label}}
-      </button>
-      <button *ngIf="thrdBtn.link" mat-button color="primary" [routerLink]="thrdBtn?.link">
-        {{thrdBtn.label}}
-      </button>
-    </div>
-  </div>
-
-</section>
+<user-input-form 
+  #loginForm
+  [formDef]="loginCfg"  
+  (onSubmit)="onLogin($event)">
+</user-input-form>

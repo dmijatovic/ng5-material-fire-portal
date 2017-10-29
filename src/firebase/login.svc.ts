@@ -53,8 +53,8 @@ export class LoginSvc implements CanActivate {
         return this.fire.auth
           .signInWithEmailAndPassword(email, pass);
       })
-      .catch((e)=>{
-        console.error(e);
+      .catch((e)=>{                
+        //console.error(e);
         throw new Error(e.message);
       });
   }
@@ -176,14 +176,24 @@ export class LoginSvc implements CanActivate {
    * Ensure the user is logged in at this point because
    * we use user loaded in this class!
    */
-  sendEmailVerification() {
-    if (this.user) {
-      return this.fire.auth.currentUser.sendEmailVerification()
-    } else {
-      //no user so error 500
-      this.router.navigate(['error', '500']);
-      //throw Error("No user logged in");
-    }
+  sendEmailVerification() {    
+    return new Promise((res,rej)=>{
+      //get current user
+      let user = this.fire.auth.currentUser;
+      if (user) {
+        this.fire.auth.currentUser.sendEmailVerification()
+        .then(()=>{
+          //debugger 
+          res(user.email)
+        },(e)=>{
+          debugger 
+          rej(e.message);
+        })
+      } else {
+        debugger 
+        rej("No user logged in");
+      }
+    });    
   }
   /**
    * Sends reset password email using 
