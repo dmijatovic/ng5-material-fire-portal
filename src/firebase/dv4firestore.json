@@ -1,0 +1,50 @@
+{
+  "menu" : {
+    "main" : {
+      "home" : {
+        "active" : true,
+        "matIcon" : "home",
+        "path" : "/app",
+        "pos" : 1,
+        "title" : "Home"
+      },
+      "profile" : {
+        "active" : true,
+        "matIcon" : "person",
+        "path" : "profile",
+        "pos" : 1,
+        "title" : "Profile"
+      }
+    },
+    "profile" : {
+      "delete" : {
+        "active" : true,
+        "matIcon" : "delete",
+        "path" : "/user/remove",
+        "pos" : 3,
+        "title" : "Delete account"
+      },
+      "email" : {
+        "active" : true,
+        "matIcon" : "email",
+        "path" : "/user/email",
+        "pos" : 2,
+        "title" : "Change email"
+      },
+      "logout" : {
+        "active" : true,
+        "matIcon" : "exit_to_app",
+        "path" : "/user/logout",
+        "pos" : 4,
+        "title" : "Logout"
+      },
+      "view" : {
+        "active" : true,
+        "matIcon" : "person",
+        "path" : "profile",
+        "pos" : 1,
+        "title" : "My profile"
+      }
+    }
+  }
+}
