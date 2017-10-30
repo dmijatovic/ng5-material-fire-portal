@@ -12,7 +12,7 @@ import { CreateProfileCfg } from './user.cfg';
 import { UserInputForm } from './user.input.form';
 
 @Component({
-  selector: 'app-create-profile',
+  selector: 'user-create-profile',
   templateUrl: './create.profile.html',
   //styleUrls: ['./register.scss']
   providers:[ ProfileSvc ]

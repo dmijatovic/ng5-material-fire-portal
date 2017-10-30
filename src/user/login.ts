@@ -10,7 +10,7 @@ import { LoginCfg } from './user.cfg';
 import { UserInputForm } from './user.input.form';
 
 @Component({
-  selector: 'app-user-register',
+  selector: 'app-user-login',
   templateUrl: './login.html'
   //styleUrls: ['./login.scss']
 })

@@ -13,7 +13,7 @@ import { MessageCard } from '../system/message.card';
  * is send
  */
 @Component({
-  selector: 'user-logout',
+  selector: 'app-user-logout',
   templateUrl: './logout.html',
   styleUrls:['./logout.scss']
 })
