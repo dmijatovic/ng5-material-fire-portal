@@ -30,6 +30,13 @@ This project is ment to be template for new portals. Therefore I decided to spli
     - add material component reference in your angualr component
     - add meterial module reference into material module (material/material.module.ts)
 
+## Deployment ng4portal branch
+
+To deploy starter portal (branch ng4portal), which uses firebase as backend and firehosting platform. Firebase hosting has its own cli. Definitions are stored in firebase.json. To deploy:
+
+- build production version `npm run build-prod`
+- publish content of dist folder `npm run deploy-fire`
+
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
