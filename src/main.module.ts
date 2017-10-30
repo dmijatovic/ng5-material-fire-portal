@@ -53,7 +53,7 @@ import { MainOutlet } from './main.outlet';
  * lazy loading public or private module
  */
 const routes:Routes=[{
-  path:'public',  
+  path:'',  
   loadChildren: 'public/public.module#PublicModule'
 },{
   path:'app',  
@@ -62,14 +62,10 @@ const routes:Routes=[{
   path:'user',  
   loadChildren: 'user/user.module#UserModule'
 },{
-  path:'',  
-  redirectTo:'user/login',
-  pathMatch:'full'
-},/*{
     path:'**',
     redirectTo:'/error/404',
     pathMatch:'full'
-}*/]
+}]
 
 @NgModule({
   declarations: [ MainOutlet ],

@@ -10,7 +10,8 @@ import { RouterModule, Routes } from '@angular/router'
  */
 import { AppMateralModule } from '../material/material.module';
 import { FireModule } from '../firebase/fire.module';
-import { UserModule } from '../user/user.module'
+
+//import { UserModule } from '../user/user.module'
 //import { LoginSvc } from '../firebase/login.svc';
 
 /**
@@ -18,10 +19,8 @@ import { UserModule } from '../user/user.module'
  */
 import {
    PublicOutlet, AppPublicHeader, AppPublicFooter,
-   HomePublic, SigninComponent
+   HomePublic, 
 } from './index';
-
-import { loginFormData, registerFormData } from './login/login.data';
 
 /**
  * ROUTES
@@ -35,34 +34,25 @@ const routes: Routes = [{
    children: [{
       path: '',
       component: HomePublic
-   },{
-      path: 'signin',
-      component: SigninComponent,
-      data: loginFormData
-   },{
-      path: 'signup',
-      component: SigninComponent,
-      data: registerFormData
    }]
 }]
 
 @NgModule({
    declarations: [
       PublicOutlet, AppPublicHeader, 
-      AppPublicFooter, HomePublic,
-      SigninComponent
+      AppPublicFooter, HomePublic
    ],
    imports: [
       //material components
       AppMateralModule,
-      FireModule, UserModule,
+      FireModule,
       //Router
       RouterModule.forChild(routes)
    ],
    providers: [ ],
    exports: [
       PublicOutlet, AppPublicHeader, AppPublicFooter,
-      HomePublic, SigninComponent
+      HomePublic
    ]
 })
 export class PublicModule { }

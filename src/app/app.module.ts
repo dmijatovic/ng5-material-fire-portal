@@ -85,8 +85,8 @@ const routes: Routes = [{
     path: 'football',
     loadChildren: 'app/football/football.module#FootballModule'
   },{
-      path: 'profile',
-      loadChildren: 'app/profile/profile.module#ProfileModule'      
+    path: 'profile',
+    loadChildren: 'app/profile/profile.module#ProfileModule'      
   },{
     path: 'weather',
     loadChildren: 'app/weather/weather.module#WeatherModule'

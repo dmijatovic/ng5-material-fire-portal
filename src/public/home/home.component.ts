@@ -15,7 +15,9 @@ export class HomePublic implements OnInit {
   ) { }
 
   ngOnInit() {
+    console.log("HomePublic..started");
   }
+
   /*
   getMeFavs(){
     console.log("You clicked favs icon");
