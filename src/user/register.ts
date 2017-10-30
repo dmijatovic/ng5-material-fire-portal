@@ -52,7 +52,7 @@ export class UserRegister implements OnInit {
     this.fire.register(email, password)
       .then((d) => {
         //debugger
-        console.log("did register");
+        //console.log("did register");
         //forward now to verify
         this.router.navigate(this.registerCfg.nextNav);
       }, (e) => {
