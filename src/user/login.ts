@@ -30,7 +30,7 @@ export class UserLogin implements OnInit {
   ngOnInit(){
     this.loginForm.setMsg({
       status:'',
-      msg: this.loginCfg.panelMsg,
+      msg: this.loginCfg.msg.default,
       error: false 
     });
   }
@@ -75,7 +75,7 @@ export class UserLogin implements OnInit {
         }
       })
       .then((profile: any) => {
-        debugger
+        //debugger
         if (profile && profile.type && profile.type=="NAVIGATE") {
           //navigate to verify page
           this.router.navigate(profile.payload);

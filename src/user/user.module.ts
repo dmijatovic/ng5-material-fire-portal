@@ -27,8 +27,8 @@ import { environment as env } from '../environments/environment';
 import {
   UserInputForm, UserLogin, UserRegister, UserVerifyEmail,
   UserResetPassword, UserChangeEmail, UserCreateProfile,
-  UserRemoveAccount, UserProfilePage,
-  LogoutComponent
+  UserRemoveAccount, UserLogout
+  
 } from './index';
 
 //firebase service
@@ -45,7 +45,7 @@ const routes: Routes = [{
   component: UserLogin
 },{
   path: 'logout',
-  component: LogoutComponent
+  component: UserLogout
 },{
   path: 'register',
   component: UserRegister  
@@ -78,14 +78,13 @@ const routes: Routes = [{
 @NgModule({
   declarations: [
     UserInputForm,
-    UserLogin,LogoutComponent,
+    UserLogin,UserLogout,
     UserRegister,
     UserVerifyEmail,
     UserResetPassword,
     UserChangeEmail,
     UserRemoveAccount,
-    UserCreateProfile,
-    UserProfilePage
+    UserCreateProfile    
   ],
   imports: [
     //BrowserModule,
@@ -97,14 +96,13 @@ const routes: Routes = [{
   //providers: [LoginSvc],
   exports: [
     UserInputForm,
-    UserLogin,LogoutComponent,
+    UserLogin,UserLogout,
     UserRegister,
     UserVerifyEmail,
     UserResetPassword,
     UserChangeEmail,
     UserRemoveAccount,
-    UserCreateProfile,
-    UserProfilePage
+    UserCreateProfile    
   ],
   //bootstrap: [LoginComponent]
 })

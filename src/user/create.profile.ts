@@ -95,7 +95,7 @@ export class UserCreateProfile implements OnInit {
    */
   onCreateProfile(data) {
     //console.log("Here we login");
-    debugger 
+    //debugger 
     //set message 
     this.profileForm.setMsg({
       status: "T",

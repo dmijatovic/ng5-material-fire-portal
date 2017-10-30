@@ -6,33 +6,6 @@
  */
 
 /**
- * Login page
- * input type page
- */
-export const LoginCfg={
-  panelTitle: "Login",
-  matIcon:"lock_open",
-  logo:"assets/img/logo.jpg",
-  primBtn: {
-    label: 'Login',
-    link: 'login'
-  },
-  secoBtn: {
-    label: 'Forgot password',
-    link: '../password'
-  },
-  thrdBtn: {    
-    label: 'Register',
-    link: '../register'
-  },
-  panelMsg: 'Provide your credentials and hit login button.',
-  input:[
-    {"pos": 1, "key":"email","title":"Your email",type:"email",required:true},
-    {"pos": 2, "key":"password","title":"Your password",type:"password",required:true}
-  ]
-}
-
-/**
  * Register page config
  * input type page
  */
@@ -54,10 +27,37 @@ export const RegisterCfg={
     label: 'Login',
     link: '../login'
   },
-  panelMsg: 'Provide email and password to register.',
+  msg:{default: 'Provide email and password to register.'},
   input:[
     {"key":"email","title":"Your email",type:"email",required:true},
     {"key":"password","title":"Your password",type:"password",required:true}
+  ]
+}
+
+/**
+ * Login page
+ * input type page
+ */
+export const LoginCfg={
+  panelTitle: "Login",
+  matIcon:"lock_open",
+  logo:"assets/img/logo.jpg",
+  primBtn: {
+    label: 'Login',
+    link: 'login'
+  },
+  secoBtn: {
+    label: 'Forgot password',
+    link: '../password'
+  },
+  thrdBtn: {    
+    label: 'Register',
+    link: '../register'
+  },
+  msg:{default:'Provide your credentials and hit login button.'},
+  input:[
+    {"pos": 1, "key":"email","title":"Your email",type:"email",required:true},
+    {"pos": 2, "key":"password","title":"Your password",type:"password",required:true}
   ]
 }
 
@@ -69,7 +69,7 @@ export const RegisterCfg={
  */
 export const CreateProfileCfg={  
   panelTitle: "Your profile",
-  matIcon:"fingerprint",  
+  matIcon:"perm_contact_calendar",  
   logo:"assets/img/logo.jpg",    
   primBtn: {
     label: 'Create profile',
@@ -137,13 +137,23 @@ export const ResetPasswordCfg={
     label: 'Back to login',
     link: '../login'    
   },
-  panelMsg: `
-    Provide the same email address you used to create your account and 
-    we will send reset instructions to that email address.
-  `,
   input:[
     {"key":"email","title":"Your email",type:"email",required:true}    
-  ]
+  ],
+  msg:{
+    default: `
+    Provide the same email address you used to create your account and 
+    we will send reset instructions to that email address.
+    `,
+    success:`
+    We send you an e-mail with a link to use to 
+    reset you current password. Please check your 
+    mailbox and follow the instruction.
+    <br><br>
+    Thanks,
+    dv4all team
+    `
+  }  
 }
 
 /**
@@ -245,7 +255,7 @@ export const RemoveAccountCfg={
   }, 
   input:[
     {"key":"email","title":"Your email",type:"email",required:true},
-    {"key":"password","title":"Your password",type:"email",required:true}    
+    {"key":"password","title":"Your password",type:"password",required:true}    
   ]
 }
 
@@ -299,3 +309,29 @@ export const VerifyEmailCfg={
   }
 }
 
+
+/**
+ * Logout
+ * message type page
+ */
+export const LogoutCfg={
+  panelTitle: "Sign out",
+  matIcon:"directions_run",  
+  logo:"assets/img/logo.jpg",    
+  button:[
+    {label:'Sign in', link:'/user/login', color:'primary'}    
+  ],
+  msg:{
+    default:`
+    <h4>Sign out</h4>
+    <p>Leaving portal soon...</p>
+    `,
+    login:`
+    <h4>Please login</h4>
+    <p>We are unable to verify your account.</p>
+    `,
+    success:`    
+    <p>Signed out! Till next time</p>            
+    `
+  }
+}

@@ -31,7 +31,7 @@ export class UserResetPassword implements OnInit {
     //set initial message
     this.resetForm.setMsg({
       status:'',
-      msg: this.resetCfg.panelMsg,
+      msg: this.resetCfg.msg.default,
       error: false
     });
   }
@@ -61,13 +61,7 @@ export class UserResetPassword implements OnInit {
         //show message
         this.resetForm.setMsg({
           status: "OK",
-          msg:`
-          We send you an e-mail with a link to use to 
-          reset you current password. Please check your 
-          mailbox and follow the instruction.
-          <br><br>
-          Thanks,
-          dv4all team`,
+          msg:this.resetCfg.msg.success,          
           error: false
         });
       }, (e) => {

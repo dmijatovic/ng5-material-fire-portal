@@ -50,7 +50,7 @@ export const sysMsg = {
     msg: `
         <p>Sorry, something went terribly wrong</p>            
         `
-  },
+  },/*
   "logout":{
     id: '007',
     matIcon: "exit_to_app",
@@ -62,5 +62,5 @@ export const sysMsg = {
     msg: `
         <p>Signed out! Till next time</p>            
         `
-  }
+  }*/
 }

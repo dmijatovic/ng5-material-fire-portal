@@ -47,7 +47,7 @@ export class ProfileCard implements OnInit, OnDestroy {
   }
   updateAvatar(data:string){
     //pass image
-    debugger
+    //debugger
     this.avatar = data;     
   }
   saveProfileForm(data){

@@ -68,7 +68,7 @@ export class AppHeader implements OnInit {
       this.avatar$ = this.profile.avatar(this.login.getCurrentUserInfo().email);
       this.avatar$.subscribe((d)=>{
         //debugger
-        console.log("avatar changed");
+        //console.log("avatar changed");
         this.avatar = d;
       });
     }

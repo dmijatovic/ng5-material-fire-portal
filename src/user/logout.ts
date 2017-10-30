@@ -1,52 +1,70 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 
-import { sysMsg } from '../system/sys.msg';
-import { LoginSvc } from '../firebase/login.svc'
+//firebase
+//import { AngularFireAuth } from 'angularfire2/auth';
+import { LoginSvc } from '../firebase/login.svc';
 
+import { LogoutCfg } from './user.cfg';
+import { MessageCard } from '../system/message.card';
+
+/**
+ * Page to show when email verification 
+ * is send
+ */
 @Component({
-  selector: 'app-logout',
+  selector: 'user-logout',
   templateUrl: './logout.html',
-  styleUrls: ['../system/error.scss','./logout.scss']
+  styleUrls:['./logout.scss']
 })
-export class LogoutComponent implements OnInit, OnDestroy {
-  //default values
-  matIcon: string = 'bug_report';
-  errTitle: string = "These things not add up!";
-  errMsg: string = `
-  <p>This page should display the logout message.
-  The logout message is not defined in the 
-  system settings. Please notify adminstrator about this.
-  `;
-  errNumber: string = '999';  
-  btn:any;
-
+export class UserLogout implements OnInit {  
+  //user email used
+  logoutCfg = LogoutCfg;
+  @ViewChild('logoutCard') logoutCard:MessageCard;  
   constructor(
-    private fire:LoginSvc
-  ){}
+    //private fire: AngularFireAuth,
+    private login: LoginSvc,
+    //private router: Router
+  ) { }
+
   ngOnInit() {
-    //debugger    
-    //get logout message from system
-    let msg = sysMsg["logout"];
-    //logout user
-    this.fire.logOut()
+    //debugger
+    let user = this.login.getProfile();
+    if (user) {
+      //this.showBtn = true;
+      //this.logoutCfg.email = user.email;
+      this.logoutUser();
+    } else {
+      //debugger
+      //already signed out :-)
+      this.logoutCard.setMsg({
+        status:'OK',
+        msg: this.logoutCfg.msg.success,
+        error:false
+      });
+    }
+  }
+  logoutUser(){
+    this.login.logOut()
     .then(()=>{
-      if (msg){
-        this.showMsg(msg);          
-      }    
+      //debugger 
+      //console.log("send code to email");
+      this.logoutCard.setMsg({
+        status:'OK',
+        msg: this.logoutCfg.msg.success,
+        error:false
+      });
+      //this.logoutCard.toggleLoader();
     })
     .catch((e)=>{
-      console.error(e);
-    });        
+      //debugger 
+      //console.error(e);
+      this.logoutCard.setMsg({
+        status:'F...',
+        msg: e.message,
+        error:true
+      });
+      //this.logoutCard.toggleLoader();
+    });
   }
-
-  showMsg(msg) {
-    //debugger
-    this.matIcon = msg.matIcon;
-    this.errTitle = msg.title;
-    this.errMsg = msg.msg;
-    this.errNumber = msg.id;
-    this.btn = msg.btn 
-  }
-
-  ngOnDestroy(){}
 }

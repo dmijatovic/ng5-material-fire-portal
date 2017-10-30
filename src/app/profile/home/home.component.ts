@@ -63,14 +63,17 @@ export class ProfileHomeComponent implements OnInit {
     this.proSvc.saveProfile(data)
     .then(()=>{
       this.showLoader = false;
-      this.showMessage ("Profile saved!");
+      this.showMessage ("Profile saved!","success-msg-snack");
     })
     .catch((e)=>{
-      this.showMessage("Failed to save!!!");
+      this.showMessage("Failed to save!!!","error-msg-snack");
       this.showLoader = false;
     });
   }
-  showMessage(msg:string){
-    this.snack.open(msg,null,{duration:3000});
+  showMessage(msg:string,extraClass){
+    this.snack.open(msg,null,{
+      duration:3000,
+      extraClasses:[extraClass]
+    });
   }
 }

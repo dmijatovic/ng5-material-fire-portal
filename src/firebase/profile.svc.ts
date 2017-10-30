@@ -94,6 +94,55 @@ export class ProfileSvc {
       });      
     });
   }
+  /**
+   * Change profile id to reflect email change
+   * first we check for old profile, then copy
+   * to new profile and remove old profile
+   * @param oldemail 
+   * @param newemail 
+   */ 
+  renameProfile(oldemail,newemail):Promise<boolean>{
+    //get path references 
+    let oldpath = this.getProfilePath(oldemail),
+      newpath = this.getProfilePath(newemail),
+      oldref = this.data.database.ref(oldpath);
+
+    return new Promise((res,rej)=>{
+      //check if old profile exists
+      oldref.once('value')
+      .then((data)=>{
+        debugger 
+        if (data.exists()){
+          //get old values 
+          let old=data.val();          
+          //save as new profile
+          return this.saveProfile({
+            ...old,
+            email:newemail 
+          });
+        }else{
+          //no profile
+          res(true);
+        }
+      })
+      .then(()=>{
+        debugger 
+        //we create new profile
+        //delete old profile 
+        return this.deleteProfile(oldemail);        
+      })
+      .then(()=>{
+        debugger 
+        //we deleted old profile
+        //all done
+        res(true);
+      })
+      .catch((e)=>{
+        debugger 
+        rej(e.message);
+      });
+    });
+  }
   deleteProfile(email):Promise<any>{
     //get path references 
     let path = this.getProfilePath(email),

@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 
 //firebase
-import { AngularFireAuth } from 'angularfire2/auth';
+//import { AngularFireAuth } from 'angularfire2/auth';
 import { LoginSvc } from '../firebase/login.svc';
 
 import { VerifyEmailCfg } from './user.cfg';
@@ -15,7 +15,7 @@ import { MessageCard } from '../system/message.card';
 @Component({
   selector: 'user-verify-email',
   templateUrl: './verify.email.html',
-  styleUrls: ['./login.scss']
+  styleUrls: ['./logout.scss']
 })
 export class UserVerifyEmail implements OnInit {  
   //user email used

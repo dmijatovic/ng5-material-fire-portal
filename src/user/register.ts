@@ -30,7 +30,7 @@ export class UserRegister implements OnInit {
   ngOnInit(){
     this.regForm.setMsg({
       status:'',
-      msg: this.registerCfg.panelMsg,
+      msg: this.registerCfg.msg.default,
       error: false 
     });
   }
@@ -39,7 +39,7 @@ export class UserRegister implements OnInit {
    */
   onRegister({ email, password }) {
     //console.log("Here we login");
-    debugger 
+    //debugger 
     //set message 
     this.regForm.setMsg({
       status: "T",

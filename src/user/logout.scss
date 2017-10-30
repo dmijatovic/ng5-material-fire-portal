@@ -2,53 +2,6 @@
 @import '../material/variables';
 
 :host{
-  display:flex;
-  flex:1;
-  width:100%;
-  min-height:100%;
+  display:flex;  
   justify-content: center;  
-}
-
-.logout-page-wrap{
-  display:flex;
-  height: 50vh;
-  align-items: flex-end;
-
-  .logout-number{
-    display:flex;      
-    height:50vh;
-    min-width:4vw;
-    color: $app-blue-contrast;
-    background-color: $app-blue;      
-    align-items: flex-end;
-    padding: 0px 16px;      
-  }
-  .logout-body{
-    //33vw incl ribon
-    width:29vw;
-    min-width:325px;
-
-    .logout-title{
-      display:flex;
-      font-size:2em;
-      align-items:flex-end;
-      justify-content: space-between;
-      color: $app-blue; 
-      border-bottom: 2px solid $app-blue;        
-      font-weight: 700;
-      .material-icons.error{
-        font-size:2em;            
-      }
-      div{
-        padding:$page-padding;   
-      }
-    }
-    .logout-message{
-      padding:$content-padding;
-      font-size: 14px;
-    }
-    .logout-nav-panel{
-      text-align: right;
-    }
-  }
 }
