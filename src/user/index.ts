@@ -7,5 +7,6 @@ export * from './register';
 export * from './reset.password';
 export * from './remove.account';
 export * from './user.profile';
+export * from './create.profile';
 export * from './verify.email';
 export * from './logout';

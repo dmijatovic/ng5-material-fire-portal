@@ -94,6 +94,13 @@ export class ProfileSvc {
       });      
     });
   }
+  deleteProfile(email):Promise<any>{
+    //get path references 
+    let path = this.getProfilePath(email),
+      ref = this.data.database.ref(path);
+
+    return ref.remove();    
+  }
   /**
    * Constructs path to profile data based on email addres
    * profile table based on unique base64 encoded email address

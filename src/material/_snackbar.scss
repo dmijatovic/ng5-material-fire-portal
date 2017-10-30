@@ -3,4 +3,15 @@
 
 .error-msg-snack{
    background-color: $app-red;
+   color: $app-red-contrast
+}
+
+.success-msg-snack{
+  background-color: $app-green;
+  color: $app-green-contrast
+}
+
+.default-msg-snack{
+  background-color: $app-blue;
+  color: $app-blue-contrast
 }

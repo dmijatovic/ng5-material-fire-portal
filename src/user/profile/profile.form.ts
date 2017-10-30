@@ -9,8 +9,8 @@ import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms'
   //providers: [ FormBuilder ]
 })
 export class ProfileForm implements OnInit, OnDestroy {  
-  displayTitle:string="Title";
-  displaySubtitle:string="subtitle";
+  displayTitle:string="First & last name";
+  displaySubtitle:string="Job title @ company";
   profileForm:FormGroup;
   profileFields:any=[];
   hiddenFields:any=[];

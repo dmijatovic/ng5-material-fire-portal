@@ -7,6 +7,7 @@
 
 /**
  * Login page
+ * input type page
  */
 export const LoginCfg={
   panelTitle: "Login",
@@ -33,6 +34,7 @@ export const LoginCfg={
 
 /**
  * Register page config
+ * input type page
  */
 export const RegisterCfg={  
   panelTitle: "Register",
@@ -59,8 +61,63 @@ export const RegisterCfg={
   ]
 }
 
+
+/**
+ * Create profile object 
+ * buttons redefined in ngOnInit
+ * input type page
+ */
+export const CreateProfileCfg={  
+  panelTitle: "Your profile",
+  matIcon:"fingerprint",  
+  logo:"assets/img/logo.jpg",    
+  primBtn: {
+    label: 'Create profile',
+    link: 'profile'
+  },
+  secoBtn: {
+    label: null,
+    link: null
+  },
+  thrdBtn: {
+    label: null,
+    link: null
+  },  
+  input:[
+    //hidden fields to fill in programatically
+    //{"key":"avatar","title":null,type:"hidden",required:false},
+    //{"key":"email","title":null,type:"hidden",required:false},
+    //{"key":"createDate","title":null,type:"hidden",required:false},
+    {"key":"firstName","title":"First name *",type:"text",required:true},
+    {"key":"lastName","title":"Last name *",type:"text",required:true},
+    {"key":"jobTitle","title":"Job title",type:"text",required:false},
+    {"key":"companyName","title":"Company name",type:"text",required:false}
+    /*{"key":"startpage","title":"Starpage",type:"select",required:true,
+      options:[
+        {key:'Home', value:'/app/home'},
+        {key:'Profile', value:'/app/profile'}
+      ]
+    },*/
+  ],
+  msg:{ 
+    default:`
+    <h4>Last but not least</h4>
+    <p>Give us some basic information about you.
+    This will help you test user profile features of the portal.  
+    `,
+    login:`
+    <h4>User not logged in</h4>
+    <p>Something went wrong during the registration process.
+    After you verified your email you create your profile
+    at this page after you login. Please login again. 
+    </p>`
+  }
+}
+
+
 /**
  * Password reset 
+ * input type page
  */
 export const ResetPasswordCfg={  
   panelTitle: "Reset",
@@ -91,6 +148,7 @@ export const ResetPasswordCfg={
 
 /**
  * Change email
+ * input type page
  */
 export const ChangeEmailCfg={  
   panelTitle: "Change",
@@ -145,8 +203,56 @@ export const ChangeEmailCfg={
   }
 }
 
+
+/**
+ * Remove account
+ * input type page
+ */
+export const RemoveAccountCfg={  
+  panelTitle: "Remove",
+  matIcon:"delete_forever",  
+  logo:"assets/img/logo.jpg",  
+  //where to go next
+  //nextNav:["user","verify"],
+  primBtn: {
+    label: 'Remove account',
+    link: 'remove'
+  },
+  secoBtn: {
+    label: null,
+    link: null
+  },
+  thrdBtn: {
+    label: 'Register',
+    link: '../register'    
+  },
+  msg:{
+    default:`
+    <strong>Note that this action will permanently delete your account.</strong>
+    `,
+    login:`
+    <h4>Please login</h4>
+    <p>We are unable to verify your account.</p>
+    `,
+    success:`
+    <h4>DONE!</h4>
+    <p>
+    We deleted your account. Sorry to see you leaving.
+    </p>
+    Till next time!<br/>
+    dv4all team
+    `
+  }, 
+  input:[
+    {"key":"email","title":"Your email",type:"email",required:true},
+    {"key":"password","title":"Your password",type:"email",required:true}    
+  ]
+}
+
+
 /**
  * Verify email card/page
+ * message type page
  */
 export const VerifyEmailCfg={
   panelTitle: "Almost there",
@@ -191,6 +297,5 @@ export const VerifyEmailCfg={
     </p>
     `,
   }
-  
-
 }
+

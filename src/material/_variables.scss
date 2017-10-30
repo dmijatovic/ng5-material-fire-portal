@@ -12,6 +12,7 @@ PLEASE USE HERE DEFINED COLORS in all component
 and if you need more colors define it here.
 With this approach we align we theme colors 
 defined in customtheme.scss
+
 ----- CUSTOM THEME COLOR DEFINED ----------
 $app-primary: $mat-blue,800
 $app-accent: $mat-orange, A200 
@@ -21,6 +22,7 @@ $app-warn: $mat-red;
 
 $app-blue: mat-color($mat-blue,800);
 $app-blue-contrast: mat-contrast($mat-blue,800);
+
 $app-light-grey: mat-color($mat-grey,300);
 $app-light-grey-contrast: mat-contrast($mat-grey,300);
 $app-mid-grey: mat-color($mat-grey,600);
@@ -29,8 +31,10 @@ $app-dark-grey: mat-color($mat-grey,800);
 $app-dark-grey-contrast: mat-contrast($mat-grey,800);
 $app-white: mat-color($mat-grey,100);
 $app-white-contrast:mat-contrast($mat-grey,100);
+
 //$app-orange:
 $app-green:mat-color($mat-teal,500);
+$app-green-contrast:mat-constrast($mat-teal,500);
 $app-red:mat-color($mat-red,500);
 $app-red-contrast:mat-contrast($mat-red,500);
 

@@ -17,8 +17,8 @@ import { AppMateralModule } from '../material/material.module';
 import { FireModule } from '../firebase/fire.module';
 //NOTE that loginSvc provider is defined at 
 //HIGHEST level in main.module so it can be 
-//chared between app and user modules 
-import { LoginSvc } from '../firebase/login.svc'
+//shared between app and user modules 
+//import { LoginSvc } from '../firebase/login.svc'
 
 //get environment for connection to server
 import { environment as env } from '../environments/environment';
@@ -26,8 +26,8 @@ import { environment as env } from '../environments/environment';
 //local app
 import {
   UserInputForm, UserLogin, UserRegister, UserVerifyEmail,
-  UserResetPassword, UserChangeEmail,
-  RemoveAccountComponent, UserProfilePage,
+  UserResetPassword, UserChangeEmail, UserCreateProfile,
+  UserRemoveAccount, UserProfilePage,
   LogoutComponent
 } from './index';
 
@@ -62,12 +62,12 @@ const routes: Routes = [{
   //canActivate:[LoginSvc] 
 },{
   path: 'remove',
-  component: RemoveAccountComponent,
-  canActivate:[LoginSvc] 
+  component: UserRemoveAccount,
+  //canActivate:[LoginSvc] 
 },{
   path: 'profile',
-  component: UserProfilePage,
-  canActivate: [LoginSvc]
+  component: UserCreateProfile,
+  //canActivate: [LoginSvc]
 },{
   path:'',
   redirectTo:'login',
@@ -83,7 +83,8 @@ const routes: Routes = [{
     UserVerifyEmail,
     UserResetPassword,
     UserChangeEmail,
-    RemoveAccountComponent,
+    UserRemoveAccount,
+    UserCreateProfile,
     UserProfilePage
   ],
   imports: [
@@ -101,7 +102,8 @@ const routes: Routes = [{
     UserVerifyEmail,
     UserResetPassword,
     UserChangeEmail,
-    RemoveAccountComponent,
+    UserRemoveAccount,
+    UserCreateProfile,
     UserProfilePage
   ],
   //bootstrap: [LoginComponent]

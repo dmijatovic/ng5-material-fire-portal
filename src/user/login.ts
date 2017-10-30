@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 //services
 import { LoginSvc } from '../firebase/login.svc';
-
+import { environment as env } from '../environments/environment';
 //page definitions from user.cfg file 
 import { LoginCfg } from './user.cfg';
 import { UserInputForm } from './user.input.form';
@@ -75,13 +75,18 @@ export class UserLogin implements OnInit {
         }
       })
       .then((profile: any) => {
-        //debugger
+        debugger
         if (profile && profile.type && profile.type=="NAVIGATE") {
           //navigate to verify page
           this.router.navigate(profile.payload);
-        } else if (profile && profile.startpage){
-          //navigate to startpage from profile
-          this.router.navigateByUrl(profile.startpage);
+        } else if (profile){
+          if (profile.startpage){
+            //navigate to startpage from profile
+            this.router.navigateByUrl(profile.startpage);
+          }else{
+            console.error("Startpage not defined in profile");
+            this.router.navigateByUrl( env.cfg.startPage );
+          }          
         } else if (profile == null) {
           //user is logged in and veryfied
           //but it has no profile yet
