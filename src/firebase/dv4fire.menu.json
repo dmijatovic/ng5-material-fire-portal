@@ -1,19 +1,47 @@
 {  
-  "main": {      
-    "home": {
-      "active": true,
-      "matIcon": "home",
-      "path": "/app",
-      "pos": 1,
-      "title": "Home"
+  "main":{
+    "home" : {
+      "active" : true,
+      "matIcon" : "home",
+      "path" : "/app",
+      "pos" : 1,
+      "title" : "Home"
     },
-    "profile": {
-      "active": true,
-      "matIcon": "person",
-      "path": "profile",
-      "pos": 1,
-      "title": "Profile"
-    }     
+    "animations" : {
+      "active" : true,
+      "matIcon" : "flight_takeoff",
+      "path" : "animations/home",
+      "pos" : 2,
+      "title" : "Animations"
+    },
+    "footbal" : {
+      "active" : true,
+      "matIcon" : "group_work",
+      "path" : "football",
+      "pos" : 3,
+      "title" : "Football"
+    },
+    "chat" : {
+      "active" : true,
+      "matIcon" : "chat",
+      "path" : "chat",
+      "pos" : 4,
+      "title" : "Chat"
+    },
+    "weather" : {
+      "active" : true,
+      "matIcon" : "bubble_chart",
+      "path" : "weather",
+      "pos" : 6,
+      "title" : "Weather"
+    },
+    "admin" : {
+      "active" : "true",
+      "matIcon" : "settings",
+      "path" : "admin",
+      "pos" : 7,
+      "title" : "Settings"
+    }    
   },
   "profile": {
     "view": {

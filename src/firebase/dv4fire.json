@@ -1,0 +1,154 @@
+{
+  "map" : {
+    "map" : {
+      "key" : {
+        "key" : "key",
+        "pos" : 2,
+        "required" : true,
+        "title" : "Key",
+        "type" : "string"
+      },
+      "pos" : {
+        "key" : "pos",
+        "pos" : 1,
+        "required" : true,
+        "title" : "Position",
+        "type" : "number"
+      },
+      "required" : {
+        "key" : "required",
+        "pos" : 5,
+        "required" : true,
+        "title" : "Required",
+        "type" : "boolean"
+      },
+      "title" : {
+        "key" : "title",
+        "pos" : 3,
+        "required" : true,
+        "title" : "Title",
+        "type" : "string"
+      },
+      "type" : {
+        "key" : "type",
+        "pos" : 4,
+        "required" : true,
+        "title" : "Title",
+        "type" : "string"
+      }
+    },
+    "menu" : {
+      "active" : {
+        "key" : "active",
+        "pos" : 2,
+        "required" : true,
+        "title" : "Active",
+        "type" : "boolean"
+      },
+      "matIcon" : {
+        "key" : "matIcon",
+        "pos" : 4,
+        "required" : true,
+        "title" : "Material icon",
+        "type" : "text"
+      },
+      "path" : {
+        "key" : "path",
+        "pos" : 5,
+        "required" : true,
+        "title" : "Local path",
+        "type" : "text"
+      },
+      "pos" : {
+        "key" : "pos",
+        "pos" : 1,
+        "required" : true,
+        "title" : "Position",
+        "type" : "number"
+      },
+      "title" : {
+        "key" : "title",
+        "pos" : 3,
+        "required" : true,
+        "title" : "Title",
+        "type" : "text"
+      }
+    }
+  },
+  "menu" :{ 
+    "main":{
+      "home" : {
+        "active" : true,
+        "matIcon" : "home",
+        "path" : "/app",
+        "pos" : 1,
+        "title" : "Home"
+      },
+      "animations" : {
+        "active" : true,
+        "matIcon" : "flight_takeoff",
+        "path" : "animations/home",
+        "pos" : 2,
+        "title" : "Animations"
+      },
+      "footbal" : {
+        "active" : true,
+        "matIcon" : "group_work",
+        "path" : "football",
+        "pos" : 3,
+        "title" : "Football"
+      },
+      "chat" : {
+        "active" : true,
+        "matIcon" : "chat",
+        "path" : "chat",
+        "pos" : 4,
+        "title" : "Chat"
+      },
+      "weather" : {
+        "active" : true,
+        "matIcon" : "bubble_chart",
+        "path" : "weather",
+        "pos" : 6,
+        "title" : "Weather"
+      },
+      "admin" : {
+        "active" : "true",
+        "matIcon" : "settings",
+        "path" : "admin",
+        "pos" : 7,
+        "title" : "Settings"
+      }    
+    },
+    "profile": {
+      "view": {
+        "active": true,
+        "matIcon": "person",
+        "path": "profile",
+        "pos": 1,
+        "title": "My profile"
+      },
+      "email": {
+        "active": true,
+        "matIcon": "email",
+        "path": "/user/email",
+        "pos": 2,
+        "title": "Change email"
+      },
+      "delete": {
+        "active": true,
+        "matIcon": "delete",
+        "path": "/user/remove",
+        "pos": 3,
+        "title": "Delete account"
+      },
+      "logout": {
+        "active": true,
+        "matIcon": "exit_to_app",
+        "path": "/user/logout",
+        "pos": 4,
+        "title": "Logout"
+      }            
+    }
+  }
+}
