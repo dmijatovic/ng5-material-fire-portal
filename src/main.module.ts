@@ -52,10 +52,10 @@ import { MainOutlet } from './main.outlet';
  * top lever route loaded in main-outlet
  * lazy loading public or private module
  */
-const routes:Routes=[/*{
+const routes:Routes=[{
   path:'public',  
   loadChildren: 'public/public.module#PublicModule'
-},*/{
+},{
   path:'app',  
   loadChildren: 'app/app.module#AppModule'
 },{

@@ -19,7 +19,8 @@ This project is ment to be template for new portals. Therefore I decided to spli
 
 - `ng4mat`: starter branch ng4 with custom material theme. use this as stater. note that material is still in beta (beta 12 in this case). There was a bug in beta 11 version of angular/material, so I extracted scss file and changed few lines of theming code. The adapted material theming version is in material folder.
 - `ng4portal`: basic dashboard portal demo and project starter for dashboards hosted with firebase. It has login and user modules for authentication. In addition it uses lazy loading of site modules (sections)
-- `dev`: branch used for developing new features testing new ideas
+- `ng4firedemo`: firebase demo portal. It has public, user and app sections. It uses lazy loading of modules. firebase project is dv4fire.
+- `dev`: branch used for developing new features testing new ideas. It has 3 sections: public, user and private. It uses dv4fire project on firebase.
 - `master`: demo portal verson live on dv4all website
 - `others`: this project might hold other branches in the future
 
