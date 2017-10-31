@@ -16,6 +16,7 @@ import { AppMateralModule } from '../../material/material.module';
 //SysStoreSvc injected here to share events with components 
 //within this module ONLY - now only home uses it
 import { SysStoreSvc } from '../../system/sys.store';
+import { FireSvc } from '../../firebase/firebase.svc';
 
 /**
  * ROUTES
@@ -39,7 +40,7 @@ const routes: Routes = [{
       SystemComponentsModule,      
       RouterModule.forChild(routes)
    ],
-   providers:[ SysStoreSvc ],
+   providers:[ SysStoreSvc, FireSvc ],
    declarations: [HomeComponent, MenuComponent]
 })
 export class AdminModule { }

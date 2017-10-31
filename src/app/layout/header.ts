@@ -1,15 +1,17 @@
 //angular 
 import { Component, OnInit, OnDestroy } from '@angular/core';
-
-import { LoginSvc } from '../../firebase/login.svc';
-import { ProfileSvc } from '../../firebase/profile.svc';
-import { AppStateSvc } from "../app.state.svc";
 import { Router, ActivatedRoute } from '@angular/router';
 
+//RxJs
 import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
-
+import 'rxjs/add/operator/filter';
+//local
 import { environment as env } from '../../environments/environment';
+import { LoginSvc } from '../../firebase/login.svc';
+import { ProfileSvc } from '../../firebase/profile.svc';
+import { SystemActionSvc } from '../../system/sys.action.svc';
+
 
 @Component({
   selector: 'app-header',
@@ -33,14 +35,19 @@ export class AppHeader implements OnInit {
     private profile: ProfileSvc,
     private router: Router,
     private route: ActivatedRoute,
-    private state: AppStateSvc
+    private action: SystemActionSvc
   ) { }
   ngOnInit() {
     //list to title
-    this.title$ = this.state.title$
-      .subscribe((d: any) => {
+    this.title$ = this.action.state$
+      .filter((action)=>{
+        //filter only actions with 
+        //type header title
+        return action.type=="HEADER_TITLE";
+      })
+      .subscribe((action) => {
         //debugger
-        this.title = d;
+        this.title = action.payload;
       });
     //get all menus
     //debugger

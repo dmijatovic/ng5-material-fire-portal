@@ -1,10 +1,13 @@
 
 
 /**
-* Create different message and input card layouts
-* we have 3 types: input card, message card, system error card
+* this should be on each host
+that needs to fill in the page 
 */
-@mixin mesage-card(){
-  
-
+@mixin host-flex-full-size($align-items:center, $justify-content:stretch){
+  display: flex;  
+  flex-direction: column;
+  flex:1;
+  align-items: $align-items;
+  justify-content: $justify-content;  
 }

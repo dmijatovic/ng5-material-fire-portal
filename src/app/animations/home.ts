@@ -1,20 +1,24 @@
 //angular 
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
-//app state service for changing title
-import { AppStateSvc } from '../app.state.svc';
+//service to emit/dispatch actions between app components
+import { SystemActionSvc } from '../../system/sys.action.svc';
 
 @Component({
     selector: 'app-animate-home',
     templateUrl: './home.html',
     styleUrls: ['./home.scss']
 })
-export class AnimateHomePage {
-    title = 'Animations: Home page';    
+export class AnimateHomePage implements OnInit {
+    pageTitle = 'Animations: Home page';    
     constructor(
-        private state:AppStateSvc
-    ){
-        //change page title to reflect loaded page
-        this.state.setPageTitle(this.title);
-    }
+        private action: SystemActionSvc
+    ){}
+    ngOnInit() {
+        //pass title we want to use
+        this.action.dispatch({
+          type:"HEADER_TITLE",
+          payload: "dv4Demo portal: " + this.pageTitle
+        });
+      }
 }

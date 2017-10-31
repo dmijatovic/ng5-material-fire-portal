@@ -1,9 +1,20 @@
 
+@import '../../material/variables';
+@import '../../material/mixins';
 
 //this should be on each host
 //that needs to fill in the page 
 :host{
-    display: flex;
-    flex-direction: column;
-    flex: 1;
+  @include host-flex-full-size;
+  padding: $page-padding;
 }
+
+.page-title{
+  width:100%;
+}
+
+.page-tabs{
+  min-width:420px;  
+  width: 95vw;
+}
+

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatToolbar, MatToolbarRow, MatIcon } from '@angular/material';
 
-//import { Router } from '@angular/router';
-//import { LoginSvc } from '../../firebase/login.svc';
-import { AppStateSvc } from '../app.state.svc';
+//service to emit/dispatch actions between app components
+import { SystemActionSvc } from '../../system/sys.action.svc';
+
 
 @Component({
   selector: 'app-home',
@@ -11,31 +11,18 @@ import { AppStateSvc } from '../app.state.svc';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  title="Angular 4 material starter"
+  pageTitle="Home"
   constructor(
     //private login: LoginSvc,
     //private router: Router 
-    private state: AppStateSvc
+    private action: SystemActionSvc
   ) { }
 
   ngOnInit() {
     //pass title we want to use
-    this.state.setPageTitle(this.title);
+    this.action.dispatch({
+      type:"HEADER_TITLE",
+      payload: "dv4Demo portal: " + this.pageTitle
+    });
   }
-  /*
-  getMeFavs(){
-    console.log("You clicked favs icon");
-  }
-  deleteSomething(){
-    console.log("Wel there is nothing to delete here");    
-    //can we log out?!?
-    this.login.logOut();
-  }
-  logOut(){
-    //can we log out?!?
-    this.login.logOut();
-  }
-  deleteAccount(){
-    this.router.navigate(['remove']);
-  }*/
 }

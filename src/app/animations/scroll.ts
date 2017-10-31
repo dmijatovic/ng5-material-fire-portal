@@ -1,20 +1,24 @@
 //angular 
 import { Component } from '@angular/core';
 
-//app state service for changing title
-import { AppStateSvc } from '../app.state.svc';
+//service to emit/dispatch actions between app components
+import { SystemActionSvc } from '../../system/sys.action.svc';
 
 @Component({
-    selector: 'app-animate-scroll',
-    templateUrl: './scroll.html',
-    styleUrls: ['./scroll.scss']
+  selector: 'app-animate-scroll',
+  templateUrl: './scroll.html',
+  styleUrls: ['./scroll.scss']
 })
 export class AnimateScrollPage {
-    title = 'Animations: Scroll page';    
-    constructor(
-        private state:AppStateSvc
-    ){
-        //change page title to reflect loaded page
-        this.state.setPageTitle(this.title);
-    }
+  pageTitle = 'Animations: Scroll page';
+  constructor(
+    private action: SystemActionSvc
+  ) { }
+  ngOnInit() {
+    //pass title we want to use
+    this.action.dispatch({
+      type: "HEADER_TITLE",
+      payload: "dv4Demo portal: " + this.pageTitle
+    });
+  }
 }

@@ -1,7 +1,4 @@
 //angular
-//import { BrowserModule } from '@angular/platform-browser';
-//import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router'
@@ -11,13 +8,12 @@ import { RouterModule, Routes } from '@angular/router'
  */
 //firebase module & service
 import { FireModule } from '../firebase/fire.module';
-import { FireSvc } from '../firebase/firebase.svc';
+//import { FireSvc } from '../firebase/firebase.svc';
 //import { LoginSvc } from '../firebase/login.svc';
 import { ProfileSvc } from '../firebase/profile.svc';
 
-
 //get environment for connection to server
-import { environment as env } from '../environments/environment';
+//import { environment as env } from '../environments/environment';
 
 /**
  * MATERIAL SECTION
@@ -26,42 +22,19 @@ import { environment as env } from '../environments/environment';
  * in the application
  */
 import { AppMateralModule } from '../material/material.module';
-
 /** 
  * SYSTEM MODULE 
  * here we handle 
 */
 import { SystemComponentsModule } from '../system/util.module';
-
-/**
- * LOGIN SECTION
- * login module covers authentication,
- * register, login and forgot password
- * pages are part of the module
- */
-//import { UserModule } from '../user/user.module';
-//import { LoginSvc } from '../firebase/login.svc';
-
-/**
- * ANIMATIONS module
- */
-//import { AnimationsModule } from './animations/animate.module';
-
 /**
  * MAIN APP PAGES/COMPONENTS 
  */
 //local app
-//import { AppComponent } from './app.component';
-//import { LoginComponent } from './login/login.component';
 import { AppHeader, AppFooter, PrivateOutlet } from './layout';
 import { HomeComponent } from './home/home.component';
-
-//main state shared service
-import { AppStateSvc } from './app.state.svc';
-//injected at lover levels to restrict events sharing
-//import { SysStoreSvc } from '../system/sys.store';
-
-
+//service to emit/dispatch actions between app components
+import { SystemActionSvc } from '../system/sys.action.svc';
 /**
  * ROUTES
  * top lever route,
@@ -114,7 +87,7 @@ const routes: Routes = [{
     //Router
     RouterModule.forChild(routes)
   ],
-  providers: [AppStateSvc, FireSvc, ProfileSvc],
+  providers: [SystemActionSvc, ProfileSvc],
 
   exports: [HomeComponent, AppHeader, AppFooter, PrivateOutlet]
   //bootstrap: [AppComponent]
