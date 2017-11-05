@@ -4,19 +4,19 @@
   <div class="user-input-sidebar">
     <h1>{{ panelStatus }}</h1>
   </div>
-  
-  <div class="user-input-card">        
+
+  <div class="user-input-card">
     <!-- logo -->
     <div class="logo"
       [class.active]="!showLoader">
       <img [src]="cfg.logo" />
-    </div>  
+    </div>
 
     <!-- loader -->
     <div class="loader"
       [class.active]="showLoader">
       <mat-spinner></mat-spinner>
-    </div>  
+    </div>
 
     <!--HEADER/TITLE-->
     <div class="user-input-title">
@@ -39,39 +39,47 @@
 
       <!-- FORM -->
       <form class="user-input-form"
-        [class.hidden]="hideForm" 
-        [formGroup]="inputForm" (ngSubmit)="Submit()">      
-        
-        <mat-form-field 
-          *ngFor="let item of inputField">          
-          <input matInput 
-            [type]="item.type" 
-            [name]="item.key" 
-            [formControlName]="item.key" 
+        [class.hidden]="hideForm"
+        [formGroup]="inputForm" (ngSubmit)="Submit()">
+
+        <mat-form-field
+          *ngFor="let item of inputField">
+          <input matInput
+            [type]="item.type"
+            [name]="item.key"
+            [formControlName]="item.key"
             [placeholder]="item.title"
             autocomplete="false" />
-        
+
         </mat-form-field>
 
         <!-- MAIN NAV (onSubmit) -->
-        <div class="user-input-nav">        
-          <button mat-raised-button style="flex:1" 
+        <div class="user-input-nav">
+          <button mat-raised-button style="flex:1"
             color="primary" [disabled]="!inputForm.valid">
             {{ cfg.primBtn.label }}
-          </button>      
-        </div>     
+          </button>
+        </div>
 
-      </form>  
+      </form>
     </div>
-    
+
     <!--- SEC NAV (routerLink)-->
     <div class="user-input-nav-panel">
-      <button *ngIf="cfg.secoBtn.link" 
+      <button *ngIf="cfg.secoBtn.link"
         mat-button color="warn" [routerLink]="cfg.secoBtn?.link">
         {{cfg.secoBtn.label}}
       </button>
-      <button *ngIf="cfg.thrdBtn.link" 
+      <button *ngIf="cfg.secoBtn.back"
+        mat-button color="warn" (click)="onBack()">
+        {{cfg.secoBtn.label}}
+      </button>
+      <button *ngIf="cfg.thrdBtn.link"
         mat-button color="primary" [routerLink]="cfg.thrdBtn?.link">
+        {{cfg.thrdBtn.label}}
+      </button>
+      <button *ngIf="cfg.thrdBtn.back"
+        mat-button color="primary" (click)="onBack()">
         {{cfg.thrdBtn.label}}
       </button>
     </div>

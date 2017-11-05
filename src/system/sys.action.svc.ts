@@ -1,9 +1,9 @@
 /**
  * System store / state manager
- * The idea is to let components communicate 
- * indirectly using system store service rather 
+ * The idea is to let components communicate
+ * indirectly using system store service rather
  * then directly calling services and tasks
- * The components will dispatch events and listen 
+ * The components will dispatch events and listen
  * for specific events from the store that will provide
  * them required data
  * v.0.0.1 Oct 2017
@@ -14,11 +14,11 @@ import { Subject } from 'rxjs/Subject';
 @Injectable()
 export class SystemActionSvc {
    constructor(){
-      console.log("SystemActionSvc...started");
+      //console.log("SystemActionSvc...started");
    }
    /**
     * State events dispatched from components
-    * to whom ever listens to events 
+    * to whom ever listens to events
     * inspired by websockets and redux dispatch
     * action idea
     */
@@ -29,7 +29,7 @@ export class SystemActionSvc {
       //debugger
       //console.log("SysStoreSvc...dispatch",event);
       //fire up the state event
-      this.state.next(event);      
+      this.state.next(event);
    }
 }
 /**
@@ -38,4 +38,15 @@ export class SystemActionSvc {
 export interface storeEvent{
    type:string;
    payload?:any;
+}
+/**
+ * This is the list of ALL
+ * action types we use in app
+ * please maintain this list!!!
+ */
+export const ActionType = {
+  FIRE_SVC_START:"FIRE_SVC_START",
+  FIRE_USER_CHANGE: "FIRE_USER_CHANGE",
+
+
 }

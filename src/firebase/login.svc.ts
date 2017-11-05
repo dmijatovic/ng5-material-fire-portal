@@ -2,7 +2,8 @@
 import { Injectable } from '@angular/core';
 import {
   Router, ActivatedRouteSnapshot,
-  RouterStateSnapshot, CanActivate
+  RouterStateSnapshot, Route,
+  CanActivate, CanLoad
 } from '@angular/router';
 
 //firebase
@@ -11,40 +12,58 @@ import { AngularFireDatabase } from 'angularfire2/database';
 
 //enviroment
 import { environment as env } from '../environments/environment';
-
+import { SystemActionSvc, ActionType as aType } from '../system/sys.action.svc';
 
 @Injectable()
-export class LoginSvc implements CanActivate {
-  //user object 
+export class LoginSvc implements CanActivate, CanLoad {
+  //user object
   private user: any = null;
+  private init:boolean = true;
 
   constructor(
     private fire: AngularFireAuth,
     private router: Router,
-    private data: AngularFireDatabase
-  ) {
-    //listen for auth changes
+    private data: AngularFireDatabase,
+    private action: SystemActionSvc
+  ){
+    //debugger
+    //console.log("LoginSvc...constructor...")
+    //init firebase
+    this.onInit();
+  }
+  //listen for auth changes
+  onInit(){
+    //debugger
     this.fire.auth.onAuthStateChanged((user) => {
+      //console.log("onAuthStateChanged...", user);
       if (user) {
-        //signed in 
+        //signed in
         this.user = user;
       } else {
         //signed out
         this.user = null;
       }
+      //dispatch action with
+      //firebase user after
+      if (this.init){
+        this.action.dispatch({
+          type:aType.FIRE_SVC_START,
+          payload: user
+        });
+        //set init flag to completed
+        this.init = false;
+      }else{
+        this.action.dispatch({
+          type:aType.FIRE_USER_CHANGE,
+          payload: user
+        });
+      }
     });
-    //debugger
-    //check if we have user signed to firebase
-    //login.svc is split between user and app
-    //in other words
-    if (this.fire.auth.currentUser && this.user==null){
-      this.user = this.fire.auth.currentUser; 
-    }      
   }
   /**
    * Login user to firebase project
-   * @param email 
-   * @param pass 
+   * @param email
+   * @param pass
    */
   logIn(email, pass) {
     //persistance options: local/session/none
@@ -53,7 +72,7 @@ export class LoginSvc implements CanActivate {
         return this.fire.auth
           .signInWithEmailAndPassword(email, pass);
       })
-      .catch((e)=>{                
+      .catch((e)=>{
         //console.error(e);
         throw new Error(e.message);
       });
@@ -90,9 +109,9 @@ export class LoginSvc implements CanActivate {
         res(null);
       }
     });
-  }  
+  }
   /**
-   * Returns array of objects of 
+   * Returns array of objects of
    * all menu items avaliable in the app
    */
   getAllMenuItems() {
@@ -111,7 +130,7 @@ export class LoginSvc implements CanActivate {
           //console.log("snaphot", snapshot.exists());
           //console.groupEnd();
           let d = [];
-          //get list of items 
+          //get list of items
           //ordered by position
           snapshot.forEach(el => {
             let item = el.val();
@@ -126,8 +145,8 @@ export class LoginSvc implements CanActivate {
     });
   }
   /**
-   * Returns array of objects of 
-   * all profile menu items 
+   * Returns array of objects of
+   * all profile menu items
    */
   getAllProfileOptions() {
     return new Promise((res, rej) => {
@@ -145,7 +164,7 @@ export class LoginSvc implements CanActivate {
           console.log("snaphot", snapshot.exists());
           console.groupEnd();*/
           let d = [];
-          //get list of items 
+          //get list of items
           //ordered by position
           snapshot.forEach(el => {
             let item = el.val();
@@ -162,8 +181,8 @@ export class LoginSvc implements CanActivate {
   }
   /**
    * Register user to firebase project
-   * @param email 
-   * @param pass 
+   * @param email
+   * @param pass
    */
   register(email, pass) {
 
@@ -176,29 +195,29 @@ export class LoginSvc implements CanActivate {
    * Ensure the user is logged in at this point because
    * we use user loaded in this class!
    */
-  sendEmailVerification() {    
+  sendEmailVerification() {
     return new Promise((res,rej)=>{
       //get current user
       let user = this.fire.auth.currentUser;
       if (user) {
         this.fire.auth.currentUser.sendEmailVerification()
         .then(()=>{
-          //debugger 
+          //debugger
           res(user.email)
         },(e)=>{
-          debugger 
+          debugger
           rej(e.message);
         })
       } else {
-        debugger 
+        debugger
         rej("No user logged in");
       }
-    });    
+    });
   }
   /**
-   * Sends reset password email using 
+   * Sends reset password email using
    * firebase auth infrastructure
-   * @param email 
+   * @param email
    */
   sendResetPasswordEmail(email: string) {
     return this.fire.auth.sendPasswordResetEmail(email)
@@ -206,7 +225,7 @@ export class LoginSvc implements CanActivate {
   /**
    * Change current user email
    * This can only if users is logged in
-   * @param email 
+   * @param email
    */
   changeUserEmail(email: string) {
     //can we change this
@@ -220,40 +239,62 @@ export class LoginSvc implements CanActivate {
   }
   /**
    * Save user profile to this class
-   * 
-   * @param data 
+   *
+   * @param data
    */
   saveProfile(data: any) {
     this.user = data;
   }
   /**
    * Return current user profile
-   * if no user is logged in 
+   * if no user is logged in
    * it returns null
    */
   getProfile() {
+    //debugger
     return this.user;
   }
   /**
-   * 
+   *
    */
   getCurrentUserInfo(){
+    //debugger
     return this.fire.auth.currentUser
   }
   /**
    * Can user activate angular route
-   * this function is implemented in angular router     
-   * @param next 
-   * @param state 
+   * this function is implemented in angular router
+   * @param next
+   * @param state
    */
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     let n = next.data['permission'],
       s = state.url;
-
     //debugger
-    //check user 
-    if (this.user == null) {
+    //check user ONLY if login service finished init
+    if (this.user == null
+      && this.init==false) {
+      debugger
       this.accessDenied(s);
+      //this.redirectUser("public");
+      return false;
+    } else {
+      return true;
+    }
+
+  }
+  /**
+   * Can user load this module (route)?
+   * @param route
+   */
+  canLoad(route:Route){
+    //debugger
+    //console.log("canLoad...", route);
+    //check user ONLY if login service finished init
+    if (this.user == null
+      && this.init==false) {
+      debugger
+      this.accessDenied(route.path);
       //this.redirectUser("public");
       return false;
     } else {
@@ -261,11 +302,11 @@ export class LoginSvc implements CanActivate {
     }
   }
   /**
-   * Call this function if canActivate function 
-   * return false, eg. the users has no access 
-   * to this route and provide url/path the 
+   * Call this function if canActivate function
+   * return false, eg. the users has no access
+   * to this route and provide url/path the
    * user wanted to access
-   * @param url 
+   * @param url
    */
   accessDenied(url) {
     //
@@ -281,7 +322,7 @@ export class LoginSvc implements CanActivate {
    * @param url
    */
   redirectUser(url) {
-    //        
+    //
     console.log("login.svc redirect to", url);
     this.router.navigateByUrl(url);
     //return false;
@@ -293,7 +334,7 @@ export class LoginSvc implements CanActivate {
    * is set to null
    */
   logOut() {
-    //remove user 
+    //remove user
     this.user = null;
     //logout
     return this.fire.auth.signOut()
@@ -301,7 +342,7 @@ export class LoginSvc implements CanActivate {
         //this.router.navigateByUrl("public");
         return true
       }, (e) => {
-        //unknown error        
+        //unknown error
         //this.router.navigateByUrl("error/505");
         throw new Error(e.mesage);
       });

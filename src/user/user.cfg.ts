@@ -1,18 +1,18 @@
 /**
  * User module configurations
  * each page has their own config object
- * 
- * v.0.0.1 Oct 2017 
+ *
+ * v.0.0.1 Oct 2017
  */
 
 /**
  * Register page config
  * input type page
  */
-export const RegisterCfg={  
+export const RegisterCfg={
   panelTitle: "Register",
-  matIcon:"pets",  
-  logo:"assets/img/logo.jpg",  
+  matIcon:"pets",
+  logo:"assets/img/logo.jpg",
   //where to go next
   nextNav:["user","verify"],
   primBtn: {
@@ -50,7 +50,7 @@ export const LoginCfg={
     label: 'Forgot password',
     link: '../password'
   },
-  thrdBtn: {    
+  thrdBtn: {
     label: 'Register',
     link: '../register'
   },
@@ -63,14 +63,14 @@ export const LoginCfg={
 
 
 /**
- * Create profile object 
+ * Create profile object
  * buttons redefined in ngOnInit
  * input type page
  */
-export const CreateProfileCfg={  
+export const CreateProfileCfg={
   panelTitle: "Your profile",
-  matIcon:"perm_contact_calendar",  
-  logo:"assets/img/logo.jpg",    
+  matIcon:"perm_contact_calendar",
+  logo:"assets/img/logo.jpg",
   primBtn: {
     label: 'Create profile',
     link: 'profile'
@@ -82,7 +82,7 @@ export const CreateProfileCfg={
   thrdBtn: {
     label: null,
     link: null
-  },  
+  },
   input:[
     //hidden fields to fill in programatically
     //{"key":"avatar","title":null,type:"hidden",required:false},
@@ -99,30 +99,30 @@ export const CreateProfileCfg={
       ]
     },*/
   ],
-  msg:{ 
+  msg:{
     default:`
     <h4>Last but not least</h4>
     <p>Give us some basic information about you.
-    This will help you test user profile features of the portal.  
+    This will help you test user profile features of the portal.
     `,
     login:`
     <h4>User not logged in</h4>
     <p>Something went wrong during the registration process.
     After you verified your email you create your profile
-    at this page after you login. Please login again. 
+    at this page after you login. Please login again.
     </p>`
   }
 }
 
 
 /**
- * Password reset 
+ * Password reset
  * input type page
  */
-export const ResetPasswordCfg={  
+export const ResetPasswordCfg={
   panelTitle: "Reset",
-  matIcon:"settings_backup_restore",  
-  logo:"assets/img/logo.jpg",  
+  matIcon:"settings_backup_restore",
+  logo:"assets/img/logo.jpg",
   //where to go next
   nextNav:["user","verify"],
   primBtn: {
@@ -135,35 +135,35 @@ export const ResetPasswordCfg={
   },
   thrdBtn: {
     label: 'Back to login',
-    link: '../login'    
+    link: '../login'
   },
   input:[
-    {"key":"email","title":"Your email",type:"email",required:true}    
+    {"key":"email","title":"Your email",type:"email",required:true}
   ],
   msg:{
     default: `
-    Provide the same email address you used to create your account and 
+    Provide the same email address you used to create your account and
     we will send reset instructions to that email address.
     `,
     success:`
-    We send you an e-mail with a link to use to 
-    reset you current password. Please check your 
+    We send you an e-mail with a link to use to
+    reset you current password. Please check your
     mailbox and follow the instruction.
     <br><br>
     Thanks,
     dv4all team
     `
-  }  
+  }
 }
 
 /**
  * Change email
  * input type page
  */
-export const ChangeEmailCfg={  
+export const ChangeEmailCfg={
   panelTitle: "Change",
-  matIcon:"local_post_office",  
-  logo:"assets/img/logo.jpg",  
+  matIcon:"local_post_office",
+  logo:"assets/img/logo.jpg",
   //where to go next
   nextNav:["user","verify"],
   primBtn: {
@@ -174,10 +174,12 @@ export const ChangeEmailCfg={
     label: null,
     link: null
   },
+  //NOTE BACK BUTTON setup
   thrdBtn: {
-    label: 'Back to login',
-    link: '../login'    
-  },  
+    label: 'Cancel',
+    link: null,
+    back: true
+  },
   input:[
     {"key":"oldemail","title":"Current email",type:"email",required:true},
     {"key":"newemail","title":"New email",type:"email",required:true}
@@ -185,7 +187,7 @@ export const ChangeEmailCfg={
   ],
   msg:{
     default:`
-    Provide your current email used to login. You will need to verify 
+    Provide your current email used to login. You will need to verify
     new email address in same way you did it with the current email.
     `,
     login:`
@@ -202,10 +204,10 @@ export const ChangeEmailCfg={
     success:`
     <h4>DONE!</h4>
     <p>
-    Please login using your new credentials (email). 
-    We will then send you e-mail to verify your credentials.    
+    Please login using your new credentials (email).
+    We will then send you e-mail to verify your credentials.
     </p>
-    <p>I know, ... this is not very user friendly but it 
+    <p>I know, ... this is not very user friendly but it
     needs to be done at each change of email address.</p>
     Thanks,
     dv4all demo team
@@ -218,10 +220,10 @@ export const ChangeEmailCfg={
  * Remove account
  * input type page
  */
-export const RemoveAccountCfg={  
+export const RemoveAccountCfg={
   panelTitle: "Remove",
-  matIcon:"delete_forever",  
-  logo:"assets/img/logo.jpg",  
+  matIcon:"delete_forever",
+  logo:"assets/img/logo.jpg",
   //where to go next
   //nextNav:["user","verify"],
   primBtn: {
@@ -234,7 +236,7 @@ export const RemoveAccountCfg={
   },
   thrdBtn: {
     label: 'Register',
-    link: '../register'    
+    link: '../register'
   },
   msg:{
     default:`
@@ -252,10 +254,10 @@ export const RemoveAccountCfg={
     Till next time!<br/>
     dv4all team
     `
-  }, 
+  },
   input:[
     {"key":"email","title":"Your email",type:"email",required:true},
-    {"key":"password","title":"Your password",type:"password",required:true}    
+    {"key":"password","title":"Your password",type:"password",required:true}
   ]
 }
 
@@ -266,8 +268,8 @@ export const RemoveAccountCfg={
  */
 export const VerifyEmailCfg={
   panelTitle: "Almost there",
-  matIcon:"verified_user",  
-  logo:"assets/img/logo.jpg",  
+  matIcon:"verified_user",
+  logo:"assets/img/logo.jpg",
   email: "no e-mail provided",
   signature:'dv4all, firebase demo team',
   button:[
@@ -279,8 +281,8 @@ export const VerifyEmailCfg={
     login:`
     <h4>User not logged in</h4>
     <p>Something went wrong during registration process.
-    After registering you should receive e-mail 
-    to verify your user account. Unfortunatelly 
+    After registering you should receive e-mail
+    to verify your user account. Unfortunatelly
     the verification email cannot be sent.
     </p>
     `,
@@ -316,10 +318,10 @@ export const VerifyEmailCfg={
  */
 export const LogoutCfg={
   panelTitle: "Sign out",
-  matIcon:"directions_run",  
-  logo:"assets/img/logo.jpg",    
+  matIcon:"directions_run",
+  logo:"assets/img/logo.jpg",
   button:[
-    {label:'Sign in', link:'/user/login', color:'primary'}    
+    {label:'Sign in', link:'/user/login', color:'primary'}
   ],
   msg:{
     default:`
@@ -330,8 +332,8 @@ export const LogoutCfg={
     <h4>Please login</h4>
     <p>We are unable to verify your account.</p>
     `,
-    success:`    
-    <p>Signed out! Till next time</p>            
+    success:`
+    <p>Signed out! Till next time</p>
     `
   }
 }

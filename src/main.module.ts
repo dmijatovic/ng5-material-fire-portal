@@ -4,84 +4,73 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //angular
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router'
-
-//get environment for connection to server
-//import { environment as env } from './environments/environment';
-
-/**
+/**, Routes
  * MATERIAL SECTION
  * Custom material module used to add all material components used
- * from here the components are avaliable to every component
- * in the application
+ * this module need to added in child modules. It seems that
+ * reference from the top does not work as with services?!?
  */
-import { AppMateralModule } from './material/material.module'; 
-
-/** 
- * SYSTEM MODULES 
- * here we handle 
+//import { AppMateralModule } from './material/material.module';
+/**
+ * SYSTEM MODULES
+ * here we handle
 */
 import { SystemErrorModule } from './system/error.module';
+import { SystemComponentsModule } from './system/util.module';
+//service to emit/dispatch actions between app components
+import { SystemActionSvc } from './system/sys.action.svc';
 
 /**
- * LOGIN SECTION
+ * FIREBASE SECTION
  * login module covers authentication,
  * register, login and forgot password
  * pages are part of the module
  */
-//import { UserModule } from './user/user.module';
-//firebase modules 
 import { FireModule } from './firebase/fire.module';
 import { LoginSvc } from './firebase/login.svc';
-
 /**
- * MAIN ***PRIVATE*** APP MODULE
+ * MAIN outlet
  */
-//import { AppModule } from './app/app.module';
-/**
- * PUBLIC pages module
- */
-//import { PublicModule } from './public/public.module';
-
-
-//main outlet component 
-//itś just a router-outlet
 import { MainOutlet } from './main.outlet';
-
 /**
  * ROUTES
- * top lever route loaded in main-outlet
- * lazy loading public or private module
+ * top level route loaded in main-outlet
+ * lazy loading of modules
  */
-
- 
 const routes:Routes=[{
-  path:'',  
-  loadChildren: 'public/public.module#PublicModule'
+  path:'app',
+  loadChildren:'app/app.module#AppModule'
 },{
-  path:'app',  
-  loadChildren: 'app/app.module#AppModule'
+  path:'user',
+  loadChildren:'user/user.module#UserModule'
+},/*{
+  path:'',
+  redirectTo:'user/login',
+  pathMatch:'full'
+}*/{
+  path:'',
+  component: MainOutlet
 },{
-  path:'user',  
-  loadChildren: 'user/user.module#UserModule'
-},/*
-  {
     path:'**',
     redirectTo:'/error/404',
     pathMatch:'full'
-}*/]
+}]
 
 @NgModule({
   declarations: [ MainOutlet ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    AppMateralModule, FireModule,
+    FireModule,
+    //AppMateralModule,
     //LoginModule,
-    SystemErrorModule,//PublicModule,AppModule,    
+    //PublicModule,AppModule,
+    SystemErrorModule,
+    SystemComponentsModule,
     //Router (always last)
     RouterModule.forRoot(routes)
   ],
-  providers: [ LoginSvc ],
+  providers: [ LoginSvc, SystemActionSvc ],
   bootstrap: [ MainOutlet ]
 })
 export class MainModule { }

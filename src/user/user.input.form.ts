@@ -6,18 +6,19 @@ import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms'
 interface formBtn {
   label: string;
   link: string;
+  back: boolean;
 }
 
 interface formCfg {
   panelTitle: string;
-  matIcon: string;  
-  logo:string;    
-  //the button labels    
+  matIcon: string;
+  logo:string;
+  //the button labels
   //used when switching
   primBtn: formBtn;
   secoBtn: formBtn;
-  thrdBtn: formBtn; 
-  input:[{}]; 
+  thrdBtn: formBtn;
+  input:[{}];
 }
 
 @Component({
@@ -28,20 +29,20 @@ interface formCfg {
 export class UserInputForm implements OnInit {
   //form config
   cfg:formCfg
-  //internal 
+  //internal
   inputForm: FormGroup;
   inputField: any = [];
   panelStatus: string = null;
   panelMsg: string = null;
   //do we have error (msg)
-  error: boolean = false;    
+  error: boolean = false;
   //loader flag
   showLoader: boolean = false;
   //hide form - needed in some cases
   hideForm: boolean = false;
   //create class
   constructor(
-    private formBuilder: FormBuilder,    
+    private formBuilder: FormBuilder,
     //private router: Router,
     //private routeData: ActivatedRoute
   ) {
@@ -51,41 +52,41 @@ export class UserInputForm implements OnInit {
   @Input()
   set formDef(cfg:formCfg){
     this.cfg = cfg;
-  }  
+  }
   @Output() onSubmit = new EventEmitter();
   ngOnInit() {
-    //debugger 
+    //debugger
     if (this.cfg){
       this.createInput();
       this.createForm();
     }else{
       console.error("No formDef provided (or empty)...UserInputForm.ngOnInit");
-    }    
+    }
   }
   createInput(){
     this.inputField = this.cfg.input;
   }
   createForm(){
     let fgr={};
-    //map defined input fields 
+    //map defined input fields
     this.inputField.map((f)=>{
       if (f.required){
         fgr[f.key] = new FormControl(
           null, Validators.required
-        )      
+        )
       }else{
-        fgr[f.key] = new FormControl()      
-      }      
+        fgr[f.key] = new FormControl()
+      }
     });
     //create form group
     this.inputForm = this.formBuilder.group(fgr);
   }
   setMsg({status="", msg="", error=false}){
     //
-    this.panelStatus = status;  
-    this.panelMsg = msg;  
+    this.panelStatus = status;
+    this.panelMsg = msg;
     this.error = error;
-  }  
+  }
   toggleLoader(){
     this.showLoader = ! this.showLoader;
   }
@@ -95,6 +96,9 @@ export class UserInputForm implements OnInit {
   Submit() {
     //console.log("pass submit to parent");
     //send values to parent
-    this.onSubmit.emit(this.inputForm.value);    
+    this.onSubmit.emit(this.inputForm.value);
+  }
+  onBack(){
+    window.history.back();
   }
 }

@@ -7,17 +7,17 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
-//material modules
+//material modules - already added in main.module?!?
 import { AppMateralModule } from '../material/material.module';
 
 /**
- * FIREBASE SECTION 
+ * FIREBASE SECTION - already imported in main.module.ts
  */
-//firebase modules 
-import { FireModule } from '../firebase/fire.module';
-//NOTE that loginSvc provider is defined at 
-//HIGHEST level in main.module so it can be 
-//shared between app and user modules 
+//firebase modules
+//import { FireModule } from '../firebase/fire.module';
+//NOTE that loginSvc provider is defined at
+//HIGHEST level in main.module so it can be
+//shared between app and user modules
 //import { LoginSvc } from '../firebase/login.svc'
 
 //get environment for connection to server
@@ -28,7 +28,6 @@ import {
   UserInputForm, UserLogin, UserRegister, UserVerifyEmail,
   UserResetPassword, UserChangeEmail, UserCreateProfile,
   UserRemoveAccount, UserLogout
-  
 } from './index';
 
 //firebase service
@@ -48,22 +47,22 @@ const routes: Routes = [{
   component: UserLogout
 },{
   path: 'register',
-  component: UserRegister  
+  component: UserRegister
 },{
   path: 'password',
   component: UserResetPassword
 },{
   path: 'verify',
   component: UserVerifyEmail,
-  //canActivate:[LoginSvc] 
+  //canActivate:[LoginSvc]
 },{
   path: 'email',
   component: UserChangeEmail,
-  //canActivate:[LoginSvc] 
+  //canActivate:[LoginSvc]
 },{
   path: 'remove',
   component: UserRemoveAccount,
-  //canActivate:[LoginSvc] 
+  //canActivate:[LoginSvc]
 },{
   path: 'profile',
   component: UserCreateProfile,
@@ -84,13 +83,14 @@ const routes: Routes = [{
     UserResetPassword,
     UserChangeEmail,
     UserRemoveAccount,
-    UserCreateProfile    
+    UserCreateProfile
   ],
   imports: [
     //BrowserModule,
     //BrowserAnimationsModule,
     CommonModule, FormsModule, ReactiveFormsModule,
-    AppMateralModule, SystemComponentsModule, FireModule,
+    AppMateralModule,//FireModule,
+    SystemComponentsModule,
     RouterModule.forChild(routes)
   ],
   //providers: [LoginSvc],
@@ -102,7 +102,7 @@ const routes: Routes = [{
     UserResetPassword,
     UserChangeEmail,
     UserRemoveAccount,
-    UserCreateProfile    
+    UserCreateProfile
   ],
   //bootstrap: [LoginComponent]
 })
