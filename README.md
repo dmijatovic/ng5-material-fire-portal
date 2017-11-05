@@ -1,6 +1,6 @@
-# ng4-material-fire-portals
+# dv4-ng-mat-fire-portals
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.2 and uses Angular 4. It uses angular material, beta 12 (custom theme) and the firebase for the backend and hosting.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.2 and uses Angular 4. It uses angular material, beta 12 (custom theme) and the firebase for the backend and hosting. On 5 november upgrade to Angular 5 is done. It required upgrade of cli to v1.5.0. See at the bottom more about upgrade.
 
 The project contains 3 templates having same name as git branches:
 
@@ -90,4 +90,23 @@ To deploy project to firebase hosting site (firebase.json) use command `npm run 
 For more info about firebase hosting costs, see: https://firebase.google.com/pricing/?authuser=0
 
 ## Domains
+
 Firebase hosting offers possibility to connect custom domain and get ssl certificate for it. Note that dv4all domains (dv4all.com and dv4all.nl) are at Hostign2Go. During the precess of adding subdomain to firebase project, firebase will require you to add two A records at your provider. At Hosting2Go this is not possible, only one A record per subdomain is supported. So you should use CNAME records and provide firebase domainname as forward. This is the only way with hostings that do not allow multiple A records for same domain values.
+
+## **Angular 5 upgrade**
+
+Upgrade is performed on 5 november 2017, manually. First ng cli is removed and new version (v1.5) installed. Then I created ng5 test project (another folder) and updated package.json to propper versions for used libraries (based on ng5 test project). Beside angular, RxJs and Typescript version are important. At this point I disabled npm-shrinkwrap (renamed to *.old), removed node_modules folder and runnen npm install to install all libs again. After installation message about version dependence (to ng v4) from angular material appeared, but I was able to proceed. Running in development mode worked succefully.
+
+- HttpClient: in v5 http is part of common module. The HttpClientModule also needs to be imported in app module
+
+```js
+  import { HttpClient } from '@angular/common/http'
+```
+
+- SourceMaps: there is problem with scss sourcemaps and Angular cli v1.5.0
+  - SCSS sourcemaps not working on new version of cli. Styles are extracted but there is no reference to original scss files. Instead is shows styles.bundle.scss file as source. For some components proper scss file is shown. These seem to be directly refered in the component, not via main.scss file.
+  - TypeScript / JavaScript: sourcemaps seem to work.
+
+- Size: file size v4 vs. v5
+  - vendor bundle file size seems lot larger in dev mode that with previous version.
+  - aot does reduces file sizes, still my impression is that vendor bundle is lot larger than with v4
