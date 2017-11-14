@@ -1,7 +1,70 @@
+<h1>
+  {{title}}</h1>
 
+<section class="animation-items">
+  <section class="animation-cmd">
+    <button mat-icon
+      (click)="animate('fade','fadeout')">
+      Hide
+    </button>
 
-<section>
+    <button mat-icon
+      (click)="animate('fade','fadein')">
+      Show
+    </button>
+  </section>
 
-    <h1>{{title}}</h1>  
+  <section class="animation-boxes">
+      <div [@itemFade]="fade"
+      class="animation-box">
+      This box will fade in
+    </div>
+
+    <div [@itemFade]="fade"
+      class="animation-box">
+      This box will fade out
+    </div>
+  </section>
+
+</section>
+
+<section class="animation-items">
+  <section class="animation-cmd">
+
+    <button mat-icon
+      (click)="animate('basic','grow')">
+      Grow
+    </button>
+
+    <button mat-icon
+      (click)="animate('basic','move')">
+      Move
+    </button>
+
+    <button mat-icon
+      (click)="animate('basic','spin')">
+      Rotate
+    </button>
+
+    <button mat-icon
+      (click)="animate('basic','')">
+      Reset
+    </button>
+
+  </section>
+
+  <section class="animation-boxes">
+
+    <div [@basicEffect]="basic"
+      class="animation-box">
+      These boxes have some effects
+    </div>
+
+    <div [@basicEffect]="basic"
+      class="animation-box">
+      These boxes have some effects
+    </div>
+
+  </section>
 
 </section>

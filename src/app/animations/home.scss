@@ -2,10 +2,45 @@
 @import '../../material/variables';
 
 //this should be on each host
-//that needs to fill in the page 
+//that needs to fill in the page
 :host{
     display: flex;
     flex-direction: column;
     flex: 1;
-    //padding: $page-padding;    
+    //padding: $page-padding;
+}
+
+.animation-items{
+  display:flex;
+
+
+  .animation-cmd{
+    display:flex;
+    flex-wrap:wrap;
+    width:200px;
+    padding:24px;
+    justify-content: center;
+    align-items: center;
+
+    button{
+      margin:16px;
+    }
+  }
+
+  .animation-boxes{
+    display:flex;
+    flex-wrap: wrap;
+    flex:1;
+    padding:24px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .animation-box{
+    width:200px;
+    height:200px;
+    background-color: #ababab;
+    margin:16px;
+  }
+
 }
