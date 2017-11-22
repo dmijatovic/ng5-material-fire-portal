@@ -1,6 +1,8 @@
-# ng4-material-fire-portals
+# ng5-material-fire-portals
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.2 and uses Angular 4. It uses angular material, beta 12 (custom theme) and the firebase for the backend and hosting.
+NOTE! This project is generated with [Angular CLI](https://github.com/angular/angular-cli) 1.4.2 as Angular 4 and later upgraded to Angular 5 and CLI version 1.5.0. 
+
+The goal of the project is to test new features of Angular or to be a testbed for upgrading. Simply it is a Angular playground where it might happen that some features do not work properly after upgrade to versio 5.
 
 The project contains 3 templates having same name as git branches:
 
@@ -10,7 +12,7 @@ The project contains 3 templates having same name as git branches:
 
 ## Project folder structure (modules)
 
-This project is ment to be template for new portals. Therefore I decided to split number of 'standard' components from the 'client specific' components. The client specific components are placed in app while various system components are placed outside app folder. The complete structure is as follows:
+This project is ment to be template for new portals. I decided to split number of 'standard' components from the 'client specific' components. The client specific components are placed in app while various system components are placed outside app folder. The complete structure is as follows:
 
 - **app**: here we store customer specific pages
 - **assets**: portal assets, like images etc.
@@ -21,18 +23,17 @@ This project is ment to be template for new portals. Therefore I decided to spli
 - **user**: login and user authentication modules
 
 ## Branches
-
+- **dev**: branch used for developing new features and testing new ideas. THIS BRANCH IS UPDATED TO ANGULAR 5. Other branches are not upgraded yet. 
 - **ng4mat**: starter branch ng4 with custom material theme. use this as stater. note that material is still in beta (beta 12 in this case). There was a bug in beta 11 version of angular/material, so I extracted scss file and changed few lines of theming code. The adapted material theming version is in material folder.
 - **ng4portal**: basic dashboard portal demo and project starter for dashboards hosted with firebase. It has login and user modules for authentication. In addition it uses lazy loading of site modules (sections)
-- **dev**: branch used for developing new features testing new ideas
 - **master**: demo portal verson live on dv4all website
 - **others**: this project might hold other branches in the future
 
 ## Development
-
+- Select branch you want to test/develop
 - Run `npm run dev` for a dev server and sourcemaps. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 - To add new material component, you need to 'inject' references in two places
-  - add material component reference in your angualr component
+  - add material component reference in your angular component
   - add meterial module reference into material module (material/material.module.ts)
 
 ## Deployment ng4portal branch
@@ -70,7 +71,7 @@ In this project we have 3 major sections that are lazy loaded
 - private: access to private section of the app
 - user: access to private section of the app
 
-Lazy loading also INFLUENCE module imports/refrences in the app. Specific modules cannot be imported twice, this causes an error. Specific modules should be imported at exact  section where are used because **lazy loaded module is not aware of the modules loaded in another lazy loaded module**. This might impact sharing the data between lazy loaded modules. At this moment, I am not sure about how services behave between lazy loaded modules and can the info be shared. We will test this furher of course.
+Lazy loading also INFLUENCE module imports/refrences in the app. Specific modules cannot be imported twice, this causes an error. Specific modules should be imported at exact section where are used because **lazy loaded module is not aware of the modules loaded in another lazy loaded module**. This might impact sharing the data between lazy loaded modules. At this moment, I am not sure about how services behave between lazy loaded modules. We will test this furher of course.
 
 ## Firebase hosting
 
@@ -90,4 +91,4 @@ To deploy project to firebase hosting site (firebase.json) use command `npm run 
 For more info about firebase hosting costs, see: https://firebase.google.com/pricing/?authuser=0
 
 ## Domains
-Firebase hosting offers possibility to connect custom domain and get ssl certificate for it. Note that dv4all domains (dv4all.com and dv4all.nl) are at Hostign2Go. During the precess of adding subdomain to firebase project, firebase will require you to add two A records at your provider. At Hosting2Go this is not possible, only one A record per subdomain is supported. So you should use CNAME records and provide firebase domainname as forward. This is the only way with hostings that do not allow multiple A records for same domain values.
+Firebase hosting offers possibility to connect custom domain and get ssl certificate for it. Note that dv4all domains (dv4all.com and dv4all.nl) are at Hostign2Go. During the precess of adding subdomain to firebase project, firebase will require you to add two A records at your provider. At Hosting2Go this is not possible, only one A record per subdomain is supported. So you should use CNAME records and provide firebase domainname as forward. This seem to be a way when hosting provider does not allow multiple A records for same domain values.
