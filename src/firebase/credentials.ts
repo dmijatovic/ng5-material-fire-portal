@@ -1,7 +1,7 @@
 
 export const cred = {
-    user:'d.mijatovic@dv4all.nl',
-    pass:'V8UuXn5c',
+    user:'your firebase user id',
+    pass:'youpass',
     firebase:{
         apiKey: "YourFirebaseApiKey",
         authDomain: "dv4fire.firebaseapp.com",
