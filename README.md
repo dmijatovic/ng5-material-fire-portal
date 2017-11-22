@@ -23,6 +23,7 @@ This project is ment to be template for new portals. I decided to split number o
 - **user**: login and user authentication modules
 
 ## Branches
+
 - **dev**: branch used for developing new features and testing new ideas. THIS BRANCH IS UPDATED TO ANGULAR 5. Other branches are not upgraded yet. 
 - **ng4mat**: starter branch ng4 with custom material theme. use this as stater. note that material is still in beta (beta 12 in this case). There was a bug in beta 11 version of angular/material, so I extracted scss file and changed few lines of theming code. The adapted material theming version is in material folder.
 - **ng4portal**: basic dashboard portal demo and project starter for dashboards hosted with firebase. It has login and user modules for authentication. In addition it uses lazy loading of site modules (sections)
@@ -30,6 +31,7 @@ This project is ment to be template for new portals. I decided to split number o
 - **others**: this project might hold other branches in the future
 
 ## Development
+
 - Select branch you want to test/develop
 - Run `npm run dev` for a dev server and sourcemaps. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 - To add new material component, you need to 'inject' references in two places
@@ -96,7 +98,7 @@ Firebase hosting offers possibility to connect custom domain and get ssl certifi
 
 ## **Angular 5 upgrade**
 
-Upgrade is performed on 5 november 2017, manually. First ng cli is removed and new version (v1.5) installed. Then I created ng5 test project (another folder) and updated package.json to propper versions for used libraries (based on ng5 test project). Beside angular, RxJs and Typescript version are important. At this point I disabled npm-shrinkwrap (renamed to *.old), removed node_modules folder and runnen npm install to install all libs again. After installation message about version dependence (to ng v4) from angular material appeared, but I was able to proceed. Running in development mode worked succefully.
+Upgrade is performed on 21 november 2017, manually. First ng cli is removed and new version (v1.5) installed. Then I created ng5 test project (another folder) and updated package.json to propper versions for used libraries (based on ng5 test project). Beside angular, RxJs and Typescript version are important. At this point I disabled npm-shrinkwrap (renamed to *.old), removed node_modules folder and runnen npm install to install all libs again. After installation message about version dependence (to ng v4) from angular material appeared, but I was able to proceed. Running in development mode worked succefully.
 
 - HttpClient: in v5 http is part of common module. The HttpClientModule also needs to be imported in app module
 
